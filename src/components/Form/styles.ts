@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Form = styled.form`
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -29,4 +29,5 @@ export const Form = styled.form`
     color: #08263d;
   }
 `;
+
 export default Form;
