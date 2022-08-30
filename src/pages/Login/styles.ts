@@ -66,6 +66,7 @@ export const Container = styled.div`
   }
 
   .btnLogin {
+    opacity: 70%;
     width: 90px;
     margin-left: 45px;
     margin-top: 45px;
@@ -75,5 +76,14 @@ export const Container = styled.div`
   p {
     font-size: 16px;
     color: #08263d;
+  }
+
+  input {
+    box-shadow: rgba(43, 85, 190, 0.5);
+    border: none;
+    background-color: #f5f5f5;
+    ::placeholder {
+      padding-left: 0.6rem;
+    }
   }
 `;
