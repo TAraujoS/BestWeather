@@ -19,12 +19,11 @@ export interface IAuthContext {
 }
 
 export interface IUser {
+  name: string;
   email: string;
   password: string;
-  name: string;
-  bio: string;
-  contact: string;
-  course_module: string;
+  occupation: string;
+  city: string;
 }
 
 export interface IUserResponse {
