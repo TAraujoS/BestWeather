@@ -1,33 +1,15 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { Button } from "../../components/Button/styles";
-import Form from "../../components/Form/styles";
-import { Container } from "./styles";
+import { registerSchema } from "../../validators";
 import HeaderLogo from "../../components/Header";
 
-const schema = yup.object().shape({
-  email: yup.string().required("Campo obrigatório"),
-  password: yup
-    .string()
-    .min(8, "Mínimo de 8 dígitos")
-    .required("Campo obrigatório"),
-  passwordConfirm: yup
-    .string()
-    .oneOf([yup.ref("password")], "Senhas diferentes")
-    .min(8, "Mínimo de 8 dígitos")
-    .required("Campo Obrigatório"),
-  name: yup
-    .string()
-    .matches(/^[a-zA-Z\s]*$/, "Apenas Letras")
-    .required("Campo obrigatório"),
-  contato: yup.string().required("Campo Obrigatório"),
-  estado: yup.string().required("Campo Obrigatório"),
-});
+import Form from "../../components/Form/styles";
+import { Container } from "./styles";
+import { Button } from "../../components/Button/styles";
 
 const Registro = () => {
   const { register } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(registerSchema),
   });
 
   return (
@@ -67,8 +49,9 @@ const Registro = () => {
           <input
             type="password"
             id="confirmPassword"
-            className="input-text"
-            {...register("password")}
+            className="input-text"       
+            {...register("confirmPassword")}
+
             placeholder="Confirmação de senha"
           />
 

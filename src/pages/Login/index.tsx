@@ -1,19 +1,15 @@
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import HeaderLogo from "../../components/Header";
+import { loginSchema } from "../../validators";
+
 import Form from "../../components/Form/styles";
 import { Container } from "./styles";
 import { Button } from "../../components/Button/styles";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import HeaderLogo from "../../components/Header";
-
-const schema = yup.object({
-  email: yup.string().email().required(),
-  password: yup.string().min(8, "Deve conter ao menos 8 caracteres").required(),
-});
 
 const Login = () => {
   const { register } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(loginSchema),
   });
 
   return (
