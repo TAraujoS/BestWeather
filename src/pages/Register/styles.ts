@@ -1,27 +1,58 @@
 import styled from "styled-components";
+import nuvem from "../../assets/img/nuvem.jpg";
 
-export const FormPage = styled.form`
+export const Container = styled.div`
+  width: 1440px;
+  height: 745px;
+  margin: auto;
+
+  position: relative;
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  height: 100%;
-  width: 100vw;
-  padding: 0 0 1em 0;
-  background-color: #121214;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 
-  section {
+  background-image: url(${nuvem});
+
+  .headerRegister {
+    width: 369px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin: 2em 0em 1em 0;
-    width: 85vw;
-    max-width: 369px;
-    h2 {
-    }
+    align-items: center;
+  }
 
-    button {
-    }
+  .modalRegistro {
+    width: 369px;
+    height: 552px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    padding: 27px;
+    border-radius: 5px;
+  }
+
+  .btnBackLogin {
+    width: 65px;
+    height: 35px;
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #08263d;
+    font-weight: 700;
+  }
+
+  p {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    color: #868e96;
   }
 `;
