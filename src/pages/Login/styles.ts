@@ -4,7 +4,7 @@ import nuvem from "../../assets/img/nuvem.jpg";
 export const Container = styled.div`
   width: 1440px;
   height: 745px;
-  margin: auto;
+  margin: 0;
 
   position: relative;
   display: flex;
