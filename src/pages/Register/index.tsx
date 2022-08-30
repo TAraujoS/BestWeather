@@ -14,6 +14,7 @@ const Registro = () => {
 
   return (
     <Container>
+      <div className="cloud"></div>
       <div className="modalRegistro">
         <div className="headerRegister">
           <HeaderLogo />
@@ -49,9 +50,8 @@ const Registro = () => {
           <input
             type="password"
             id="confirmPassword"
-            className="input-text"       
+            className="input-text"
             {...register("confirmPassword")}
-
             placeholder="Confirmação de senha"
           />
 
