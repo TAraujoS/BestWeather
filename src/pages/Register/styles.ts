@@ -3,14 +3,13 @@ import ceu from "../../assets/img/ceu.jpg";
 import cloud from "../../assets/img/cloud.png";
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   margin: auto;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-
   background-image: url(${ceu});
 
   .cloud {
@@ -33,8 +32,7 @@ export const Container = styled.div`
   }
 
   .modalRegistro {
-    width: 80%;
-    min-height: 580px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -81,6 +79,7 @@ export const Container = styled.div`
   }
 
   .input-text {
+    min-width: 250px;
     border: 2px solid #1976bd;
     background-color: #0f4670;
     max-width: 500px;
@@ -88,6 +87,11 @@ export const Container = styled.div`
     ::placeholder {
       color: #ffffff;
       padding-left: 0.6rem;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .headerRegister {
+      width: 600px;
     }
   }
 `;

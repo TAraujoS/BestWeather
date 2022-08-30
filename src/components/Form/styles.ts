@@ -4,15 +4,15 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   margin: auto;
-  max-width: 70%;
   font-size: 20px;
   color: #fff;
   gap: 0.5rem;
+  align-items: center;
 
   input {
     height: 40px;
     border-radius: 12px;
-    background-color: #3685c18a;
+    background-color: #fff;
 
     color: #fff;
     box-shadow: 0 0 1em #08263d59;

@@ -3,29 +3,23 @@ import ceu from "../../assets/img/ceu.jpg";
 import cloud from "../../assets/img/cloud.png";
 
 export const Container = styled.div`
-  width: 1440px;
-  height: 745px;
-  margin: 0;
-
-  position: relative;
   display: flex;
+  width: 100%;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
-
+  padding: 1rem;
+  background-image: url(${nuvem});
   background-color: rgb(37 122 195 / 50%);
 
   section {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 100%;
     background-color: #fff;
-    width: 900px;
-    height: 500px;
     border-radius: 5px;
-    background-color: #08263d;
-    box-shadow: 0 0 1em #08263d59;
-    background-image: url(${ceu});
-
-    margin: auto;
+    background: none;
+    justify-content: space-between;
   }
 
   .cloud {
@@ -49,27 +43,30 @@ export const Container = styled.div`
   }
 
   .divLogo {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    margin: auto;
-    width: 400px;
-    height: 423px;
-    gap: 3rem;
-    padding: 40px;
+    background: transparent;
+    border: transparent;
+  }
+
+  .divLogo > h1 {
+    font-size: 0px;
+  }
+
+  .divLogo > div {
+    justify-content: center;
   }
 
   .modalLogin {
-    width: 349px;
-    height: 445px;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
+    padding: 2rem 0;
     background-color: #fff;
-    padding: 27px;
     border-radius: 5px;
+    box-shadow: 0 0 1em #08263d59;
+
+    h3 {
+      margin-bottom: 1rem;
+      font-size: 30px;
+      color: #08263d;
+      font-weight: 700;
+    }
   }
 
   h1 {
@@ -77,21 +74,9 @@ export const Container = styled.div`
     color: #fff;
   }
 
-  h3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    color: #08263d;
-    font-weight: 700;
-  }
-
   .btnLogin {
+    width: 90%;
     opacity: 70%;
-    width: 90px;
-    margin-left: 45px;
-    margin-top: 45px;
-    height: 40px;
   }
 
   p {
@@ -99,7 +84,9 @@ export const Container = styled.div`
     color: #08263d;
   }
 
-  input {
+  input {    
+    width: 90%;
+    margin: 0 0.3rem;    
     box-shadow: rgba(43, 85, 190, 0.5);
     border: none;
     background-color: #f5f5f5;
@@ -107,4 +94,50 @@ export const Container = styled.div`
       padding-left: 0.6rem;
     }
   }
+
+  @media screen and (min-width: 768px) {
+    section {
+      display: flex;
+      flex-direction: row;
+      background-color: #fff;
+      width: 70%;
+      height: fit-content;
+      border-radius: 5px;
+      background-color: #08263d;
+      box-shadow: 0 0 1em #08263d59;
+      margin: 0;
+    }
+
+    .modalLogin {
+      width: 40%;
+    }
+
+    .divLogo {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      width: 60%;
+      height: 423px;
+      gap: 3rem;
+      padding: 40px;
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    section {
+      display: flex;
+      flex-direction: row;
+      background-color: #fff;
+      width: 80%;
+      max-width: 700px;
+      height: fit-content;
+      border-radius: 5px;
+      background-color: #08263d;
+      box-shadow: 0 0 1em #08263d59;
+      margin: 0;
+    }
 `;
