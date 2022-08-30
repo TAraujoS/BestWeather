@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import nuvem from "../../assets/img/nuvem.jpg";
+import ceu from "../../assets/img/ceu.jpg";
+import cloud from "../../assets/img/cloud.png";
 
 export const Container = styled.div`
   width: 100%;
@@ -9,16 +10,25 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(${nuvem});
+  background-image: url(${ceu});
 
-  .headerRegister {
-    min-width: 295px;
+  .cloud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: 100%;
-    gap: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+    background: url(${cloud});
+    animation: animate 120s linear infinite;
+    border-radius: 5px;
+  }
+  @keyframes animate {
+    0% {
+      background-position: 0px;
+    }
+    100% {
+      background-position: 5440px;
+    }
   }
 
   .modalRegistro {
@@ -31,6 +41,17 @@ export const Container = styled.div`
     background-color: transparent;
     padding: 27px;
     border-radius: 5px;
+    z-index: 1;
+  }
+
+  .headerRegister {
+    min-width: 295px;
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
   }
 
   .btnBackLogin {
@@ -61,7 +82,7 @@ export const Container = styled.div`
     min-width: 250px;
     border: 2px solid #1976bd;
     background-color: #0f4670;
-    opacity: 80%;
+    max-width: 500px;
     color: #ffffff;
     ::placeholder {
       color: #ffffff;

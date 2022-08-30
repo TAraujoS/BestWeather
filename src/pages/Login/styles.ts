@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import nuvem from "../../assets/img/nuvem.jpg";
+import ceu from "../../assets/img/ceu.jpg";
+import cloud from "../../assets/img/cloud.png";
 
 export const Container = styled.div`
   display: flex;
@@ -19,6 +20,26 @@ export const Container = styled.div`
     border-radius: 5px;
     background: none;
     justify-content: space-between;
+  }
+
+  .cloud {
+    position: absolute;
+    top: 123px;
+    left: 270px;
+    height: 67%;
+    width: 42%;
+    background: url(${cloud});
+    animation: animate 90s linear infinite;
+    border-radius: 5px;
+    opacity: 0.5;
+  }
+  @keyframes animate {
+    0% {
+      background-position: 0px;
+    }
+    100% {
+      background-position: 5440px;
+    }
   }
 
   .divLogo {
