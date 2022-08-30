@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import nuvem from "../../assets/img/nuvem.jpg";
 
 export const Container = styled.div`
   width: 1440px;
@@ -10,7 +11,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  background-color: rgba(0, 0, 0, 0.5);
+  background-image: url(${nuvem});
 
   .headerRegister {
     width: 369px;
@@ -21,7 +22,7 @@ export const Container = styled.div`
 
   .modalRegistro {
     width: 369px;
-    height: 652px;
+    height: 552px;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -33,8 +34,8 @@ export const Container = styled.div`
   }
 
   .btnBackLogin {
-    width: 75px;
-    height: 40px;
+    width: 65px;
+    height: 35px;
     padding: 5px;
     font-size: 12px;
   }
@@ -43,8 +44,8 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-    color: #fff;
+    font-size: 30px;
+    color: #08263d;
     font-weight: 700;
   }
 

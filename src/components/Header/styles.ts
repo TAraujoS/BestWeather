@@ -10,4 +10,10 @@ export const HeaderPage = styled.div`
   h2 {
     color: #fff;
   }
+
+  img {
+    width: 30px;
+    height: 30px;
+    margin-right: 4px;
+  }
 `;

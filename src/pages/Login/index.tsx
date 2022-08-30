@@ -18,29 +18,38 @@ const Login = () => {
 
   return (
     <Container>
-      <div className="divLogo">
-        <HeaderLogo />
-        <h1>
-          "Em qualquer lugar, em qualquer dia, buscando o seu melhor clima!
-        </h1>
-      </div>
+      <section>
+        <div className="divLogo">
+          <HeaderLogo />
+          <h1>
+            "Em qualquer lugar, em qualquer dia, buscando o seu melhor clima!
+          </h1>
+        </div>
 
-      <div className="modalLogin">
-        <h3>Login</h3>
+        <div className="modalLogin">
+          <h3>Login</h3>
 
-        <Form>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" {...register("email")} />
+          <Form>
+            <input
+              type="email"
+              id="email"
+              placeholder="E-mail"
+              {...register("email")}
+            />
+            <input
+              type="password"
+              id="password"
+              placeholder="Senha"
+              {...register("password")}
+            />
 
-          <label htmlFor="password">Senha</label>
-          <input type="password" id="password" {...register("password")} />
-
-          <Button type="submit" className="btnLogin">
-            Entrar
-          </Button>
-          <p>Cadastre-se aqui</p>
-        </Form>
-      </div>
+            <Button type="submit" className="btnLogin">
+              Entrar
+            </Button>
+            <p>Cadastre-se aqui</p>
+          </Form>
+        </div>
+      </section>
     </Container>
   );
 };

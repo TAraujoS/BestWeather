@@ -11,8 +11,8 @@ const Form = styled.form`
 
   input {
     height: 40px;
-    border-radius: 5px;
-    background-color: #08263d8a;
+    border-radius: 12px;
+    background-color: #3685c18a;
 
     color: #fff;
     box-shadow: 0 0 1em #08263d59;
@@ -20,7 +20,7 @@ const Form = styled.form`
 
   select {
     height: 40px;
-    border-radius: 5px;
+    border-radius: 12px;
     background-color: #08263d;
     opacity: 0.5;
     color: #fff;
