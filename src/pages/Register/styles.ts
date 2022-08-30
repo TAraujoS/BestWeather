@@ -24,7 +24,6 @@ export const Container = styled.div`
 
   .modalRegistro {
     width: 80%;
-    min-height: 580px;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -68,6 +67,11 @@ export const Container = styled.div`
     ::placeholder {
       color: #ffffff;
       padding-left: 0.6rem;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .headerRegister {
+      width: 600px;
     }
   }
 `;
