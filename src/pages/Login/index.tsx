@@ -18,6 +18,7 @@ const Login = () => {
     <Container>
       <section>
         <div className="divLogo">
+          <div className="cloud"></div>
           <HeaderLogo />
           <h1>
             "Em qualquer lugar, em qualquer dia, buscando o seu melhor clima!
