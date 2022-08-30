@@ -2,14 +2,13 @@ import styled from "styled-components";
 import nuvem from "../../assets/img/nuvem.jpg";
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   margin: auto;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-
   background-image: url(${nuvem});
 
   .headerRegister {
@@ -23,7 +22,7 @@ export const Container = styled.div`
   }
 
   .modalRegistro {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -59,9 +58,9 @@ export const Container = styled.div`
   }
 
   .input-text {
+    min-width: 250px;
     border: 2px solid #1976bd;
     background-color: #0f4670;
-    max-width: 500px;
     opacity: 80%;
     color: #ffffff;
     ::placeholder {

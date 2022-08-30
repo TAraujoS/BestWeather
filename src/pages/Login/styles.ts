@@ -54,6 +54,7 @@ export const Container = styled.div`
   }
 
   .btnLogin {
+    width: 90%;
     opacity: 70%;
   }
 
@@ -62,7 +63,9 @@ export const Container = styled.div`
     color: #08263d;
   }
 
-  input {
+  input {    
+    width: 90%;
+    margin: 0 0.3rem;    
     box-shadow: rgba(43, 85, 190, 0.5);
     border: none;
     background-color: #f5f5f5;
@@ -93,7 +96,6 @@ export const Container = styled.div`
       flex-direction: column;
       align-items: left;
       width: 60%;
-      max-width: 400px;
       height: 423px;
       gap: 3rem;
       padding: 40px;
@@ -103,4 +105,18 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media screen and (min-width: 1024px) {
+    section {
+      display: flex;
+      flex-direction: row;
+      background-color: #fff;
+      width: 80%;
+      max-width: 700px;
+      height: fit-content;
+      border-radius: 5px;
+      background-color: #08263d;
+      box-shadow: 0 0 1em #08263d59;
+      margin: 0;
+    }
 `;
