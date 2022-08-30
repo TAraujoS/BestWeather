@@ -5,23 +5,26 @@ const Form = styled.form`
   flex-direction: column;
   margin: auto;
   max-width: 70%;
-  font-size: 100vh;
+  font-size: 20px;
   color: #fff;
   gap: 0.5rem;
 
   input {
-    height: 30px;
+    height: 40px;
     border-radius: 5px;
-    background-color: #fff;
-    color: #3a6688;
-    box-shadow: 0 0 1em #08263d;
+    background-color: #08263d8a;
+
+    color: #fff;
+    box-shadow: 0 0 1em #08263d59;
   }
 
   select {
-    height: 30px;
+    height: 40px;
     border-radius: 5px;
-    background-color: #343b41;
+    background-color: #08263d;
+    opacity: 0.5;
     color: #fff;
+    box-shadow: 0 0 1em #08263d59;
   }
 
   h3 {

@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
 export const HeaderPage = styled.div`
-  width: 1900px;
-  height: 125px;
+  width: 300px;
+  height: 50px;
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  align-items: center;
+
+  h2 {
+    color: #fff;
+  }
 `;

@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: row;
   background-color: #fff;
   width: 1600px;
-  height: 780px;
+  height: 500px;
   border-radius: 5px;
 
   .divLogo {
