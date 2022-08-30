@@ -2,3 +2,19 @@
   text-align: center;
 }
 
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+div,
+head,
+header,
+button,
+select {
+  margin: 0;
+}

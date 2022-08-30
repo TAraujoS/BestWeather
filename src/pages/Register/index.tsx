@@ -25,6 +25,7 @@ const Registro = () => {
           <input
             type="text"
             id="name"
+            className="input-text"
             {...register("name")}
             placeholder="Nome completo"
           />
@@ -32,6 +33,7 @@ const Registro = () => {
           <input
             type="text"
             id="email"
+            className="input-text"
             {...register("email")}
             placeholder="E-mail"
           />
@@ -39,6 +41,7 @@ const Registro = () => {
           <input
             type="password"
             id="password"
+            className="input-text"
             {...register("password")}
             placeholder="Senha"
           />
@@ -46,13 +49,16 @@ const Registro = () => {
           <input
             type="password"
             id="confirmPassword"
+            className="input-text"       
             {...register("confirmPassword")}
+
             placeholder="Confirmação de senha"
           />
 
           <input
             type="text"
             id="occupation"
+            className="input-text"
             {...register("occupation")}
             placeholder="Profissão"
           />
@@ -60,6 +66,7 @@ const Registro = () => {
           <input
             type="text"
             id="city"
+            className="input-text"
             {...register("city")}
             placeholder="Cidade"
           />
