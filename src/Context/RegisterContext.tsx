@@ -9,13 +9,15 @@ export interface IRegisterProviderProps {
 interface IRegisterProps {
   children: ReactNode;
 }
+// export interface IUserResponse{
+
+// }
 export interface ISubmitData {
   name: string;
   email: string;
   password: string;
-  confirmPassword: string;
   occupation: string;
-  city?: string;
+  city: string;
 }
 export const RegisterContext = createContext({} as IRegisterProviderProps);
 

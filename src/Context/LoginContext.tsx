@@ -26,10 +26,10 @@ export interface IUser {
   city: string;
 }
 
-export interface IUserResponse {
-  user: IUser[];
-  token: string;
-}
+// export interface IUserResponse {
+//   user: IUser[];
+//   token: string;
+// }
 
 export interface ILoginProps {
   email: string;
