@@ -95,8 +95,9 @@ export const Container = styled.div`
     border: none;
     background-color: #f5f5f5;
     color: black;
+    padding-left: 0.6rem;
     ::placeholder {
-      padding-left: 0.6rem;
+      color: #ffffff;
     }
   }
 

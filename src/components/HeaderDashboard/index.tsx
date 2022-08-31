@@ -3,6 +3,7 @@ import { HeaderDash, DivHeader, ButtonLogout } from "./styles";
 import { BiLogOut } from "react-icons/bi";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/LoginContext";
+import SectionSearch from "../SectionSearch";
 
 const HeaderDashboard = () => {
   const { logout } = useContext(AuthContext);
@@ -14,6 +15,7 @@ const HeaderDashboard = () => {
           <img src={logo} alt="Logo BestWeather" />
           <h3>BestWeather</h3>
         </div>
+
         <ButtonLogout onClick={() => logout()}>
           <BiLogOut />
         </ButtonLogout>
