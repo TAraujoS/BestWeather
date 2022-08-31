@@ -1,16 +1,12 @@
 import logo from '../../assets/img/logo.png'
 import { HeaderDash, DivHeader, ButtonLogout } from './styles'
 import {BiLogOut} from 'react-icons/bi'
-import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../Context/LoginContext'
 
 const HeaderDashboard = () => {
-    
-  const navigate = useNavigate();
 
-    const logout = () => {
-        localStorage.clear();
-        navigate("/Login");
-      };
+  const { logout } = useContext(AuthContext);
 
     return (
         <HeaderDash>
