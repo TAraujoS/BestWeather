@@ -6,7 +6,7 @@ const Form = styled.form`
   margin: 0 auto;
   font-size: 20px;
   color: #fff;
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: center;
 
   input {
