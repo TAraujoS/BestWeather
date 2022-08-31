@@ -6,21 +6,35 @@ import HeaderLogo from "../../components/Header";
 import Form from "../../components/Form/styles";
 import { Container } from "./styles";
 import { Button } from "../../components/Button/styles";
+import { useContext } from "react";
+import {
+  IRegisterProviderProps,
+  ISubmitData,
+  RegisterContext,
+} from "../../Context/RegisterContext";
 
-const Registro = () => {
-  const { register } = useForm({
+const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ISubmitData>({
     resolver: yupResolver(registerSchema),
   });
+  const { onSubmitFunction, back } =
+    useContext<IRegisterProviderProps>(RegisterContext);
 
   return (
     <Container>
       <div className="modalRegistro">
         <div className="headerRegister">
           <HeaderLogo />
-          <Button className="btnBackLogin">Login</Button>
+          <Button className="btnBackLogin" onClick={() => back}>
+            Voltar
+          </Button>
         </div>
 
-        <Form>
+        <Form onSubmit={handleSubmit(onSubmitFunction)}>
           <h3>Cadastro</h3>
           <input
             type="text"
@@ -29,6 +43,7 @@ const Registro = () => {
             {...register("name")}
             placeholder="Nome completo"
           />
+          <span>{errors.name?.message}</span>
 
           <input
             type="text"
@@ -37,7 +52,7 @@ const Registro = () => {
             {...register("email")}
             placeholder="E-mail"
           />
-
+          <p>{errors.email?.message}</p>
           <input
             type="password"
             id="password"
@@ -45,15 +60,16 @@ const Registro = () => {
             {...register("password")}
             placeholder="Senha"
           />
+          <p>{errors.password?.message}</p>
 
           <input
             type="password"
             id="confirmPassword"
-            className="input-text"       
+            className="input-text"
             {...register("confirmPassword")}
-
             placeholder="Confirmação de senha"
           />
+          <p>{errors.confirmPassword?.message}</p>
 
           <input
             type="text"
@@ -62,6 +78,7 @@ const Registro = () => {
             {...register("occupation")}
             placeholder="Profissão"
           />
+          <p>{errors.occupation?.message}</p>
 
           <input
             type="text"
@@ -70,12 +87,13 @@ const Registro = () => {
             {...register("city")}
             placeholder="Cidade"
           />
+          <p>{errors.city?.message}</p>
 
-          <Button type="submit">Cadastrar</Button>
+          <Button type="button">Cadastrar</Button>
         </Form>
       </div>
     </Container>
   );
 };
 
-export default Registro;
+export default Register;
