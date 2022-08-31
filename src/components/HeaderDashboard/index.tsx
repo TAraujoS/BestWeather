@@ -13,7 +13,7 @@ const HeaderDashboard = () => {
                 <DivHeader>
                     <div>
                         <img src={logo} alt="Logo BestWeather" />
-                        <h2>BestWeather</h2>
+                        <h3>BestWeather</h3>
                     </div>
                     <ButtonLogout onClick={()=> logout()}>
                         <BiLogOut />
