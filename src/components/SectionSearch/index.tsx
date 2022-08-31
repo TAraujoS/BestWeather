@@ -1,16 +1,25 @@
-import logo from "../../assets/img/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/LoginContext";
+import { SectionStyle } from "./styles";
 
 const SectionSearch = () => {
-  return (
-    <section>
-      <img src={logo} alt="BestWeather" />
-      <h2>BestWeather</h2>
+  const { userLogin } = useContext(AuthContext);
+  const userDash = localStorage.getItem("@loginBWeather:user");
 
-      <div>
-        <input type="text" placeholder="Digite a sua localização aqui" />
-        <button className="search-button">Buscar</button>
-      </div>
-    </section>
+  console.log(userLogin);
+  return (
+    <SectionStyle>
+      <>
+        <h3 className="user-intro">
+          Olá, {userDash}, como está o seu clima hoje?{" "}
+        </h3>
+
+        <div>
+          <input type="text" placeholder="Digite a sua localização aqui" />
+          <button className="search-button">Buscar</button>
+        </div>
+      </>
+    </SectionStyle>
   );
 };
 
