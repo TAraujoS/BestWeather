@@ -9,7 +9,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background-image: url(${nuvem});
+  background-image: url(${ceu});
   background-color: rgb(37 122 195 / 50%);
 
   section {
@@ -140,4 +140,5 @@ export const Container = styled.div`
       box-shadow: 0 0 1em #08263d59;
       margin: 0;
     }
-`;
+  }
+`
