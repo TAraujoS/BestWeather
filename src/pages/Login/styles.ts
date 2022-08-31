@@ -84,9 +84,9 @@ export const Container = styled.div`
     color: #08263d;
   }
 
-  input {    
+  input {
     width: 90%;
-    margin: 0 0.3rem;    
+    margin: 0 0.3rem;
     box-shadow: rgba(43, 85, 190, 0.5);
     border: none;
     background-color: #f5f5f5;
@@ -140,4 +140,5 @@ export const Container = styled.div`
       box-shadow: 0 0 1em #08263d59;
       margin: 0;
     }
+  }
 `;
