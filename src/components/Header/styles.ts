@@ -6,7 +6,9 @@ export const HeaderPage = styled.div`
   display: flex;
   margin: 0;
   flex-direction: row;
-  align-items: center;  
+  align-items: center;
+  z-index: 100;
+  /* margin-bottom: 20px; */
 
   h2 {
     color: #fff;
