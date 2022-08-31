@@ -26,10 +26,10 @@ export interface IUser {
   city: string;
 }
 
-export interface IUserResponse {
-  user: IUser[];
-  token: string;
-}
+// export interface IUserResponse {
+//   user: IUser[];
+//   token: string;
+// }
 
 export interface ILoginProps {
   email: string;
@@ -68,14 +68,14 @@ const AuthProvider = ({ children }: IAuthContext) => {
         localStorage.setItem("@loginBWeather:token", accessToken);
         localStorage.setItem("@loginBWeather:user", user.id);
         setUserLogin(user);
-        navigate("/Dashboard", { replace: true });
+        navigate("/dashboard", { replace: true });
       })
       .catch((error) => console.log(error));
   };
 
   const logout = () => {
     localStorage.clear();
-    navigate("/Login");
+    navigate("/");
   };
 
   return (
