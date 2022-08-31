@@ -9,7 +9,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background-image: url(${ceu});
   background-color: rgb(37 122 195 / 50%);
 
   section {
@@ -18,8 +17,8 @@ export const Container = styled.div`
     width: 100%;
     background-color: #fff;
     border-radius: 5px;
-    background: none;
     justify-content: space-between;
+    background-image: url(${ceu});
   }
 
   .cloud {
@@ -27,6 +26,7 @@ export const Container = styled.div`
     top: 123px;
     left: 270px;
     height: 67%;
+
     width: 42%;
     background: url(${cloud});
     animation: animate 90s linear infinite;
@@ -42,11 +42,6 @@ export const Container = styled.div`
     }
   }
 
-  .divLogo {
-    background: transparent;
-    border: transparent;
-  }
-
   .divLogo > h1 {
     font-size: 0px;
   }
@@ -56,9 +51,17 @@ export const Container = styled.div`
   }
 
   .modalLogin {
-    padding: 2rem 0;
+    width: 349px;
+    height: 445px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
     background-color: #fff;
     border-radius: 5px;
+    padding: 2rem 0;
+    gap: 1.5rem;
     box-shadow: 0 0 1em #08263d59;
 
     h3 {
@@ -75,7 +78,7 @@ export const Container = styled.div`
   }
 
   .btnLogin {
-    width: 90%;
+    width: 100%;
     opacity: 70%;
   }
 
@@ -84,9 +87,9 @@ export const Container = styled.div`
     color: #08263d;
   }
 
-  input {    
-    width: 90%;
-    margin: 0 0.3rem;    
+  input {
+    width: 100%;
+    margin: 0 0.3rem;
     box-shadow: rgba(43, 85, 190, 0.5);
     border: none;
     background-color: #f5f5f5;
@@ -133,11 +136,12 @@ export const Container = styled.div`
       flex-direction: row;
       background-color: #fff;
       width: 80%;
-      max-width: 700px;
+      max-width: 800px;
       height: fit-content;
       border-radius: 5px;
       background-color: #08263d;
       box-shadow: 0 0 1em #08263d59;
       margin: 0;
     }
+  }
 `;
