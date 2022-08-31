@@ -3,14 +3,14 @@ import styled from "styled-components";
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  margin: auto;
+  margin: 0 auto;
   font-size: 20px;
   color: #fff;
   gap: 0.5rem;
   align-items: center;
 
   input {
-    height: 40px;
+    height: 45px;
     border-radius: 12px;
     background-color: #fff;
 
