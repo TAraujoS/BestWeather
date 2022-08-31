@@ -78,9 +78,9 @@ export const Container = styled.div`
     background-color: #0f4670;
     max-width: 500px;
     color: #ffffff;
+    padding-left: 0.6rem;
     ::placeholder {
       color: #ffffff;
-      padding-left: 0.6rem;
     }
   }
   @media screen and (min-width: 768px) {

@@ -66,7 +66,7 @@ const AuthProvider = ({ children }: IAuthContext) => {
         console.log(response);
         fakeApi.defaults.headers.common.Authorization = `Bearer ${tokenUser}`;
         localStorage.setItem("@loginBWeather:token", accessToken);
-        localStorage.setItem("@loginBWeather:user", user.id);
+        localStorage.setItem("@loginBWeather:user", user.name);
         setUserLogin(user);
         navigate("/dashboard", { replace: true });
       })
