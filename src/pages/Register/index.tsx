@@ -24,10 +24,6 @@ const Register = () => {
   const { onSubmitFunction, back } =
     useContext<IRegisterProviderProps>(RegisterContext);
 
-  const newfunction = (data: ISubmitData) => {
-    console.log(data);
-  };
-
   return (
     <Container>
       <div className="cloud"></div>
@@ -39,7 +35,7 @@ const Register = () => {
           </Button>
         </div>
 
-        <Form onSubmit={handleSubmit(newfunction)}>
+        <Form onSubmit={handleSubmit(onSubmitFunction)}>
           <h3>Cadastro</h3>
           <input
             type="text"
@@ -71,10 +67,10 @@ const Register = () => {
             type="password"
             id="confirmPassword"
             className="input-text"
-            {...register("password")}
+            {...register("passwordConfirm")}
             placeholder="Confirmação de senha"
           />
-          <p>{errors.password?.message}</p>
+          <p>{errors.passwordConfirm?.message}</p>
 
           <input
             type="text"

@@ -16,8 +16,9 @@ export interface ISubmitData {
   name: string;
   email: string;
   password: string;
+  passwordConfirm: string;
   occupation: string;
-  city: string;
+  city?: string;
 }
 export const RegisterContext = createContext({} as IRegisterProviderProps);
 
@@ -27,8 +28,7 @@ const RegisterProvider = ({ children }: IRegisterProps) => {
   const onSubmitFunction = async (data: ISubmitData) => {
     console.log(data);
     try {
-      const response = await fakeApi.post("/signup", data);
-      console.log(response);
+      await fakeApi.post("/signup", data);
       navigate("/");
     } catch (error) {
       console.error("Deu esse problema", error);
