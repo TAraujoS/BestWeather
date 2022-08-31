@@ -26,6 +26,7 @@ const Register = () => {
 
   return (
     <Container>
+      <div className="cloud"></div>
       <div className="modalRegistro">
         <div className="headerRegister">
           <HeaderLogo />

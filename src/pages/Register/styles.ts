@@ -1,16 +1,48 @@
 import styled from "styled-components";
-import nuvem from "../../assets/img/nuvem.jpg";
+import ceu from "../../assets/img/ceu.jpg";
+import cloud from "../../assets/img/cloud.png";
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   margin: auto;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url(${ceu});
 
-  background-image: url(${nuvem});
+  .cloud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url(${cloud});
+    animation: animate 120s linear infinite;
+    border-radius: 5px;
+  }
+  @keyframes animate {
+    0% {
+      background-position: 0px;
+    }
+    100% {
+      background-position: 5440px;
+    }
+  }
+
+  .modalRegistro {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    padding: 27px;
+    border-radius: 5px;
+    z-index: 1;
+  }
 
   .headerRegister {
     min-width: 295px;
@@ -20,19 +52,6 @@ export const Container = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-  }
-
-  .modalRegistro {
-    width: 80%;
-    min-height: 580px;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    padding: 27px;
-    border-radius: 5px;
   }
 
   .btnBackLogin {
@@ -60,14 +79,19 @@ export const Container = styled.div`
   }
 
   .input-text {
+    min-width: 250px;
     border: 2px solid #1976bd;
     background-color: #0f4670;
     max-width: 500px;
-    opacity: 80%;
     color: #ffffff;
     ::placeholder {
       color: #ffffff;
       padding-left: 0.6rem;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .headerRegister {
+      width: 600px;
     }
   }
 `;
