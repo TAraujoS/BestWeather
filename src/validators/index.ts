@@ -9,7 +9,7 @@ export const loginSchema = yup.object().shape({
 export const registerSchema = yup.object().shape({
   name: yup
     .string()
-    .matches(/^[a-zA-Z\s]*$/, "Esse campo deve conter apenas letras")
+    .matches(/^([a-zA-Zà-úÀ-Ú0-9]|-|_|\s)+$/, "Esse campo deve conter apenas letras")
     .required("Campo obrigatório"),
 
   email: yup.string().email("E-mail inválido").required("Campo obrigatório"),

@@ -31,6 +31,16 @@ const Form = styled.form`
     font-size: 30px;
     color: #08263d;
   }
+  p{
+    font-size: 14px;
+
+    a{
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  }
 `;
 
 export default Form;
