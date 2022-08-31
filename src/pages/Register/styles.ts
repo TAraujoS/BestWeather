@@ -11,7 +11,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   background-image: url(${ceu});
-
   .cloud {
     position: absolute;
     top: 0;
@@ -19,7 +18,8 @@ export const Container = styled.div`
     height: 100%;
     width: 100%;
     background: url(${cloud});
-    animation: animate 120s linear infinite;
+    background-size: cover;
+    animation: animate 90s linear infinite;
     border-radius: 5px;
   }
   @keyframes animate {
@@ -30,7 +30,6 @@ export const Container = styled.div`
       background-position: 5440px;
     }
   }
-
   .modalRegistro {
     width: 100%;
     display: flex;
@@ -43,7 +42,6 @@ export const Container = styled.div`
     border-radius: 5px;
     z-index: 1;
   }
-
   .headerRegister {
     min-width: 295px;
     width: 100%;
@@ -53,7 +51,6 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-around;
   }
-
   .btnBackLogin {
     width: 80%;
     max-width: 80px;
@@ -61,7 +58,6 @@ export const Container = styled.div`
     padding: 5px;
     font-size: 12px;
   }
-
   h3 {
     display: flex;
     justify-content: center;
@@ -70,14 +66,12 @@ export const Container = styled.div`
     color: #08263d;
     font-weight: 700;
   }
-
   p {
     display: flex;
     justify-content: center;
     font-size: 12px;
     color: #868e96;
   }
-
   .input-text {
     min-width: 250px;
     border: 2px solid #1976bd;
