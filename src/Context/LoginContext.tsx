@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { fakeApi } from "../services";
 
 interface AuthContextData {
-  user: IUser[];
+  user: IUser;
   userLogin: null;
   setUserLogin: React.Dispatch<React.SetStateAction<null>>;
   signIn: (props: ILoginProps) => void;
@@ -38,7 +38,7 @@ export interface ILoginProps {
 
 const AuthProvider = ({ children }: IAuthContext) => {
   const [userLogin, setUserLogin] = useState(null);
-  const [user, setUser] = useState<IUser[]>([{} as IUser]);
+  const [user, setUser] = useState<IUser>({} as IUser);
   const navigate = useNavigate();
   const tokenUser = localStorage.getItem("@loginBWeather:token");
 
@@ -66,7 +66,7 @@ const AuthProvider = ({ children }: IAuthContext) => {
         console.log(response);
         fakeApi.defaults.headers.common.Authorization = `Bearer ${tokenUser}`;
         localStorage.setItem("@loginBWeather:token", accessToken);
-        localStorage.setItem("@loginBWeather:user", user.name);
+        localStorage.setItem("@loginBWeather:user", user.id);
         setUserLogin(user);
         navigate("/dashboard", { replace: true });
       })

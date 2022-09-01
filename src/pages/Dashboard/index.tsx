@@ -1,3 +1,4 @@
+import { CityInfos } from "../../components/CityInfos/styles";
 import FooterDashboard from "../../components/FooterDash";
 import HeaderDashboard from "../../components/HeaderDashboard";
 import SectionSearch from "../../components/SectionSearch";
@@ -8,6 +9,7 @@ const Dashboard = () => {
     <BodyDash>
       <HeaderDashboard />
       <SectionSearch />
+      <CityInfos />
       <FooterDashboard />
     </BodyDash>
   );

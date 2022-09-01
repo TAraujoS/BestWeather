@@ -29,18 +29,23 @@ const Login = () => {
           <h3>Login</h3>
 
           <Form onSubmit={handleSubmit(signIn)}>
-            <input
-              type="email"
-              id="email"
-              placeholder="E-mail"
-              {...register("email")}
-            />
-            <input
-              type="password"
-              id="password"
-              placeholder="Senha"
-              {...register("password")}
-            />
+            <label htmlFor="email">
+              <input
+                type="email"
+                id="email"
+                placeholder="E-mail"
+                {...register("email")}
+              />
+            </label>
+
+            <label htmlFor="password">
+              <input
+                type="password"
+                id="password"
+                placeholder="Senha"
+                {...register("password")}
+              />
+            </label>
 
             <Button type="submit" className="btnLogin">
               Entrar

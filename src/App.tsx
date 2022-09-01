@@ -1,4 +1,5 @@
 import "./App.css";
+import CityProvider from "./Context/CityContext";
 import AuthProvider from "./Context/LoginContext";
 import RegisterProvider from "./Context/RegisterContext";
 import MainRoutes from "./routes";
@@ -8,7 +9,9 @@ function App() {
     <div className="App">
       <AuthProvider>
         <RegisterProvider>
-          <MainRoutes />
+          <CityProvider>
+            <MainRoutes />
+          </CityProvider>
         </RegisterProvider>
       </AuthProvider>
     </div>
