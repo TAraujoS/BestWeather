@@ -4,14 +4,13 @@ import { AuthContext } from "../../Context/LoginContext";
 import { SectionStyle } from "./styles";
 
 const SectionSearch = () => {
-  const { userLogin } = useContext(AuthContext);
-  const userDash = localStorage.getItem("@loginBWeather:user");
+  const { user } = useContext(AuthContext);
 
   return (
     <SectionStyle>
       <>
         <h3 className="user-intro">
-          Olá, {userDash}, como está o seu clima hoje?{" "}
+          Olá, {user.name}, como está o seu clima hoje?
         </h3>
 
         <div>

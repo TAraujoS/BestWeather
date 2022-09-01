@@ -41,22 +41,7 @@ const AuthProvider = ({ children }: IAuthContext) => {
   const [user, setUser] = useState<IUser>({} as IUser);
   const navigate = useNavigate();
   const tokenUser = localStorage.getItem("@loginBWeather:token");
-
-  useEffect(() => {
-    async function loadUser() {
-      if (tokenUser) {
-        try {
-          fakeApi.defaults.headers.common.Authorization = `Bearer ${tokenUser}`;
-          const { data } = await fakeApi.get("/signin");
-          setUser(data);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    }
-    loadUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const userId = localStorage.getItem("@loginBWeather:user");
 
   const signIn = (data: ILoginProps) => {
     fakeApi
@@ -71,6 +56,22 @@ const AuthProvider = ({ children }: IAuthContext) => {
       })
       .catch((error) => console.error("Esse é o problema!", error));
   };
+
+  useEffect(() => {
+    async function loadUser() {
+      if (tokenUser) {
+        try {
+          fakeApi.defaults.headers.common.Authorization = `Bearer ${tokenUser}`;
+          const { data } = await fakeApi.get(`/users/${userId}`);
+          setUser(data);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    }
+    loadUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const logout = () => {
     localStorage.clear();
