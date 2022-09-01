@@ -2,7 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fakeApi } from "../services";
 
-interface AuthContextData {
+export interface AuthContextData {
   user: IUser;
   userLogin: null;
   setUserLogin: React.Dispatch<React.SetStateAction<null>>;
@@ -63,14 +63,13 @@ const AuthProvider = ({ children }: IAuthContext) => {
       .post("/signin", data)
       .then((response) => {
         const { user, accessToken } = response.data;
-        console.log(response);
         fakeApi.defaults.headers.common.Authorization = `Bearer ${tokenUser}`;
         localStorage.setItem("@loginBWeather:token", accessToken);
         localStorage.setItem("@loginBWeather:user", user.id);
         setUserLogin(user);
         navigate("/dashboard", { replace: true });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error("Esse é o problema!", error));
   };
 
   const logout = () => {

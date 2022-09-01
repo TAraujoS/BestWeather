@@ -6,7 +6,7 @@ import { IUser } from "./LoginContext";
 interface CityContextData {
   userCity: string;
   setUserCity: React.Dispatch<React.SetStateAction<string>>;
-  userInfo: () => Promise<void>;
+  userInfo: () => void;
   userLogin: IUser;
 }
 
@@ -24,17 +24,21 @@ const CityProvider = ({ children }: ICityContext) => {
   const idLogin = localStorage.getItem("@loginBWeather:user");
 
   useEffect(() => {
-    try {
-      const userInfo = async () => {
-        const response = await fakeApi.get(`/users/${idLogin}`);
-        const token = localStorage.getItem("@loginBWeather:token");
-
-        setuserLogin(response.data);
-      };
-    } catch (error) {
-      console.error("Esse é o problema", error);
-    }
+    const userInfo = async () => {
+      const token = localStorage.getItem("@loginBWeather:token");
+      try {
+        const { data } = await fakeApi.get(`/users/${idLogin}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setuserLogin(data);
+      } catch (error) {
+        console.error("Esse é o problema", error);
+      }
+    };
     userInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

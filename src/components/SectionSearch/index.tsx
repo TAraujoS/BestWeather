@@ -7,7 +7,6 @@ const SectionSearch = () => {
   const { userLogin } = useContext(AuthContext);
   const userDash = localStorage.getItem("@loginBWeather:user");
 
-  console.log(userLogin);
   return (
     <SectionStyle>
       <>
