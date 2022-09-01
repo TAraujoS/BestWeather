@@ -1,5 +1,6 @@
 import FooterDashboard from "../../components/FooterDash";
 import HeaderDashboard from "../../components/HeaderDashboard";
+import InfoUser from "../../components/InfosUser";
 import SectionSearch from "../../components/SectionSearch";
 import { BodyDash } from "./styles";
 
@@ -8,6 +9,7 @@ const Dashboard = () => {
     <BodyDash>
       <HeaderDashboard />
       <SectionSearch />
+      <InfoUser />
       <FooterDashboard />
     </BodyDash>
   );
