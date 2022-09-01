@@ -1,17 +1,11 @@
 import { useEffect, useState } from "react";
 import man from "../../assets/img/avatar-ele.png";
+import { IUser } from "../../Context/LoginContext";
 import { fakeApi } from "../../services";
 import { ListInfosUser } from "./styles";
 
-interface IUserId {
-  name: string;
-  email: string;
-  password: string;
-  city: string;
-  occupation: string;
-}
 const InfoUser = () => {
-  const [userId, setUserId] = useState<IUserId>({} as IUserId);
+  const [userId, setUserId] = useState<IUser>({} as IUser);
   useEffect(() => {
     const id = localStorage.getItem("@loginBWeather:user");
     const token = localStorage.getItem("@loginBWeather:token");
