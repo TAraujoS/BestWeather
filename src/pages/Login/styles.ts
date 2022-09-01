@@ -103,7 +103,6 @@ export const Container = styled.div`
 
   input {
     width: 100%;
-
     margin: 0 0.3rem;
     box-shadow: rgba(43, 85, 190, 0.5);
     border: none;
@@ -114,6 +113,7 @@ export const Container = styled.div`
       color: #000000;
     }
   }
+
   @media screen and (min-width: 768px) {
     .global-login-div {
       display: flex;
@@ -137,19 +137,23 @@ export const Container = styled.div`
       background: none;
       border: none;
     }
+
     .modalLogin {
       width: 40%;
       border-bottom-left-radius: 0px;
       border-top-left-radius: 0px;
     }
+
     .divLogo {
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: left;
       width: 60%;
+      max-width: 700px;
       height: 65vh;
       gap: 3rem;
+      padding: 7% 5%;
       background-image: url(${ceu});
 
       border-top-left-radius: 5px;

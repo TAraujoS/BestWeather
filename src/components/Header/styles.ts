@@ -24,7 +24,6 @@ export const HeaderPage = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    margin-top: 10vh;
     margin-bottom: 0%;
   }
 `;
