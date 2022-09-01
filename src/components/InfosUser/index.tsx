@@ -23,7 +23,6 @@ const InfoUser = () => {
     };
     getUser();
   }, []);
-  console.log(userId);
 
   return (
     <>

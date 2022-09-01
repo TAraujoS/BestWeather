@@ -63,14 +63,13 @@ const AuthProvider = ({ children }: IAuthContext) => {
       .post("/signin", data)
       .then((response) => {
         const { user, accessToken } = response.data;
-        console.log(response.data.accessToken);
         fakeApi.defaults.headers.common.Authorization = `Bearer ${tokenUser}`;
         localStorage.setItem("@loginBWeather:token", accessToken);
         localStorage.setItem("@loginBWeather:user", user.id);
         setUserLogin(user);
         navigate("/dashboard", { replace: true });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error("Esse é o problema!", error));
   };
 
   const logout = () => {
