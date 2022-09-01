@@ -5,7 +5,6 @@ import { CityInfos, List } from "./styles";
 const CityInf = () => {
   const { setUserCity, userInfo, userLogin, userCity } =
     useContext(CityContext);
-  console.log(userLogin);
 
   return (
     <CityInfos>

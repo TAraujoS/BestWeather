@@ -6,7 +6,7 @@ export const CityInfos = styled.div`
   gap: 0.3rem;
   width: 369px;
   height: 441px;
-  background-color: #0f4670;
+  background-color: rgba(15, 70, 112, 0.2);
   border-radius: 8px;
 `;
 
