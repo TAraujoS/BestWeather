@@ -9,9 +9,7 @@ function App() {
     <div className="App">
       <AuthProvider>
         <RegisterProvider>
-          <CityProvider>
-            <MainRoutes />
-          </CityProvider>
+          <MainRoutes />
         </RegisterProvider>
       </AuthProvider>
     </div>
