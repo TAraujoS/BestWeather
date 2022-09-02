@@ -4,6 +4,7 @@ import { CityInfos } from "./styles";
 
 const CityInf = () => {
   const { userCity } = useContext(CityContext);
+  //console.log(userCity.location.name);
 
   return (
     <CityInfos>

@@ -6,6 +6,7 @@ interface CityContextData {
   userCity: ICityResponse;
   userLogin: IUser;
   setUserLogin: React.Dispatch<React.SetStateAction<IUser>>;
+  loading: boolean;
 }
 
 export const CityContext = createContext<CityContextData>(
@@ -30,6 +31,8 @@ export interface ICityResponse {
 const CityProvider = ({ children }: ICityContext) => {
   const [userCity, setUserCity] = useState<ICityResponse>({} as ICityResponse);
   const [userLogin, setUserLogin] = useState<IUser>({} as IUser);
+  const [loading, setLoading] = useState(false);
+
   const idLogin = localStorage.getItem("@loginBWeather:user");
   const tokenExt = "27099ab8b4ea4bdf9c9110958220109";
   const token = localStorage.getItem("@loginBWeather:token");
@@ -44,35 +47,36 @@ const CityProvider = ({ children }: ICityContext) => {
         });
         setUserLogin(data);
       } catch (error) {
-        console.error("Esse é o problema", error);
+        console.error("Esse é o problema!", error);
       }
     };
     user();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userLogin]);
 
   useEffect(() => {
+    setLoading(true);
+
     async function infoExt() {
       await weatherApi
-        .get(
-          `/current.json?key=${tokenExt}&q=${userLogin.city}`
-          // {
-          //   headers: {
-          //     Authorization: `Bearer ${token}`,
-          //   },
-          // }
-        )
+        .get(`/current.json?key=${tokenExt}&q=${userLogin.city}`)
         .then((response) => setUserCity(response.data))
-        .catch((err) => console.error(err));
+        .finally(() => {
+          setTimeout(() => setLoading(false), 2000);
+        })
+        .catch((err) => console.error("Esse é o problema!", err));
     }
     if (userLogin?.city) {
       infoExt();
     }
   }, [userLogin?.city]);
+  console.log(userCity);
 
   return (
-    <CityContext.Provider value={{ userCity, userLogin, setUserLogin }}>
+    <CityContext.Provider
+      value={{ userCity, userLogin, setUserLogin, loading }}
+    >
       {children}
     </CityContext.Provider>
   );
