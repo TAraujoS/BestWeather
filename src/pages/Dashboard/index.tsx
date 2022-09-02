@@ -1,3 +1,4 @@
+import Banners from "../../components/Banners";
 import FooterDashboard from "../../components/FooterDash";
 import HeaderDashboard from "../../components/HeaderDashboard";
 import InfoUser from "../../components/InfosUser";
@@ -10,6 +11,7 @@ const Dashboard = () => {
       <HeaderDashboard />
       <SectionSearch />
       <InfoUser />
+      <Banners />
       <FooterDashboard />
     </BodyDash>
   );
