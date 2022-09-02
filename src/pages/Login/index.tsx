@@ -17,36 +17,41 @@ const Login = () => {
   return (
     <Container>
       <section>
-        <div className="divLogo">
-          <div className="cloud"></div>
-          <HeaderLogo />
-          <h1>
-            "Em qualquer lugar, em qualquer dia, buscando o seu melhor clima!
-          </h1>
-        </div>
+        <div className="global-login-div">
+          <div className="divLogo">
+            <div className="cloud"></div>
+            <HeaderLogo />
+            <h1>
+              "Em qualquer lugar, em qualquer dia, buscando o seu melhor clima!
+            </h1>
+          </div>
 
-        <div className="modalLogin">
-          <h3>Login</h3>
+          <div className="modalLogin">
+            <h3>Login</h3>
 
-          <Form onSubmit={handleSubmit(signIn)}>
-            <input
-              type="email"
-              id="email"
-              placeholder="E-mail"
-              {...register("email")}
-            />
-            <input
-              type="password"
-              id="password"
-              placeholder="Senha"
-              {...register("password")}
-            />
+            <Form onSubmit={handleSubmit(signIn)}>
+              <input
+                type="email"
+                id="email"
+                placeholder="E-mail"
+                {...register("email")}
+              />
+              <input
+                type="password"
+                id="password"
+                placeholder="Senha"
+                {...register("password")}
+              />
 
-            <Button type="submit" className="btnLogin">
-              Entrar
-            </Button>
-            <p>Cadastre-se aqui</p>
-          </Form>
+              <Button type="submit" className="btnLogin">
+                Entrar
+              </Button>
+              <p>
+                Ainda não tem cadastro?
+                <a href="/Register"> Cadastre-se aqui</a>
+              </p>
+            </Form>
+          </div>
         </div>
       </section>
     </Container>

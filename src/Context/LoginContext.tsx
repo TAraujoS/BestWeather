@@ -2,8 +2,8 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fakeApi } from "../services";
 
-interface AuthContextData {
-  user: IUser[];
+export interface AuthContextData {
+  user: IUser;
   userLogin: null;
   setUserLogin: React.Dispatch<React.SetStateAction<null>>;
   signIn: (props: ILoginProps) => void;
@@ -38,16 +38,31 @@ export interface ILoginProps {
 
 const AuthProvider = ({ children }: IAuthContext) => {
   const [userLogin, setUserLogin] = useState(null);
-  const [user, setUser] = useState<IUser[]>([{} as IUser]);
+  const [user, setUser] = useState<IUser>({} as IUser);
   const navigate = useNavigate();
   const tokenUser = localStorage.getItem("@loginBWeather:token");
+  const userId = localStorage.getItem("@loginBWeather:user");
+
+  const signIn = (data: ILoginProps) => {
+    fakeApi
+      .post("/signin", data)
+      .then((response) => {
+        const { user, accessToken } = response.data;
+        fakeApi.defaults.headers.common.Authorization = `Bearer ${tokenUser}`;
+        localStorage.setItem("@loginBWeather:token", accessToken);
+        localStorage.setItem("@loginBWeather:user", user.id);
+        setUserLogin(user);
+        navigate("/dashboard", { replace: true });
+      })
+      .catch((error) => console.error("Esse é o problema!", error));
+  };
 
   useEffect(() => {
     async function loadUser() {
       if (tokenUser) {
         try {
           fakeApi.defaults.headers.common.Authorization = `Bearer ${tokenUser}`;
-          const { data } = await fakeApi.get("/signin");
+          const { data } = await fakeApi.get(`/users/${userId}`);
           setUser(data);
         } catch (error) {
           console.error(error);
@@ -57,21 +72,6 @@ const AuthProvider = ({ children }: IAuthContext) => {
     loadUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const signIn = (data: ILoginProps) => {
-    fakeApi
-      .post("/signin", data)
-      .then((response) => {
-        const { user, accessToken } = response.data;
-        console.log(response);
-        fakeApi.defaults.headers.common.Authorization = `Bearer ${tokenUser}`;
-        localStorage.setItem("@loginBWeather:token", accessToken);
-        localStorage.setItem("@loginBWeather:user", user.name);
-        setUserLogin(user);
-        navigate("/dashboard", { replace: true });
-      })
-      .catch((error) => console.log(error));
-  };
 
   const logout = () => {
     localStorage.clear();

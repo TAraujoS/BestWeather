@@ -26,7 +26,6 @@ const RegisterProvider = ({ children }: IRegisterProps) => {
   const navigate = useNavigate();
 
   const onSubmitFunction = async (data: ISubmitData) => {
-    console.log(data);
     try {
       await fakeApi.post("/signup", data);
       navigate("/");
