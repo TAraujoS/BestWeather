@@ -1,6 +1,13 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  // useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { fakeApi } from "../services";
+// import { CityContext, ICityResponse } from "./CityContext";
 
 export interface AuthContextData {
   user: IUser;
@@ -43,6 +50,8 @@ const AuthProvider = ({ children }: IAuthContext) => {
   const tokenUser = localStorage.getItem("@loginBWeather:token");
   const userId = localStorage.getItem("@loginBWeather:user");
 
+  // const { setCityApi } = useContext(CityContext);
+
   const signIn = (data: ILoginProps) => {
     fakeApi
       .post("/signin", data)
@@ -52,6 +61,7 @@ const AuthProvider = ({ children }: IAuthContext) => {
         localStorage.setItem("@loginBWeather:token", accessToken);
         localStorage.setItem("@loginBWeather:user", user.id);
         setUserLogin(user);
+        console.log(user);
         navigate("/dashboard", { replace: true });
       })
       .catch((error) => console.error("Esse é o problema!", error));
@@ -70,13 +80,15 @@ const AuthProvider = ({ children }: IAuthContext) => {
       }
     }
     loadUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId]);
+  }, [tokenUser, userId]);
 
   const logout = () => {
     localStorage.clear();
+    // setCityApi({} as ICityResponse);
+
     navigate("/");
   };
+  // console.log("esse é o useario login", userLogin, "esse é id", userId, user);
 
   return (
     <AuthContext.Provider

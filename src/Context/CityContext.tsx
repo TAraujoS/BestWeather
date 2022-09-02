@@ -1,17 +1,18 @@
-import { createContext, ReactNode, useState, useEffect } from "react";
-import { IUser } from "./LoginContext";
-import { fakeApi, weatherApi } from "../services";
+import {
+  createContext,
+  ReactNode,
+  useState,
+  useEffect,
+  useContext,
+} from "react";
+import { AuthContext } from "./LoginContext";
+import { weatherApi } from "../services";
 
 interface CityContextData {
-  userCity: ICityResponse;
-  userLogin: IUser;
-  setUserLogin: React.Dispatch<React.SetStateAction<IUser>>;
+  setCityApi: React.Dispatch<React.SetStateAction<ICityResponse>>;
+  cityApi: ICityResponse;
   loading: boolean;
 }
-
-export const CityContext = createContext<CityContextData>(
-  {} as CityContextData
-);
 
 export interface ICityContext {
   children: ReactNode;
@@ -28,55 +29,40 @@ export interface ICityResponse {
   };
 }
 
+export const CityContext = createContext<CityContextData>(
+  {} as CityContextData
+);
+
 const CityProvider = ({ children }: ICityContext) => {
-  const [userCity, setUserCity] = useState<ICityResponse>({} as ICityResponse);
-  const [userLogin, setUserLogin] = useState<IUser>({} as IUser);
-  const [loading, setLoading] = useState(false);
-
-  const idLogin = localStorage.getItem("@loginBWeather:user");
+  const [cityApi, setCityApi] = useState<ICityResponse>({} as ICityResponse);
+  const [loading, setLoading] = useState<boolean>(false);
+  const { user } = useContext(AuthContext);
   const tokenExt = "27099ab8b4ea4bdf9c9110958220109";
-  const token = localStorage.getItem("@loginBWeather:token");
-
-  useEffect(() => {
-    const user = async () => {
-      try {
-        const { data } = await fakeApi.get(`/users/${idLogin}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setUserLogin(data);
-      } catch (error) {
-        console.error("Esse é o problema!", error);
-      }
-    };
-    user();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userLogin]);
 
   useEffect(() => {
     setLoading(true);
 
-    async function infoExt() {
-      await weatherApi
-        .get(`/current.json?key=${tokenExt}&q=${userLogin.city}`)
-        .then((response) => setUserCity(response.data))
-        .finally(() => {
-          setTimeout(() => setLoading(false), 2000);
-        })
-        .catch((err) => console.error("Esse é o problema!", err));
+    async function apiWeather() {
+      try {
+        const { data } = await weatherApi.get(
+          `/current.json?key=${tokenExt}&q=${user.city}`
+        );
+        console.log(data);
+        setCityApi(data);
+      } catch (error) {
+        console.error("Esse erro vem da ext", error);
+      } finally {
+        setLoading(false);
+      }
     }
-    if (userLogin?.city) {
-      infoExt();
+
+    if (user?.city) {
+      apiWeather();
     }
-  }, [userLogin?.city]);
-  console.log(userCity);
+  }, [user?.city]);
 
   return (
-    <CityContext.Provider
-      value={{ userCity, userLogin, setUserLogin, loading }}
-    >
+    <CityContext.Provider value={{ cityApi, setCityApi, loading }}>
       {children}
     </CityContext.Provider>
   );
