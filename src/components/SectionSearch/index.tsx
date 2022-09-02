@@ -13,7 +13,7 @@ const SectionSearch = () => {
           Olá, {user.name}, como está o seu clima hoje?
         </h3>
 
-        <div>
+        <div className="search-div">
           <input type="text" placeholder="Digite a sua localização aqui" />
           <button className="search-button">
             <BiSearchAlt />

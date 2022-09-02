@@ -4,22 +4,35 @@ export const ListInfosUser = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background-color: rgba(15, 70, 112, 0.2);
-  max-width: 500px;
   height: 60px;
-
-  margin: 30px 10px;
+  padding: 0;
+  margin: 20px 5px;
   border-radius: 12px;
+  /* position: relative;
+  bottom: 115px; */
 
   li {
-    width: 70px;
+    font-size: 0.9rem;
+    margin-left: 1%;
+    margin-right: 10%;
+    width: 50px;
     display: flex;
     list-style: none;
     justify-content: space-around;
   }
   img {
-    width: 50px;
-    border-radius: 50px;
+    width: 30px;
+    border-radius: 100%;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+  }
+
+  svg {
+    height: 30px;
+    width: 3rem;
   }
 `;
