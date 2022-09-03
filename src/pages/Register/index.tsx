@@ -37,58 +37,72 @@ const Register = () => {
 
         <Form onSubmit={handleSubmit(onSubmitFunction)}>
           <h3>Cadastro</h3>
-          <input
-            type="text"
-            id="name"
-            className="input-text"
-            {...register("name")}
-            placeholder="Nome completo"
-          />
-          <span>{errors.name?.message}</span>
 
-          <input
-            type="text"
-            id="email"
-            className="input-text"
-            {...register("email")}
-            placeholder="E-mail"
-          />
-          <p>{errors.email?.message}</p>
-          <input
-            type="password"
-            id="password"
-            className="input-text"
-            {...register("password")}
-            placeholder="Senha"
-          />
-          <p>{errors.password?.message}</p>
+          <label htmlFor="name">
+            <input
+              type="text"
+              id="name"
+              className="input-text"
+              {...register("name")}
+              placeholder="Nome completo"
+            />
+            <span>{errors.name?.message}</span>
+          </label>
 
-          <input
-            type="password"
-            id="confirmPassword"
-            className="input-text"
-            {...register("passwordConfirm")}
-            placeholder="Confirmação de senha"
-          />
-          <p>{errors.passwordConfirm?.message}</p>
+          <label htmlFor="email">
+            <input
+              type="text"
+              id="email"
+              className="input-text"
+              {...register("email")}
+              placeholder="E-mail"
+            />
+            <p>{errors.email?.message}</p>
+          </label>
 
-          <input
-            type="text"
-            id="occupation"
-            className="input-text"
-            {...register("occupation")}
-            placeholder="Profissão"
-          />
-          <p>{errors.occupation?.message}</p>
+          <label htmlFor="password">
+            <input
+              type="password"
+              id="password"
+              className="input-text"
+              {...register("password")}
+              placeholder="Senha"
+            />
+            <p>{errors.password?.message}</p>
+          </label>
 
-          <input
-            type="text"
-            id="city"
-            className="input-text"
-            {...register("city")}
-            placeholder="Cidade"
-          />
-          <p>{errors.city?.message}</p>
+          <label htmlFor="confirmPassword">
+            <input
+              type="password"
+              id="confirmPassword"
+              className="input-text"
+              {...register("passwordConfirm")}
+              placeholder="Confirmação de senha"
+            />
+            <p>{errors.passwordConfirm?.message}</p>
+          </label>
+
+          <label htmlFor="occupation">
+            <input
+              type="text"
+              id="occupation"
+              className="input-text"
+              {...register("occupation")}
+              placeholder="Profissão"
+            />
+            <p>{errors.occupation?.message}</p>
+          </label>
+
+          <label htmlFor="city">
+            <input
+              type="text"
+              id="city"
+              className="input-text"
+              {...register("city")}
+              placeholder="Cidade"
+            />
+            <p>{errors.city?.message}</p>
+          </label>
 
           <Button type="submit">Cadastrar</Button>
         </Form>
