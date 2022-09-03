@@ -4,6 +4,8 @@ import {
   useState,
   useEffect,
   useContext,
+  SetStateAction,
+  Dispatch,
 } from "react";
 import { AuthContext } from "./LoginContext";
 import { weatherApi } from "../services";
@@ -12,6 +14,8 @@ interface CityContextData {
   setCityApi: React.Dispatch<React.SetStateAction<ICityResponse>>;
   cityApi: ICityResponse;
   loading: boolean;
+  modal: string | null;
+  setModal: Dispatch<SetStateAction<string | null>>;
 }
 
 export interface ICityContext {
@@ -36,6 +40,7 @@ export const CityContext = createContext<CityContextData>(
 const CityProvider = ({ children }: ICityContext) => {
   const [cityApi, setCityApi] = useState<ICityResponse>({} as ICityResponse);
   const [loading, setLoading] = useState<boolean>(false);
+  const [modal, setModal] = useState<string | null>(null);
   const { user } = useContext(AuthContext);
   const tokenExt = "27099ab8b4ea4bdf9c9110958220109";
 
@@ -62,7 +67,9 @@ const CityProvider = ({ children }: ICityContext) => {
   }, [user?.city]);
 
   return (
-    <CityContext.Provider value={{ cityApi, setCityApi, loading }}>
+    <CityContext.Provider
+      value={{ cityApi, setCityApi, loading, modal, setModal }}
+    >
       {children}
     </CityContext.Provider>
   );
