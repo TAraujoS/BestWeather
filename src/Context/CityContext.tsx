@@ -9,9 +9,16 @@ import { AuthContext } from "./LoginContext";
 import { weatherApi } from "../services";
 
 interface CityContextData {
+  searchFromInput: (data: IData) => Promise<void>;
   setCityApi: React.Dispatch<React.SetStateAction<ICityResponse>>;
   cityApi: ICityResponse;
   loading: boolean;
+  tokenExt: string;
+}
+
+export interface IData {
+  data: string;
+  city: string;
 }
 
 export interface ICityContext {
@@ -19,10 +26,12 @@ export interface ICityContext {
 }
 
 export interface ICityResponse {
-  location: { name: string };
+  location: { name: string; region: string };
   current: {
     temp_c: number;
-    condition: {};
+    condition: {
+      icon: string;
+    };
     precip_mm: number;
     wind_kph: number;
     wind_dir: number;
@@ -45,9 +54,8 @@ const CityProvider = ({ children }: ICityContext) => {
     async function apiWeather() {
       try {
         const { data } = await weatherApi.get(
-          `/current.json?key=${tokenExt}&q=${user.city}`
+          `/forecast.json?key=${tokenExt}&q=${user.city} Brazil&days=7`
         );
-        console.log(data);
         setCityApi(data);
       } catch (error) {
         console.error("Esse erro vem da ext", error);
@@ -61,8 +69,22 @@ const CityProvider = ({ children }: ICityContext) => {
     }
   }, [user?.city]);
 
+  const searchFromInput = async (data: IData) => {
+    await weatherApi
+      .get(`/forecast.json?key=${tokenExt}&q=${data.city} Brazil&days=7`)
+      .then((res) => setCityApi(res.data))
+      .catch((err) => console.error("Esse é o problema", err));
+  };
   return (
-    <CityContext.Provider value={{ cityApi, setCityApi, loading }}>
+    <CityContext.Provider
+      value={{
+        cityApi,
+        setCityApi,
+        loading,
+        tokenExt,
+        searchFromInput,
+      }}
+    >
       {children}
     </CityContext.Provider>
   );
