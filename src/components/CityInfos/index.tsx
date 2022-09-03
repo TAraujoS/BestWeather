@@ -9,7 +9,19 @@ const CityInf = () => {
     <>
       {cityApi?.location && (
         <CityInfos>
-          <li className="cityName">{cityApi?.location.name}</li>
+          <li className="cityName">
+            <p>
+              {cityApi?.location.name}/{cityApi.location.region}
+            </p>
+          </li>
+          <li className="container-icon">
+            <figure className="icon">
+              <img
+                src={cityApi?.current.condition.icon}
+                alt="icone de imagem"
+              />
+            </figure>
+          </li>
           <li>
             <span>{`${cityApi.current.temp_c} ºC`}</span>
           </li>

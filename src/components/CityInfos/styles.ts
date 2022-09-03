@@ -31,4 +31,18 @@ export const CityInfos = styled.ul`
     align-content: center;
     font-size: 18px;
   }
+  .container-icon {
+    margin: 0;
+    padding: 0%;
+    .icon {
+      margin: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
 `;
