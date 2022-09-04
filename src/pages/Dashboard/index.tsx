@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import CityInf from "../../components/CityInfos";
 import FooterDashboard from "../../components/FooterDash";
+import Forecast from "../../components/Forecast";
 import HeaderDashboard from "../../components/HeaderDashboard";
 import InfoUser from "../../components/InfosUser";
 import SectionSearch from "../../components/SectionSearch";
@@ -22,6 +23,7 @@ const Dashboard = () => {
           <SectionSearch />
           <InfoUser />
           <CityInf />
+          <Forecast />
           <FooterDashboard />
         </>
       )}
