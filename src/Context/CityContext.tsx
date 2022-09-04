@@ -4,6 +4,8 @@ import {
   useState,
   useEffect,
   useContext,
+  Dispatch,
+  SetStateAction,
 } from "react";
 import { AuthContext } from "./LoginContext";
 import { weatherApi } from "../services";
@@ -14,6 +16,8 @@ interface CityContextData {
   cityApi: ICityResponse;
   loading: boolean;
   tokenExt: string;
+  modal: string | null;
+  setModal: Dispatch<SetStateAction<string | null>>;
 }
 
 export interface IData {
@@ -59,6 +63,7 @@ export const CityContext = createContext<CityContextData>(
 const CityProvider = ({ children }: ICityContext) => {
   const [cityApi, setCityApi] = useState<ICityResponse>({} as ICityResponse);
   const [loading, setLoading] = useState<boolean>(false);
+  const [modal, setModal] = useState<string | null>(null);
   const { user } = useContext(AuthContext);
   const tokenExt = "27099ab8b4ea4bdf9c9110958220109";
 
@@ -85,7 +90,7 @@ const CityProvider = ({ children }: ICityContext) => {
 
   const searchFromInput = async (data: IData) => {
     await weatherApi
-      .get(`/forecast.json?key=${tokenExt}&q=${data.city} Brazil&days=7`)
+      .get(`/forecast.json?key=${tokenExt}&q=${data.city} Brazil&days=8`)
       .then((res) => setCityApi(res.data))
       .catch((err) => console.error("Esse é o problema", err));
   };
@@ -97,6 +102,8 @@ const CityProvider = ({ children }: ICityContext) => {
         loading,
         tokenExt,
         searchFromInput,
+        modal,
+        setModal,
       }}
     >
       {children}
