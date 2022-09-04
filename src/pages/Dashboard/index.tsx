@@ -30,11 +30,8 @@ const Dashboard = () => {
             <SectionSearch />
             <InfoUser />
             <CityInf />
-            <Button onClick={mapa}>Mapa</Button>
-            <SectionSearch />
-            <InfoUser />
-            <CityInf />
             <Forecast />
+            <Button onClick={mapa}>Mapa</Button>
           </BodyDash>
           <FooterDashboard />
         </>

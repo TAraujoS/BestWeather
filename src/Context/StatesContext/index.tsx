@@ -8,7 +8,7 @@ interface IStatesProvider {
 }
 interface ICapitals {
   capital: string;
-  forecast: [
+  forecast: {
     forecastday: [
       {
         date: string;
@@ -20,8 +20,8 @@ interface ICapitals {
           };
         };
       }
-    ]
-  ];
+    ];
+  };
 }
 
 export interface IStateContext {
