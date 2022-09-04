@@ -22,7 +22,7 @@ const InfoUser = () => {
       }
     };
     getUser();
-  }, []);
+  }, [userId]);
 
   return (
     <>

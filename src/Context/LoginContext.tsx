@@ -26,11 +26,6 @@ export interface IUser {
   city: string;
 }
 
-// export interface IUserResponse {
-//   user: IUser[];
-//   token: string;
-// }
-
 export interface ILoginProps {
   email: string;
   password: string;
@@ -70,11 +65,11 @@ const AuthProvider = ({ children }: IAuthContext) => {
       }
     }
     loadUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [tokenUser, userId]);
 
   const logout = () => {
     localStorage.clear();
+
     navigate("/");
   };
 
