@@ -11,7 +11,7 @@ export const ModalAdd = () => {
         <h3>Cadastro de cidades</h3>
         <button onClick={() => setModal(null)}> X </button>
       </section>
-      <ModalForm onSubmit={() => console.log("ModalAdd")}>
+      <ModalForm>
         <div>
           <input id="title" placeholder="Cidade" />
           <p>Essa cidade entrará na sua lista de favoritos</p>
@@ -30,7 +30,7 @@ export const ModalConfig = () => {
         <h3>Suas configurações</h3>
         <button onClick={() => setModal(null)}> X </button>
       </section>
-      <ModalForm onSubmit={() => console.log("ModalConfig")}>
+      <ModalForm>
         <label htmlFor="title">Cidade</label>
         <div>
           <input id="title" placeholder="Nome" />
