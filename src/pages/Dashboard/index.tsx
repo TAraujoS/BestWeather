@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button/styles";
 import CityInf from "../../components/CityInfos";
 import FooterDashboard from "../../components/FooterDash";
+import Forecast from "../../components/Forecast";
 import HeaderDashboard from "../../components/HeaderDashboard";
 import InfoUser from "../../components/InfosUser";
 import SectionSearch from "../../components/SectionSearch";
@@ -30,6 +31,10 @@ const Dashboard = () => {
             <InfoUser />
             <CityInf />
             <Button onClick={mapa}>Mapa</Button>
+            <SectionSearch />
+            <InfoUser />
+            <CityInf />
+            <Forecast />
           </BodyDash>
           <FooterDashboard />
         </>

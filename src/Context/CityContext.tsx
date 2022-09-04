@@ -36,6 +36,20 @@ export interface ICityResponse {
     wind_kph: number;
     wind_dir: number;
   };
+  forecast: {
+    forecastday: [
+      {
+        date: string;
+        day: {
+          maxtemp_c: string;
+          mintemp_c: string;
+          condition: {
+            icon: string;
+          };
+        };
+      }
+    ];
+  };
 }
 
 export const CityContext = createContext<CityContextData>(
@@ -54,7 +68,7 @@ const CityProvider = ({ children }: ICityContext) => {
     async function apiWeather() {
       try {
         const { data } = await weatherApi.get(
-          `/forecast.json?key=${tokenExt}&q=${user.city} Brazil&days=7`
+          `/forecast.json?key=${tokenExt}&q=${user.city} Brazil&days=8`
         );
         setCityApi(data);
       } catch (error) {

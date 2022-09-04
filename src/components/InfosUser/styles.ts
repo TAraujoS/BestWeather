@@ -15,7 +15,6 @@ export const ListInfosUser = styled.ul`
   li {
     width: 70px;
     display: flex;
-    list-style: none;
     justify-content: space-around;
   }
   img {
