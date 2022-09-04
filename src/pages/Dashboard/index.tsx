@@ -1,4 +1,6 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../../components/Button/styles";
 import CityInf from "../../components/CityInfos";
 import FooterDashboard from "../../components/FooterDash";
 import HeaderDashboard from "../../components/HeaderDashboard";
@@ -9,9 +11,13 @@ import { BodyDash } from "./styles";
 
 const Dashboard = () => {
   const { loading } = useContext(CityContext);
+  const navigate = useNavigate();
+  const mapa = () => {
+    navigate("/map");
+  };
 
   return (
-    <BodyDash>
+    <>
       {loading ? (
         <div className="divLoading">
           <h2>Estamos preparando suas informações</h2>
@@ -19,13 +25,16 @@ const Dashboard = () => {
       ) : (
         <>
           <HeaderDashboard />
-          <SectionSearch />
-          <InfoUser />
-          <CityInf />
+          <BodyDash>
+            <SectionSearch />
+            <InfoUser />
+            <CityInf />
+            <Button onClick={mapa}>Mapa</Button>
+          </BodyDash>
           <FooterDashboard />
         </>
       )}
-    </BodyDash>
+    </>
   );
 };
 

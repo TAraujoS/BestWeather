@@ -2,6 +2,7 @@ import "./App.css";
 import CityProvider from "./Context/CityContext";
 import AuthProvider from "./Context/LoginContext";
 import RegisterProvider from "./Context/RegisterContext";
+import StatesProvider from "./Context/StatesContext";
 import MainRoutes from "./routes";
 
 function App() {
@@ -10,7 +11,9 @@ function App() {
       <AuthProvider>
         <RegisterProvider>
           <CityProvider>
-            <MainRoutes />
+            <StatesProvider>
+              <MainRoutes />
+            </StatesProvider>
           </CityProvider>
         </RegisterProvider>
       </AuthProvider>
