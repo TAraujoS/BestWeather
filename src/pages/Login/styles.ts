@@ -8,7 +8,6 @@ export const Container = styled.div`
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  padding: 0;
   background-color: #3163ff;
   background-image: linear-gradient(0deg, #3163ff 0%, #85a4ff 56%, #c6d3ff 95%);
 

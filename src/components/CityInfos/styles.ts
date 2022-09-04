@@ -8,14 +8,11 @@ export const CityInfos = styled.ul`
   height: 441px;
   background-color: rgba(15, 70, 112, 0.2);
   border-radius: 8px;
-  margin: 0;
-  padding: 0;
 
   li {
     width: 250px;
     display: flex;
     flex-direction: row;
-    list-style: none;
     align-items: center;
     align-content: center;
     justify-content: space-between;
@@ -32,10 +29,7 @@ export const CityInfos = styled.ul`
     font-size: 18px;
   }
   .container-icon {
-    margin: 0;
-    padding: 0%;
     .icon {
-      margin: 0;
       width: 100%;
       display: flex;
       justify-content: center;
