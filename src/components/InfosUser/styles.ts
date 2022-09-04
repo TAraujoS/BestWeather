@@ -5,18 +5,15 @@ export const ListInfosUser = styled.ul`
   justify-content: space-between;
   align-items: center;
   background-color: rgba(15, 70, 112, 0.2);
-  height: 60px;
   padding: 0;
-  margin: 20px 5px;
   border-radius: 12px;
-  /* position: relative;
-  bottom: 115px; */
+  min-width: 300px;
 
   li {
     font-size: 0.9rem;
     margin-left: 1%;
     margin-right: 10%;
-    width: 50px;
+    max-width: 50px;
     display: flex;
     list-style: none;
     justify-content: space-around;

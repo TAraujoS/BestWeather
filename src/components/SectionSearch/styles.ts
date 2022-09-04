@@ -4,8 +4,7 @@ export const SectionStyle = styled.section`
   display: flex;
   margin: 0;
   flex-direction: column;
-  /* position: relative;
-  top: 70px; */
+  align-items: center;
 
   h3 {
     margin-top: 0.5rem;
@@ -13,52 +12,71 @@ export const SectionStyle = styled.section`
     font-size: 0.9rem;
   }
 
-  input {
-    background-color: #0f4670;
-    border: none;
-    border-radius: 5px;
-    height: 1.5rem;
-    color: white;
-    ::placeholder {
-      color: gray;
-    }
-  }
-
-  .search-div {
-    max-width: 92%;
+  form {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    max-width: 90%;
     background-color: #064670;
-    margin: 0.3rem;
+    margin-top: 0.3rem;
     border-radius: 25px;
     padding-top: 0.3rem;
     padding-left: 0.3rem;
     padding-right: 0.3rem;
     padding-bottom: 0.2rem;
+  }
 
-    input {
-      width: 89%;
-    }
-
-    button {
-      border-radius: 100%;
-      height: 2rem;
-      width: 2rem;
-      align-items: center;
-      background-color: #09153e;
-      color: white;
+  input {
+    min-width: 240px;
+    max-width: 320px;
+    background-color: #0f4670;
+    border: none;
+    border-radius: 5px;
+    height: 1.5rem;
+    color: white;
+    outline: none;
+    ::placeholder {
+      color: gray;
       border: none;
-      svg {
-        width: 1rem;
-        height: 1rem;
-      }
     }
   }
-  .search-div:hover {
-    button {
-      color: yellow;
-      transition: 2s;
+
+  input {
+    width: 89%;
+  }
+
+  button {
+    border-radius: 100%;
+    height: 2rem;
+    width: 2rem;
+    align-items: center;
+    background-color: #3a6688;
+    color: white;
+    border: none;
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  .user-intro {
+    font-size: 0.85em;
+  }
+
+  @media screen and (min-width: 375px) {
+    .user-intro {
+      font-size: 1rem;
+    }
+  }
+
+  @media screen and (min-width: 425px) {
+    .user-intro {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .user-intro {
+      font-size: 1.2rem;
     }
   }
 `;

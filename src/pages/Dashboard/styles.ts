@@ -4,7 +4,7 @@ export const BodyDash = styled.main`
   display: flex;
   flex-direction: column;
   height: 100vh;
-
+  align-items: center;
   background-color: #09153e;
   color: #fff;
 
