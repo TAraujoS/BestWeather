@@ -22,6 +22,7 @@ const Dashboard = () => {
       ) : (
         <>
           {modal && <Modal />}
+          {modal && <Modal />}
           <HeaderDashboard />
           <SectionSearch />
           <InfoUser />
