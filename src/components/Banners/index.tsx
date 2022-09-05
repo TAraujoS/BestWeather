@@ -44,15 +44,16 @@ const Banners = () => {
 
   // const getMessage = () => {
   //   cityApi.current.temp_c < 20
-  //     ? setIsMessage(banner.infos[0].text1)
-  //     : setIsMessage(banner.infos[0].text2);
+  //     ? setIsMessage(banner.infos.text1)
+  //     : setIsMessage(banner.infos.text2);
   // };
   // getMessage();
 
   return (
     <Banner>
-      <p>{banner.email}</p>
-      <p></p>
+      {banner.infos.map((elem) => (
+        <p>{elem.title}</p>
+      ))}
 
       {/* <img src={banner.infos[0].Url} alt="Occupation" /> */}
     </Banner>
