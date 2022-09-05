@@ -64,7 +64,6 @@ const CityProvider = ({ children }: ICityContext) => {
   const [cityApi, setCityApi] = useState<ICityResponse>({} as ICityResponse);
   const [loading, setLoading] = useState<boolean>(false);
   const [modal, setModal] = useState<string | null>(null);
-  const [modal, setModal] = useState<string | null>(null);
   const { user } = useContext(AuthContext);
   const tokenExt = "27099ab8b4ea4bdf9c9110958220109";
 
