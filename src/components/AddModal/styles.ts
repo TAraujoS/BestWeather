@@ -9,8 +9,8 @@ const ModalForm = styled.form`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
     margin-top: 10px;
+    gap: 15px;
 
     input {
       height: 2rem;

@@ -25,6 +25,7 @@ export const ListInfosUser = styled.ul`
   button {
     background-color: transparent;
     border: none;
+    cursor: pointer;
   }
 
   svg {

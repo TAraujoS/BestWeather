@@ -5,8 +5,6 @@ import { CityContext, IData } from "../../Context/CityContext";
 import { AuthContext } from "../../Context/LoginContext";
 import { SectionStyle } from "./styles";
 
-//export const tokenExt = "b4b75ed7ee9a4858bdd230139222908";
-
 const SectionSearch = () => {
   const { register, handleSubmit } = useForm<IData>();
   const { user } = useContext(AuthContext);

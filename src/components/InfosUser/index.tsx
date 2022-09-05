@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Context/LoginContext";
 import { ListInfosUser } from "./styles";
+import { CityContext } from "../../Context/CityContext";
 import man from "../../assets/img/avatar-ele.png";
 
 const InfoUser = () => {
   const { user } = useContext(AuthContext);
+  const { setModal } = useContext(CityContext);
 
   return (
     <>
@@ -17,7 +19,7 @@ const InfoUser = () => {
         <li className="city-list">{user.city} </li>
         <li> {user.occupation}</li>
         <li>
-          <button>
+          <button onClick={() => setModal("edit")}>
             <svg
               width="76"
               height="60"

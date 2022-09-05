@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import ModalForm from "./styles";
 import { CityContext } from "../../Context/CityContext";
+import { AuthContext } from "../../Context/LoginContext";
 
 export const ModalAdd = () => {
   const { setModal } = useContext(CityContext);
@@ -23,7 +24,9 @@ export const ModalAdd = () => {
 };
 
 export const ModalConfig = () => {
+  const { user } = useContext(AuthContext);
   const { setModal } = useContext(CityContext);
+
   return (
     <>
       <section>
@@ -31,11 +34,10 @@ export const ModalConfig = () => {
         <button onClick={() => setModal(null)}> X </button>
       </section>
       <ModalForm>
-        <label htmlFor="title">Cidade</label>
         <div>
-          <input id="title" placeholder="Nome" />
-          <input id="title" placeholder="Cidade" />
-          <input id="title" placeholder="URL avatar" />
+          <input id="name" placeholder={user.name} />
+          <input id="city" placeholder={user.city} />
+          <input id="url" placeholder="URL avatar" />
         </div>
 
         <button type="submit">Editar </button>
