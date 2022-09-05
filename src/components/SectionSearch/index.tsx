@@ -1,10 +1,16 @@
 import { useContext } from "react";
+import { useForm } from "react-hook-form";
 import { BiSearchAlt } from "react-icons/bi";
+import { CityContext, IData } from "../../Context/CityContext";
 import { AuthContext } from "../../Context/LoginContext";
 import { SectionStyle } from "./styles";
 
+//export const tokenExt = "b4b75ed7ee9a4858bdd230139222908";
+
 const SectionSearch = () => {
+  const { register, handleSubmit } = useForm<IData>();
   const { user } = useContext(AuthContext);
+  const { searchFromInput } = useContext(CityContext);
 
   return (
     <SectionStyle>
@@ -13,12 +19,16 @@ const SectionSearch = () => {
           Olá, {user.name}, como está o seu clima hoje?
         </h3>
 
-        <div>
-          <input type="text" placeholder="Digite a sua localização aqui" />
-          <button className="search-button">
+        <form onSubmit={handleSubmit(searchFromInput)}>
+          <input
+            type="text"
+            placeholder="Digite a sua localização aqui"
+            {...register("city")}
+          />
+          <button type="submit" className="search-button">
             <BiSearchAlt />
           </button>
-        </div>
+        </form>
       </>
     </SectionStyle>
   );

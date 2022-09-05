@@ -1,8 +1,8 @@
-import Banners from "../../components/Banners";
 import FooterDashboard from "../../components/FooterDash";
 import HeaderDashboard from "../../components/HeaderDashboard";
 import InfoUser from "../../components/InfosUser";
 import SectionSearch from "../../components/SectionSearch";
+import { CityContext } from "../../Context/CityContext";
 import { BodyDash } from "./styles";
 
 const Dashboard = () => {
@@ -11,7 +11,7 @@ const Dashboard = () => {
       <HeaderDashboard />
       <SectionSearch />
       <InfoUser />
-      <Banners />
+
       <FooterDashboard />
     </BodyDash>
   );

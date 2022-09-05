@@ -7,4 +7,9 @@ export const BodyDash = styled.main`
 
   background-color: #09153e;
   color: #fff;
+
+  h2 {
+    color: #93abbd;
+    font-size: 40px;
+  }
 `;
