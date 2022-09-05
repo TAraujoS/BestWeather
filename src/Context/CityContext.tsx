@@ -45,7 +45,7 @@ export interface ICityResponse {
       {
         date: string;
         day: {
-          maxtemp_c: string;
+          maxtemp_c: number;
           mintemp_c: string;
           condition: {
             icon: string;
