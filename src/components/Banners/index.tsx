@@ -28,12 +28,10 @@ interface IInfos {
 }
 
 const Banners = () => {
-  const { userLogin } = useContext(AuthContext);
+  const { userId, user } = useContext(AuthContext);
   const { cityApi } = useContext(CityContext);
 
   const [banner, setBanner] = useState<IInfos[]>([]);
-  console.log(banner);
-
   const token = localStorage.getItem("@loginBWeather:token") || "";
 
   useEffect(() => {
@@ -42,11 +40,11 @@ const Banners = () => {
 
   const getBanner = () => {
     fakeApi
-      .get(`/users/${userLogin.id}?_embed=infos`, {
+      .get<IBannerResponse>(`/users/${userId}?_embed=infos`, {
         headers: { Authorization: `Bearer ${token}` },
       })
 
-      .then((response) => setBanner(response.data))
+      .then((response) => setBanner(response.data.infos))
       .catch((err) => console.error("Esse é o problema", err));
   };
 
@@ -66,6 +64,7 @@ const Banners = () => {
 
   const getMessagePrec = (elem: IInfos) => {
     const prec = cityApi.current.precip_mm;
+
     return prec === 0 ? <p>{elem?.text1}</p> : <p>{elem?.text2}</p>;
   };
 
@@ -82,9 +81,9 @@ const Banners = () => {
   };
 
   const checkOccupation = () => {
-    if (userLogin.occupation === "Paraquedista" || "Asa Delta") {
+    if (user.occupation === "Paraquedista" || user.occupation === "Asa Delta") {
       return getMessagePrec(banner[0]);
-    } else if (userLogin.occupation === "Surfista") {
+    } else if (user.occupation === "Surfista") {
       return getMessageWind(banner[0]);
     } else {
       return getMessageTemp(banner[0]);
@@ -97,9 +96,8 @@ const Banners = () => {
     <Banner>
       <div className="divText" key={banner[0]?.id}>
         <>
-          {console.log(banner)}
           <h3>{banner[0]?.title}</h3>
-          <p>{userLogin.name}</p>
+          <p>{user.name}</p>
           {showTextOccupation}
         </>
       </div>
