@@ -22,7 +22,11 @@ const CityInf = () => {
               />
             </figure>
           </li>
-          <li></li>
+
+          <li>
+            <p>Temperatura</p>
+            <span>{`${cityApi.current.temp_c}°C`}</span>
+          </li>
 
           <li>
             <p>Chuva</p>
