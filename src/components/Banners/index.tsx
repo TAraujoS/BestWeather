@@ -3,25 +3,27 @@ import { fakeApi } from "../../services";
 import { Banner } from "./styles";
 import { AuthContext } from "../../Context/LoginContext";
 import { CityContext } from "../../Context/CityContext";
-import roca from "../../assets/img/roca.png";
 
 const Banners = () => {
-  const { user } = useContext(AuthContext);
-  const { temp_c } = useContext(CityContext);
+  const { userLogin } = useContext(AuthContext);
+  const { cityApi } = useContext(CityContext);
 
-  const [isMessage, setIsMessage] = useState(null);
+  const [isMessage, setIsMessage] = useState("");
+  const [banner, setBanner] = useState({});
 
-  useEffect(() => {
-    fakeApi.get(`/users/${user.id}?_embed=news`).then((response) => {
-      setIsMessage(response.data);
-    });
-  }, []);
+  const getBanner = () => {
+    fakeApi
+      .get(`/users/${userLogin.id}?_embed=info`)
+      .then((response) => setBanner(response.data))
+      .catch((err) => console.error("Esse é o problema", err));
+  };
+  getBanner();
 
   return (
     <Banner>
-      <p>{isMessage.new1}</p>
+      <p>{}</p>
 
-      <img src={roca} alt="" />
+      {/* <img src={banner.info.url} alt="Occupation" /> */}
     </Banner>
   );
 };
