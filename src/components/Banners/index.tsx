@@ -66,7 +66,7 @@ const Banners = () => {
 
   const getMessagePrec = (elem: IInfos) => {
     const prec = cityApi.current.precip_mm;
-    return prec === 0 ? <p>{elem.text1}</p> : <p>{elem.text2}</p>;
+    return prec === 0 ? <p>{elem?.text1}</p> : <p>{elem?.text2}</p>;
   };
 
   const getMessageWind = (elem: IInfos) => {
@@ -81,28 +81,29 @@ const Banners = () => {
     );
   };
 
-  const checkOccupation = (occupation: string, text: IInfos) => {
-    if (occupation === "Paraquedista" || "Asa Delta") {
-      return getMessagePrec(text);
-    } else if (occupation === "Surfista") {
-      return getMessageWind(text);
+  const checkOccupation = () => {
+    if (userLogin.occupation === "Paraquedista" || "Asa Delta") {
+      return getMessagePrec(banner[0]);
+    } else if (userLogin.occupation === "Surfista") {
+      return getMessageWind(banner[0]);
     } else {
-      return getMessageTemp(text);
+      return getMessageTemp(banner[0]);
     }
   };
 
+  const showTextOccupation = banner[0] && checkOccupation();
+
   return (
     <Banner>
-      {banner.map((elem) => (
+      <div className="divText" key={banner[0]?.id}>
         <>
-          <div className="divText" key={elem.id}>
-            <h3>{elem.title}</h3>
-            <p>{userLogin.name},</p>
-            {checkOccupation(userLogin.occupation, elem)}
-          </div>
-          <img src={elem.url} alt="Occupation" />
+          {console.log(banner)}
+          <h3>{banner[0]?.title}</h3>
+          <p>{userLogin.name}</p>
+          {showTextOccupation}
         </>
-      ))}
+      </div>
+      <img src={banner[0]?.url} alt="Occupation" />
     </Banner>
   );
 };
