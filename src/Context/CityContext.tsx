@@ -10,7 +10,7 @@ import {
 import { AuthContext } from "./LoginContext";
 import { weatherApi } from "../services";
 
-interface CityContextData {
+export interface CityContextData {
   searchFromInput: (data: IData) => Promise<void>;
   setCityApi: React.Dispatch<React.SetStateAction<ICityResponse>>;
   cityApi: ICityResponse;
@@ -90,10 +90,15 @@ const CityProvider = ({ children }: ICityContext) => {
 
   const searchFromInput = async (data: IData) => {
     await weatherApi
-      .get(`/forecast.json?key=${tokenExt}&q=${data.city} Brazil&days=8`)
+      .get(
+        `/forecast.json?key=${tokenExt}&q=${data.city
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")} Brazil&days=8`
+      )
       .then((res) => setCityApi(res.data))
       .catch((err) => console.error("Esse é o problema", err));
   };
+
   return (
     <CityContext.Provider
       value={{
