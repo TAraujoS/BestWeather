@@ -8,6 +8,7 @@ import CityInf from "../../components/CityInfos";
 import { BodyDash } from "./styles";
 import { useContext } from "react";
 import { CityContext } from "../../Context/CityContext";
+import Banners from "../../components/Banners";
 
 const Dashboard = () => {
   const { loading } = useContext(CityContext);
@@ -23,6 +24,7 @@ const Dashboard = () => {
           <HeaderDashboard />
           <SectionSearch />
           <InfoUser />
+          <Banners />
           <CityInf />
           <Forecast />
           <FooterDashboard />
