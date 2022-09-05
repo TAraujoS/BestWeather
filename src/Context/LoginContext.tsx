@@ -5,6 +5,7 @@ import { fakeApi } from "../services";
 export interface AuthContextData {
   user: IUser;
   userLogin: null;
+  tokenUser: string | null;
   setUserLogin: React.Dispatch<React.SetStateAction<null>>;
   signIn: (props: ILoginProps) => void;
   logout: () => void;
@@ -75,7 +76,7 @@ const AuthProvider = ({ children }: IAuthContext) => {
 
   return (
     <AuthContext.Provider
-      value={{ userLogin, setUserLogin, signIn, user, logout }}
+      value={{ userLogin, setUserLogin, signIn, user, logout, tokenUser }}
     >
       {children}
     </AuthContext.Provider>
