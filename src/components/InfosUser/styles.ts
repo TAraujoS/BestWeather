@@ -15,7 +15,6 @@ export const ListInfosUser = styled.ul`
     margin-right: 10%;
     max-width: 50px;
     display: flex;
-    list-style: none;
     justify-content: space-around;
   }
   img {

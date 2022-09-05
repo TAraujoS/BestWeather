@@ -11,10 +11,10 @@ export const CityInfos = styled.ul`
   width: 80%;
   gap: 0.1rem;
 
+
   li {
     display: flex;
     flex-direction: row;
-    list-style: none;
     align-items: center;
     align-content: center;
     justify-content: space-between;
@@ -37,8 +37,8 @@ export const CityInfos = styled.ul`
     display: none;
     margin: 0;
     padding: 0%;
+
     .icon {
-      margin: 0;
       width: 100%;
       display: flex;
       justify-content: center;
