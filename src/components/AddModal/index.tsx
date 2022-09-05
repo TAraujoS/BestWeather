@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import ModalForm from "./styles";
 import { CityContext, IUserConfig } from "../../Context/CityContext";
 import { AuthContext } from "../../Context/LoginContext";
