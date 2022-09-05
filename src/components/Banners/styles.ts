@@ -14,16 +14,32 @@ export const Banner = styled.div`
   padding: 20px;
   border-radius: 12px;
 
+  .divText {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  h3 {
+    width: 450px;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    font-size: 20px;
+    padding: 5px;
+    margin-bottom: 15px;
+  }
+
   p {
     width: 450px;
     display: flex;
     list-style: none;
     justify-content: space-around;
-    font-size: 16px;
+    font-size: 14px;
     padding: 5px;
   }
 
   img {
-    width: 50%;
+    width: 40%;
   }
 `;
