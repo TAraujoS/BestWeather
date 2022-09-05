@@ -49,17 +49,45 @@ const Banners = () => {
       .catch((err) => console.error("Esse é o problema", err));
   };
 
-  const getMessage = (elem: IInfos) => {
+  const getMessageTemp = (elem: IInfos) => {
     const temp = cityApi.current.temp_c;
-    const prec = cityApi.current.precip_mm;
 
-    return temp > 30 || prec === 0 ? (
+    return temp < 20 ? (
       <p>{elem.text1}</p>
-    ) : temp > 20 || prec !== 0 ? (
+    ) : temp < 30 ? (
+      <p>{elem.text2}</p>
+    ) : temp < 35 ? (
+      <p>{elem.text3}</p>
+    ) : (
+      <p>{elem.text4}</p>
+    );
+  };
+
+  const getMessagePrec = (elem: IInfos) => {
+    const prec = cityApi.current.precip_mm;
+    return prec === 0 ? <p>{elem.text1}</p> : <p>{elem.text2}</p>;
+  };
+
+  const getMessageWind = (elem: IInfos) => {
+    const wind = cityApi.current.wind_kph;
+
+    return wind < 9 ? (
+      <p>{elem.text1}</p>
+    ) : wind < 19 ? (
       <p>{elem.text2}</p>
     ) : (
       <p>{elem.text3}</p>
     );
+  };
+
+  const checkOccupation = (occupation: string, elem: IInfos) => {
+    if (occupation === "Paraquedista" || "Asa Delta") {
+      return getMessagePrec(elem);
+    } else if (occupation === "Surfista") {
+      return getMessageWind(elem);
+    } else {
+      return getMessageTemp(elem);
+    }
   };
 
   return (
@@ -69,7 +97,7 @@ const Banners = () => {
           <div className="divText">
             <h3>{elem.title}</h3>
             <p>{userLogin.name},</p>
-            {getMessage(elem)}
+            {checkOccupation(banner.occupation, elem)}
           </div>
           <img src={elem.url} alt="Occupation" />
         </>
