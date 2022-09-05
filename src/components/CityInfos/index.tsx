@@ -22,9 +22,7 @@ const CityInf = () => {
               />
             </figure>
           </li>
-          <li>
-            <span>{`${cityApi.current.temp_c} ºC`}</span>
-          </li>
+          <li></li>
 
           <li>
             <p>Chuva</p>
@@ -33,8 +31,10 @@ const CityInf = () => {
 
           <li>
             <p>Vento</p>
-            <span>{`${cityApi.current.wind_kph} km/h`}</span>
-            <span>{cityApi.current.wind_dir}</span>
+            <div className="wind-info">
+              <span>{`${cityApi.current.wind_kph} km/h`}</span>
+              <span>{cityApi.current.wind_dir}</span>
+            </div>
           </li>
         </CityInfos>
       )}
