@@ -2,13 +2,18 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button/styles";
 import CityInf from "../../components/CityInfos";
+import CityRegister from "../../components/CityRegister";
 import FooterDashboard from "../../components/FooterDash";
 import Forecast from "../../components/Forecast";
 import HeaderDashboard from "../../components/HeaderDashboard";
 import InfoUser from "../../components/InfosUser";
+import Modal from "../../components/Modal";
 import SectionSearch from "../../components/SectionSearch";
-import { CityContext } from "../../Context/CityContext";
+
 import { BodyDash } from "./styles";
+
+import { CityContext } from "../../Context/CityContext";
+import Banners from "../../components/Banners";
 
 const Dashboard = () => {
   const { loading } = useContext(CityContext);
@@ -25,6 +30,7 @@ const Dashboard = () => {
         </div>
       ) : (
         <>
+          {Modal && <Modal />}
           <HeaderDashboard />
           <BodyDash>
             <SectionSearch />

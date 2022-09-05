@@ -12,7 +12,6 @@ export const DivHeader = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-
   width: 100%;
   height: 90px;
 
@@ -22,12 +21,20 @@ export const DivHeader = styled.div`
     justify-content: center;
     align-items: center;
 
-    h2 {
+    h3 {
       color: #fff;
       font-size: 20px;
-
       margin-left: 10px;
     }
+  }
+
+  div:hover > img {
+    transition: 5s;
+    transform: rotate(280deg);
+  }
+  div:hover > h3 {
+    transition: 2s;
+    color: yellow;
   }
 `;
 
@@ -36,8 +43,9 @@ export const ButtonLogout = styled.button`
   justify-content: center;
   align-items: center;
 
-  width: 65px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
+  padding-left: 2px;
   border: none;
   border-radius: 12px;
 
@@ -50,6 +58,7 @@ export const ButtonLogout = styled.button`
   cursor: pointer;
 
   &:hover {
+    transition: 1.2s;
     background-color: #3a6688;
   }
 `;
