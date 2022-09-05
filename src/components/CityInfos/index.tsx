@@ -11,7 +11,7 @@ const CityInf = () => {
         <CityInfos>
           <li className="cityName">
             <p>
-              {cityApi?.location.name}/{cityApi.location.region}
+              {cityApi.location.name}/{cityApi.location.region}
             </p>
           </li>
           <li className="container-icon">

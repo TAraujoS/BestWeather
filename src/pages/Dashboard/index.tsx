@@ -31,7 +31,7 @@ const Dashboard = () => {
             <InfoUser />
             <CityInf />
             <Forecast />
-            <Button onClick={mapa}>Mapa</Button>
+            <Button onClick={() => mapa}> Mapa</Button>
           </BodyDash>
           <FooterDashboard />
         </>
