@@ -4,7 +4,7 @@ export const SectionStyle = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;  
   width: 100%;
 
   h3 {
