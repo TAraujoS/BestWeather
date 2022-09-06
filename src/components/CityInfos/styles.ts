@@ -9,10 +9,12 @@ export const CityInfos = styled.ul`
   margin: 0;
   width: 95%;
 
-  gap: 0.1rem;
+  gap: 0.6rem;
 
   img {
     width: 1rem;
+  }
+  .gif-background {
   }
 
   li {
