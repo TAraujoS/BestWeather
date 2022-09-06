@@ -83,6 +83,19 @@ export const Container = styled.div`
       color: #ffffff;
     }
   }
+  .select-text {
+    min-width: 250px;
+    border: 2px solid #1976bd;
+    border-radius: 12px;
+    background-color: #0f4670;
+    max-width: 500px;
+    color: #ffffff;
+    padding-left: 0.6rem;
+    opacity: 100%;
+    ::placeholder {
+      color: #ffffff;
+    }
+  }
   @media screen and (min-width: 768px) {
     .headerRegister {
       width: 600px;

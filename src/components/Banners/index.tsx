@@ -130,13 +130,13 @@ const Banners = () => {
   };
 
   const checkOccupation = () => {
-    if (user.occupation === "Paraquedista" || user.occupation === "Asa Delta") {
+    if (user.occupation === "Paraquedismo" || user.occupation === "Asa Delta") {
       return getMessagePrec(banner[0]);
-    } else if (user.occupation === "Surfista") {
+    } else if (user.occupation === "Surfe") {
       return getMessageWind(banner[0]);
     } else if (
-      user.occupation === "Agricultor" ||
-      user.occupation === "Geólogo" ||
+      user.occupation === "Agricultura" ||
+      user.occupation === "Geologia" ||
       user.occupation === "Turismo"
     ) {
       return getMessageTemp(banner[0]);
