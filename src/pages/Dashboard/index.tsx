@@ -17,6 +17,7 @@ const Dashboard = () => {
 
   return (
     <>
+      {modal && <Modal />}
       <HeaderDashboard />
       <MainDash>
         {loading ? (
@@ -25,12 +26,12 @@ const Dashboard = () => {
           </div>
         ) : (
           <>
-            {modal && <Modal />}
-            <SectionSearch />
             <InfoUser />
-            <section>
-              <Banners />
+            <SectionSearch />
+
+            <section className="section-sub">
               <CityInf />
+              <Banners />
             </section>
 
             <CityRegister />

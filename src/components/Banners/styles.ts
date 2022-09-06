@@ -2,17 +2,16 @@ import styled from "styled-components";
 
 export const Banner = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
   background-color: rgba(15, 70, 112, 0.2);
-  max-width: 800px;
-  height: 300px;
+  max-width: 95%;
 
-  margin-left: 30px;
   padding: 20px;
   border-radius: 12px;
+  margin: 1em 0;
 
   .divText {
     display: flex;
@@ -21,25 +20,35 @@ export const Banner = styled.div`
   }
 
   h3 {
-    width: 450px;
     display: flex;
     list-style: none;
     justify-content: space-around;
-    font-size: 20px;
+    font-size: 1rem;
     padding: 5px;
     margin-bottom: 15px;
   }
 
   p {
-    width: 450px;
     display: flex;
     list-style: none;
     justify-content: space-around;
-    font-size: 14px;
+    font-size: 0.9rem;
     padding: 5px;
   }
 
   img {
-    width: 40%;
+    margin-top: 0.5rem;
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+
+    img {
+      max-width: 50%;
+    }
   }
 `;

@@ -33,7 +33,7 @@ const ModalForm = styled.form`
     align-items: center;
 
     color: #ffffff;
-    font-size: 13px;
+    font-size: 0.8rem;
   }
 
   button {
@@ -50,7 +50,7 @@ const ModalForm = styled.form`
     transition: 0.2s;
     cursor: pointer;
 
-    font-size: 18px;
+    font-size: 1rem;
   }
 
   button:hover {
