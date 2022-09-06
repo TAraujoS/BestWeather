@@ -9,6 +9,7 @@ import {
 } from "react";
 import { AuthContext } from "./LoginContext";
 import { fakeApi, weatherApi } from "../services";
+import { toast } from "react-toastify";
 
 export interface CityContextData {
   searchFromInput: (data: IData) => Promise<void>;
@@ -115,10 +116,13 @@ const CityProvider = ({ children }: ICityContext) => {
         headers: { Authorization: `Bearer ${tokenUser}` },
       })
       .then((res) => {
+        toast.success('Perfil editado com sucesso.', {autoClose: 2000})
         setUser(res.data);
         setModal(null);
       })
-      .catch((error) => console.error("Deu esse problema", error));
+      .catch((error) => {
+        toast.error('Ocorreu um erro ao editar seu perfil.', {autoClose: 2000})
+        console.error("Deu esse problema", error)})
   };
 
   return (
