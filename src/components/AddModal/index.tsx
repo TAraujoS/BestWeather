@@ -7,23 +7,22 @@ import { fakeApi } from "../../services";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../../Context/LoginContext";
 
-// interface ICity {
-//   nameCity: string;
-//   cities: string;
-// }
+interface ICity {
+  nameCity: string;
+}
 
 export const ModalAdd = () => {
   const { setModal } = useContext(CityContext);
-  const { cities, setCities } = useState<any>([]);
-  const { register, handleSubmit } = useForm<any>({});
-  const { tokenUser } = useContext(AuthContext);
+  const { register, handleSubmit } = useForm<ICity>({});
+  const { userId } = useContext(AuthContext);
 
   const onSubmit = (data: any) => {
+    data.userId = userId;
+    console.log(data);
     fakeApi
       .post("/city", data)
       .then((response: any) => {
-        fakeApi.defaults.headers.common.Authorization = `Bearer ${tokenUser}`;
-        setCities([...cities, data]);
+        console.log(response);
       })
       .catch((error: any) => console.error("Esse é o problema!", error));
   };
@@ -36,7 +35,7 @@ export const ModalAdd = () => {
       </section>
       <ModalForm onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <input id="title" placeholder="Cidade" {...register("city")} />
+          <input id="title" placeholder="Cidade" {...register("nameCity")} />
           <p>Essa cidade entrará na sua lista de favoritos</p>
         </div>
         <button type="submit">Cadastrar </button>

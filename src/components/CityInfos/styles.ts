@@ -11,7 +11,6 @@ export const CityInfos = styled.ul`
   width: 80%;
   gap: 0.1rem;
 
-
   li {
     display: flex;
     flex-direction: row;
@@ -32,9 +31,6 @@ export const CityInfos = styled.ul`
   }
 
   .container-icon {
-    height: 0px;
-    width: 0px;
-    display: none;
     margin: 0;
     padding: 0%;
 

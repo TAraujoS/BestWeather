@@ -6,6 +6,7 @@ export interface AuthContextData {
   user: IUser;
   userLogin: null;
   tokenUser: string | null;
+  userId: string | null;
   setUserLogin: React.Dispatch<React.SetStateAction<null>>;
   signIn: (props: ILoginProps) => void;
   logout: () => void;
@@ -76,7 +77,15 @@ const AuthProvider = ({ children }: IAuthContext) => {
 
   return (
     <AuthContext.Provider
-      value={{ userLogin, setUserLogin, signIn, user, logout, tokenUser }}
+      value={{
+        userLogin,
+        setUserLogin,
+        signIn,
+        user,
+        logout,
+        tokenUser,
+        userId,
+      }}
     >
       {children}
     </AuthContext.Provider>
