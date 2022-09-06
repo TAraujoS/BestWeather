@@ -5,14 +5,16 @@ export const CityInfos = styled.ul`
   flex-direction: column;
   background-color: rgba(15, 70, 112, 0.2);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 1rem 2.3rem;
   margin: 0;
   width: 95%;
 
-  gap: 0.1rem;
+  gap: 0.6rem;
 
   img {
     width: 1rem;
+  }
+  .gif-background {
   }
 
   li {
@@ -55,6 +57,9 @@ export const CityInfos = styled.ul`
     }
   }
   @media screen and (min-width: 768px) {
-    width: 50%;
+    min-width: 280px;
+    max-width: 340px;
+    width: 100%;
+    padding: 0;
   }
 `;

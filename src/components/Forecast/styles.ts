@@ -4,9 +4,9 @@ export const ForecastList = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 95%;
-  padding: 0;
-  margin: 0;
+  min-width: 100vw;
+  padding: 0 5%;
+  margin: 25px 0;
 
   ul {
     display: flex;
@@ -36,7 +36,7 @@ export const ForecastList = styled.section`
       gap: 5px;
       div {
         span {
-          font-size: 0.6rem;
+          font-size: 14px;
           color: gray;
         }
       }

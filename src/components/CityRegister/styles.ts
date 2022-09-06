@@ -28,14 +28,13 @@ const Container = styled.section`
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 35px;
-      min-width: 30%;
+      height: 2.5rem;
       color: #ffffff;
       background-color: #0f4670;
       border: 1px solid #0f4670;
       border-radius: 5px;
       margin: 5px;
-      padding: 5px;
+      padding: 0.5rem;
 
       cursor: pointer;
 

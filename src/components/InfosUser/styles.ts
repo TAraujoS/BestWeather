@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const ListInfosUser = styled.section`
   display: flex;
+  max-height: 5rem;
   justify-content: space-around;
   align-items: center;
   background-color: rgba(15, 70, 112, 0.2);
   width: 100%;
-  
 
   p {
     display: flex;
@@ -47,6 +47,18 @@ export const ListInfosUser = styled.section`
         margin: 0;
         min-width: 10rem;
       }
+    }
+  }
+  @media screen and (min-width: 768px) {
+    div {
+      margin: 2%;
+      img {
+        width: 45px;
+        border-radius: 100%;
+      }
+    }
+    p {
+      font-size: 1.2rem;
     }
   }
 `;
