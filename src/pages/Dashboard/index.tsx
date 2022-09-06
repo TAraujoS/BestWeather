@@ -29,9 +29,9 @@ const Dashboard = () => {
         </div>
       ) : (
         <>
-          {modal && <Modal />}
-          <HeaderDashboard />
           <BodyDash>
+            {modal && <Modal />}
+            <HeaderDashboard />
             <SectionSearch />
             <InfoUser />
             <CityInf />

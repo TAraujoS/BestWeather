@@ -5,6 +5,7 @@ import { CityContext } from "../CityContext";
 interface IStatesProvider {
   ACRioBranco: () => Promise<void>;
   AMManaus: () => Promise<void>;
+  RRBVista: () => Promise<void>;
   capital: ICapitals;
 }
 interface ICapitals {
@@ -309,7 +310,9 @@ const StatesProvider = ({ children }: IStateContext) => {
   };
 
   return (
-    <StatesContext.Provider value={{ ACRioBranco, AMManaus, capital }}>
+    <StatesContext.Provider
+      value={{ ACRioBranco, AMManaus, RRBVista, capital }}
+    >
       {children}
     </StatesContext.Provider>
   );
