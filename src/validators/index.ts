@@ -35,17 +35,35 @@ export const registerSchema = yup.object().shape({
   city: yup.string().required("Campo Obrigatório"),
 });
 
-export const configUserSchema = yup.object().shape({
-  name: yup
-    .string()
-    .matches(
-      /^([a-zA-Zà-úÀ-Ú0-9]|-|_|\s)+$/,
-      "Esse campo deve conter apenas letras"
-    ),
-  city: yup
-    .string()
-    .matches(
-      /^([a-zA-Zà-úÀ-Ú0-9]|-|_|\s)+$/,
-      "Esse campo deve conter apenas letras"
-    ),
-});
+export const configUserSchema = yup.object().shape(
+  {
+    name: yup.string().when("name", (value) => {
+      if (value?.length > 0) {
+        return yup
+          .string()
+          .matches(
+            /^([a-zA-Zà-úÀ-Ú0-9]|-|_|\s)+$/,
+            "Esse campo deve conter apenas letras"
+          );
+      } else {
+        return yup.string().notRequired();
+      }
+    }),
+    city: yup.string().when("city", (value) => {
+      if (value?.length > 0) {
+        return yup
+          .string()
+          .matches(
+            /^([a-zA-Zà-úÀ-Ú0-9]|-|_|\s)+$/,
+            "Esse campo deve conter apenas letras"
+          );
+      } else {
+        return yup.string().notRequired();
+      }
+    }),
+  },
+  [
+    ["name", "name"],
+    ["city", "city"],
+  ]
+);

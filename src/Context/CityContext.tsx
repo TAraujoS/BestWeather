@@ -52,6 +52,10 @@ export interface ICityResponse {
             icon: string;
           };
         };
+        astro: {
+          sunrise: string;
+          sunset: string;
+        };
       }
     ];
   };

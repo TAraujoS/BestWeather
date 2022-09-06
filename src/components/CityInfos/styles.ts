@@ -7,9 +7,13 @@ export const CityInfos = styled.ul`
   border-radius: 8px;
   padding: 1rem;
   margin: 0;
-  min-width: 300px;
-  width: 80%;
+  width: 95%;
+
   gap: 0.1rem;
+
+  img {
+    width: 1rem;
+  }
 
   li {
     display: flex;
@@ -18,6 +22,12 @@ export const CityInfos = styled.ul`
     align-content: center;
     justify-content: space-between;
     color: #fff;
+    margin-bottom: 0.25em;
+  }
+
+  .centered-li {
+    align-self: center;
+    margin-bottom: 1em;
   }
 
   .cityName {
@@ -25,7 +35,7 @@ export const CityInfos = styled.ul`
     justify-content: space-between;
   }
 
-  .wind-info {
+  .city-info-div {
     display: flex;
     gap: 0.5rem;
   }
@@ -43,5 +53,8 @@ export const CityInfos = styled.ul`
         height: 50px;
       }
     }
+  }
+  @media screen and (min-width: 768px) {
+    width: 50%;
   }
 `;

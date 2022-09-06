@@ -17,7 +17,7 @@ const SectionSearch = () => {
           Olá, {user.name}, como está o seu clima hoje?
         </h3>
 
-        <form onSubmit={handleSubmit(searchFromInput)}>
+        <form className="search-bar" onSubmit={handleSubmit(searchFromInput)}>
           <input
             type="text"
             placeholder="Digite a sua localização aqui"
