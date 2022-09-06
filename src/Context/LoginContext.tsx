@@ -5,7 +5,7 @@ import { fakeApi } from "../services";
 export interface AuthContextData {
   user: IUser;
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
-  setUserLogin: React.Dispatch<React.SetStateAction<null>>;
+  setUserLogin: React.Dispatch<React.SetStateAction<IUserResponse>>;
   userLogin: IUserResponse;
   userId: string | null;
   signIn: (props: ILoginProps) => void;

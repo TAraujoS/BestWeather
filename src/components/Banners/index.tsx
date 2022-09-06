@@ -97,7 +97,7 @@ const Banners = () => {
       <div className="divText" key={banner[0]?.id}>
         <>
           <h3>{banner[0]?.title}</h3>
-          <p>{user.name}</p>
+          <p>{user.name},</p>
           {showTextOccupation}
         </>
       </div>
