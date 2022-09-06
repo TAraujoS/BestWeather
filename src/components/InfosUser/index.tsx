@@ -15,7 +15,9 @@ const InfoUser = () => {
             <img src={user.url} alt="homem" />
           </figure>
         </div>
-        <p className="city-list">{user.city} </p>
+        <div className="city-list">
+          <p>{user.city} </p>
+        </div>
         <p> {user.occupation}</p>
         <p>
           <button onClick={() => setModal("edit")}>

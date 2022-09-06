@@ -57,7 +57,11 @@ const CityRegister = () => {
   return (
     <>
       <Container>
-        <h3> Lista de Favoritos: </h3>
+        <div className="lista-de-favoritos-and-button">
+          <h3> Lista de Favoritos: </h3>
+          <button onClick={() => setModal("add")}>Adicionar</button>
+        </div>
+
         <div>
           <ul>
             {city.map((element) => (
@@ -68,7 +72,6 @@ const CityRegister = () => {
               </li>
             ))}
           </ul>
-          <button onClick={() => setModal("add")}>Adicionar +</button>
         </div>
       </Container>
     </>

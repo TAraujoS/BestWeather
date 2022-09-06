@@ -166,7 +166,9 @@ const Banners = () => {
             <p>{user.name},</p>
             {showTextOther}
           </div>
-          <img src={other[0]?.url} alt="Occupation" />
+          <div className="image-div-banner">
+            <img className="banner-img" src={other[0]?.url} alt="Occupation" />
+          </div>
         </>
       )}
     </Banner>

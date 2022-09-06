@@ -1,5 +1,6 @@
 import { createContext, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { fakeApi } from "../services";
 
 export interface IRegisterProviderProps {
@@ -26,8 +27,10 @@ const RegisterProvider = ({ children }: IRegisterProps) => {
   const onSubmitFunction = async (data: ISubmitData) => {
     try {
       await fakeApi.post("/signup", data);
+      toast.success('Cadastro feito com sucesso, faça o login.', {autoClose: 2000})
       navigate("/");
     } catch (error) {
+      toast.error('Verifique se todos os campos estão preenchidos.', {autoClose: 2000})
       console.error("Deu esse problema", error);
     }
   };

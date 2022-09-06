@@ -4,6 +4,8 @@ export const SectionStyle = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0.5rem 0;  
+  width: 100%;
 
   h3 {
     margin-top: 0.5rem;
@@ -14,10 +16,11 @@ export const SectionStyle = styled.section`
   form {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     max-width: 90%;
     background-color: #064670;
     margin-top: 0.3rem;
-    border-radius: 25px;
+    border-radius: 1.5rem;
     padding-top: 0.3rem;
     padding-left: 0.3rem;
     padding-right: 0.3rem;
@@ -30,9 +33,9 @@ export const SectionStyle = styled.section`
     width: 89%;
     background-color: #0f4670;
     border: none;
-    border-radius: 5px;
+    border-radius: 1rem;
     height: 1.5rem;
-    padding-left: 10px;
+    padding-left: 0.5rem;
     color: white;
     outline: none;
     ::placeholder {
@@ -71,7 +74,13 @@ export const SectionStyle = styled.section`
     }
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {  
+    .search-bar {      
+        width: 40%;
+        max-width: 420px;
+      }
+    }
+
     .user-intro {
       font-size: 1.2rem;
     }
