@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BodyDash = styled.main`
+export const MainDash = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;

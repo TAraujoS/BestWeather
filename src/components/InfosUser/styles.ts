@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ListInfosUser = styled.ul`
+export const ListInfosUser = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,14 +9,13 @@ export const ListInfosUser = styled.ul`
   border-radius: 12px;
   min-width: 300px;
 
-  li {
-    font-size: 0.9rem;
-    margin-left: 1%;
-    margin-right: 10%;
-    max-width: 50px;
+  p {
     display: flex;
-    justify-content: space-around;
+    font-size: 0.9rem;
+    margin: 2%;
+    max-width: 50px;
   }
+
   img {
     width: 30px;
     border-radius: 100%;

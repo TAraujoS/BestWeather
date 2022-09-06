@@ -17,22 +17,21 @@ interface IBannerResponse {
 
 interface IInfos {
   title: string;
-  text1?: string;
-  text2?: string;
-  text3?: string;
-  text4?: string;
-  text5?: string;
+  text1: string;
+  text2: string;
+  text3: string;
+  text4: string;
+  text5: string;
   url: string;
   userId: number;
   id: number;
 }
 
 const Banners = () => {
-  const { userLogin } = useContext(AuthContext);
+  const { userId, user } = useContext(AuthContext);
   const { cityApi } = useContext(CityContext);
 
-  const [banner, setBanner] = useState<IBannerResponse>({} as IBannerResponse);
-
+  const [banner, setBanner] = useState<IInfos[]>([]);
   const token = localStorage.getItem("@loginBWeather:token") || "";
 
   useEffect(() => {
@@ -41,39 +40,68 @@ const Banners = () => {
 
   const getBanner = () => {
     fakeApi
-      .get(`/users/${userLogin.id}?_embed=infos`, {
+      .get<IBannerResponse>(`/users/${userId}?_embed=infos`, {
         headers: { Authorization: `Bearer ${token}` },
       })
 
-      .then((response) => setBanner(response.data))
+      .then((response) => setBanner(response.data.infos))
       .catch((err) => console.error("Esse é o problema", err));
   };
 
-  const getMessage = (elem: IInfos) => {
+  const getMessageTemp = (elem: IInfos) => {
     const temp = cityApi.current.temp_c;
+
+    return temp < 20 ? (
+      <p>{elem.text1}</p>
+    ) : temp < 30 ? (
+      <p>{elem.text2}</p>
+    ) : temp < 35 ? (
+      <p>{elem.text3}</p>
+    ) : (
+      <p>{elem.text4}</p>
+    );
+  };
+
+  const getMessagePrec = (elem: IInfos) => {
     const prec = cityApi.current.precip_mm;
 
-    return temp > 30 || prec === 0 ? (
+    return prec === 0 ? <p>{elem?.text1}</p> : <p>{elem?.text2}</p>;
+  };
+
+  const getMessageWind = (elem: IInfos) => {
+    const wind = cityApi.current.wind_kph;
+
+    return wind < 9 ? (
       <p>{elem.text1}</p>
-    ) : temp > 20 || prec !== 0 ? (
+    ) : wind < 19 ? (
       <p>{elem.text2}</p>
     ) : (
       <p>{elem.text3}</p>
     );
   };
 
+  const checkOccupation = () => {
+    if (user.occupation === "Paraquedista" || user.occupation === "Asa Delta") {
+      return getMessagePrec(banner[0]);
+    } else if (user.occupation === "Surfista") {
+      return getMessageWind(banner[0]);
+    } else {
+      return getMessageTemp(banner[0]);
+    }
+  };
+
+  const showTextOccupation = banner[0] && checkOccupation();
+
   return (
     <Banner>
-      {banner.infos?.map((elem) => (
+      <div className="divText" key={banner[0]?.id}>
         <>
-          <div className="divText">
-            <h3>{elem.title}</h3>
-            <p>{userLogin.name},</p>
-            {getMessage(elem)}
-          </div>
-          <img src={elem.url} alt="Occupation" />
+          <h3>{banner[0]?.title}</h3>
+          <p>{user.name},</p>
+          {showTextOccupation}
         </>
-      ))}
+      </div>
+      <img src={banner[0]?.url} alt="Occupation" />
     </Banner>
   );
 };

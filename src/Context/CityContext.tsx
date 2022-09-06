@@ -8,7 +8,7 @@ import {
   SetStateAction,
 } from "react";
 import { AuthContext } from "./LoginContext";
-import { weatherApi } from "../services";
+import { fakeApi, weatherApi } from "../services";
 
 export interface CityContextData {
   searchFromInput: (data: IData) => Promise<void>;
@@ -18,6 +18,7 @@ export interface CityContextData {
   tokenExt: string;
   modal: string | null;
   setModal: Dispatch<SetStateAction<string | null>>;
+  onSubmitFunction: (data: IUserConfig) => void;
 }
 
 export interface IData {
@@ -45,7 +46,7 @@ export interface ICityResponse {
       {
         date: string;
         day: {
-          maxtemp_c: string;
+          maxtemp_c: number;
           mintemp_c: string;
           condition: {
             icon: string;
@@ -60,12 +61,20 @@ export const CityContext = createContext<CityContextData>(
   {} as CityContextData
 );
 
+export interface IUserConfig {
+  name?: string;
+  city?: string;
+  url?: string;
+}
+
 const CityProvider = ({ children }: ICityContext) => {
   const [cityApi, setCityApi] = useState<ICityResponse>({} as ICityResponse);
   const [loading, setLoading] = useState<boolean>(false);
   const [modal, setModal] = useState<string | null>(null);
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const tokenExt = "27099ab8b4ea4bdf9c9110958220109";
+  const tokenUser = localStorage.getItem("@loginBWeather:token");
+  const userId = localStorage.getItem("@loginBWeather:user");
 
   useEffect(() => {
     setLoading(true);
@@ -82,11 +91,8 @@ const CityProvider = ({ children }: ICityContext) => {
         setLoading(false);
       }
     }
-
-    if (user?.city) {
-      apiWeather();
-    }
-  }, [user?.city]);
+    apiWeather();
+  }, [user]);
 
   const searchFromInput = async (data: IData) => {
     await weatherApi
@@ -99,6 +105,18 @@ const CityProvider = ({ children }: ICityContext) => {
       .catch((err) => console.error("Esse é o problema", err));
   };
 
+  const onSubmitFunction = (data: IUserConfig) => {
+    fakeApi
+      .patch(`/users/${userId}`, data, {
+        headers: { Authorization: `Bearer ${tokenUser}` },
+      })
+      .then((res) => {
+        setUser(res.data);
+        setModal(null);
+      })
+      .catch((error) => console.error("Deu esse problema", error));
+  };
+
   return (
     <CityContext.Provider
       value={{
@@ -109,6 +127,7 @@ const CityProvider = ({ children }: ICityContext) => {
         searchFromInput,
         modal,
         setModal,
+        onSubmitFunction,
       }}
     >
       {children}

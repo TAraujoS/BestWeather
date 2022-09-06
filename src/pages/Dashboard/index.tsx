@@ -10,7 +10,7 @@ import InfoUser from "../../components/InfosUser";
 import Modal from "../../components/Modal";
 import SectionSearch from "../../components/SectionSearch";
 
-import { BodyDash } from "./styles";
+import { MainDash } from "./styles";
 
 import { CityContext } from "../../Context/CityContext";
 
@@ -29,7 +29,7 @@ const Dashboard = () => {
         </div>
       ) : (
         <>
-          <BodyDash>
+          <MainDash>
             {modal && <Modal />}
             <HeaderDashboard />
             <SectionSearch />
@@ -38,7 +38,7 @@ const Dashboard = () => {
             <CityRegister />
             <Forecast />
             <Button onClick={() => mapa}> Mapa</Button>
-          </BodyDash>
+          </MainDash>
           <FooterDashboard />
         </>
       )}

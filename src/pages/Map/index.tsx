@@ -2,7 +2,7 @@ import mapClikable from "../../assets/img/map.png";
 import mao from "../../assets/img/mao.png";
 import FooterDashboard from "../../components/FooterDash";
 import HeaderDashboard from "../../components/HeaderDashboard";
-import { BodyDash } from "../Dashboard/styles";
+import { MainDash } from "../Dashboard/styles";
 import { ContainerGeneral, ContainerMap } from "./styles";
 import { useContext } from "react";
 import { StatesContext } from "../../Context/StatesContext";
@@ -13,7 +13,7 @@ const MapBrazil = () => {
   return (
     <>
       <HeaderDashboard />
-      <BodyDash>
+      <MainDash>
         <h1>Confira o tempo no Nosso Brasil </h1>
         <ContainerGeneral>
           {capital ? (
@@ -199,7 +199,7 @@ const MapBrazil = () => {
             alt="Rio Grande do Sul"
           />
         </map>
-      </BodyDash>
+      </MainDash>
       <FooterDashboard />
     </>
   );
