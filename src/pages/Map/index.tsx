@@ -44,13 +44,13 @@ const MapBrazil = () => {
           <area
             shape="poly"
             coords="9,205,100,249,72,266,51,244,37,250"
-            onClick={() => ACRioBranco}
+            onClick={() => ACRioBranco()}
             alt="Acre"
           />
           <area
             shape="poly"
             coords="67,71,110,70,126,84,167,68,193,121,203,108,237,92,275,142,230,226,168,214,113,239,17,201,34,169,67,161,74,106,66,88,80,88"
-            onClick={() => AMManaus}
+            onClick={() => AMManaus()}
             alt="Amazonas"
           />
           <area

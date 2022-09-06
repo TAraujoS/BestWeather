@@ -3,8 +3,6 @@ import { AuthContext } from "../../Context/LoginContext";
 import { ListInfosUser } from "./styles";
 import { CityContext } from "../../Context/CityContext";
 import man from "../../assets/img/avatar-ele.png";
-import { AuthContext } from "../../Context/LoginContext";
-import { ListInfosUser } from "./styles";
 
 const InfoUser = () => {
   const { user } = useContext(AuthContext);

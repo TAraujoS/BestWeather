@@ -13,10 +13,9 @@ import SectionSearch from "../../components/SectionSearch";
 import { BodyDash } from "./styles";
 
 import { CityContext } from "../../Context/CityContext";
-import Banners from "../../components/Banners";
 
 const Dashboard = () => {
-  const { loading } = useContext(CityContext);
+  const { loading, modal } = useContext(CityContext);
   const navigate = useNavigate();
   const mapa = () => {
     navigate("/map");
@@ -30,12 +29,13 @@ const Dashboard = () => {
         </div>
       ) : (
         <>
-          {Modal && <Modal />}
+          {modal && <Modal />}
           <HeaderDashboard />
           <BodyDash>
             <SectionSearch />
             <InfoUser />
             <CityInf />
+            <CityRegister />
             <Forecast />
             <Button onClick={() => mapa}> Mapa</Button>
           </BodyDash>
