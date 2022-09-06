@@ -9,7 +9,6 @@ import Modal from "../../components/Modal";
 import SectionSearch from "../../components/SectionSearch";
 
 import { MainDash } from "./styles";
-
 import { CityContext } from "../../Context/CityContext";
 import Banners from "../../components/Banners";
 
