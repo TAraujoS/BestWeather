@@ -10,14 +10,14 @@ const InfoUser = () => {
   return (
     <>
       <ListInfosUser>
-        <li>
+        <p>
           <figure>
             <img src={user.url} alt="homem" />
           </figure>
-        </li>
-        <li className="city-list">{user.city} </li>
-        <li> {user.occupation}</li>
-        <li>
+        </p>
+        <p className="city-list">{user.city} </p>
+        <p> {user.occupation}</p>
+        <p>
           <button onClick={() => setModal("edit")}>
             <svg
               width="76"
@@ -33,7 +33,7 @@ const InfoUser = () => {
               />
             </svg>
           </button>
-        </li>
+        </p>
       </ListInfosUser>
     </>
   );
