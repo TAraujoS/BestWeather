@@ -27,20 +27,18 @@ export const SectionStyle = styled.section`
   input {
     min-width: 240px;
     max-width: 320px;
+    width: 89%;
     background-color: #0f4670;
     border: none;
     border-radius: 5px;
     height: 1.5rem;
+    padding-left: 10px;
     color: white;
     outline: none;
     ::placeholder {
       color: gray;
       border: none;
     }
-  }
-
-  input {
-    width: 89%;
   }
 
   button {

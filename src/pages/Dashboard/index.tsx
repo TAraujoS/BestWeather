@@ -8,7 +8,7 @@ import InfoUser from "../../components/InfosUser";
 import Modal from "../../components/Modal";
 import SectionSearch from "../../components/SectionSearch";
 
-import { BodyDash } from "./styles";
+import { MainDash } from "./styles";
 
 import { CityContext } from "../../Context/CityContext";
 import Banners from "../../components/Banners";
@@ -17,25 +17,30 @@ const Dashboard = () => {
   const { loading, modal } = useContext(CityContext);
 
   return (
-    <BodyDash>
-      {loading ? (
-        <div className="divLoading">
-          <h2>Estamos preparando suas informações</h2>
-        </div>
-      ) : (
-        <>
-          {modal && <Modal />}
-          <HeaderDashboard />
-          <SectionSearch />
-          <InfoUser />
-          <Banners />
-          <CityInf />
-          <CityRegister />
-          <Forecast />
-          <FooterDashboard />
-        </>
-      )}
-    </BodyDash>
+    <>
+      <HeaderDashboard />
+      <MainDash>
+        {loading ? (
+          <div className="divLoading">
+            <h2>Estamos preparando suas informações</h2>
+          </div>
+        ) : (
+          <>
+            {modal && <Modal />}
+            <SectionSearch />
+            <InfoUser />
+            <section>
+              <Banners />
+              <CityInf />
+            </section>
+
+            <CityRegister />
+            <Forecast />
+            <FooterDashboard />
+          </>
+        )}
+      </MainDash>
+    </>
   );
 };
 
