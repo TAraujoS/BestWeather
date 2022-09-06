@@ -10,11 +10,11 @@ const InfoUser = () => {
   return (
     <>
       <ListInfosUser>
-        <p>
+        <div>
           <figure>
             <img src={user.url} alt="homem" />
           </figure>
-        </p>
+        </div>
         <p className="city-list">{user.city} </p>
         <p> {user.occupation}</p>
         <p>
