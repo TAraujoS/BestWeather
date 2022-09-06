@@ -16,9 +16,12 @@ export const ListInfosUser = styled.section`
     max-width: 50px;
   }
 
-  img {
-    width: 30px;
-    border-radius: 100%;
+  div {
+    margin: 2%;
+    img {
+      width: 30px;
+      border-radius: 100%;
+    }
   }
 
   button {
