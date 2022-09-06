@@ -16,6 +16,7 @@ export const DivHeader = styled.div`
   height: 90px;
 
   div {
+    transition: 5s;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -30,7 +31,7 @@ export const DivHeader = styled.div`
 
   div:hover > img {
     transition: 5s;
-    transform: rotate(280deg);
+    transform: rotate(275deg);
   }
   div:hover > h3 {
     transition: 2s;

@@ -9,11 +9,6 @@ const CityInf = () => {
     <>
       {cityApi?.location && (
         <CityInfos>
-          <li className="cityName">
-            <p>
-              {cityApi?.location.name}/{cityApi.location.region}
-            </p>
-          </li>
           <li className="container-icon">
             <figure className="icon">
               <img
