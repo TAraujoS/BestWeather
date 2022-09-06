@@ -18,13 +18,10 @@ const CityInf = () => {
             </figure>
           </li>
 
-          <li className="cityName">
-            <p>
-              {cityApi?.location.name}/{cityApi.location.region}
-            </p>
+          <li>
+            <p>Temperatura</p>
+            <span>{`${cityApi.current.temp_c}°C`}</span>
           </li>
-
-          <li></li>
 
           <li>
             <p>Chuva</p>

@@ -9,9 +9,7 @@ export interface IRegisterProviderProps {
 interface IRegisterProps {
   children: ReactNode;
 }
-// export interface IUserResponse{
 
-// }
 export interface ISubmitData {
   name: string;
   email: string;

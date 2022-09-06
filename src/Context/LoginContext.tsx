@@ -4,10 +4,10 @@ import { fakeApi } from "../services";
 
 export interface AuthContextData {
   user: IUser;
-  userLogin: null;
-  tokenUser: string | null;
+  setUser: React.Dispatch<React.SetStateAction<IUser>>;
+  setUserLogin: React.Dispatch<React.SetStateAction<IUserResponse>>;
+  userLogin: IUserResponse;
   userId: string | null;
-  setUserLogin: React.Dispatch<React.SetStateAction<null>>;
   signIn: (props: ILoginProps) => void;
   logout: () => void;
 }
@@ -26,6 +26,17 @@ export interface IUser {
   password: string;
   occupation: string;
   city: string;
+  url: string;
+}
+
+export interface IUserResponse {
+  email: string;
+  password: string;
+  name: string;
+  url: string;
+  occupation: string;
+  city: string;
+  id: number;
 }
 
 export interface ILoginProps {
@@ -34,7 +45,9 @@ export interface ILoginProps {
 }
 
 const AuthProvider = ({ children }: IAuthContext) => {
-  const [userLogin, setUserLogin] = useState(null);
+  const [userLogin, setUserLogin] = useState<IUserResponse>(
+    {} as IUserResponse
+  );
   const [user, setUser] = useState<IUser>({} as IUser);
   const navigate = useNavigate();
   const tokenUser = localStorage.getItem("@loginBWeather:token");
@@ -77,15 +90,7 @@ const AuthProvider = ({ children }: IAuthContext) => {
 
   return (
     <AuthContext.Provider
-      value={{
-        userLogin,
-        setUserLogin,
-        signIn,
-        user,
-        logout,
-        tokenUser,
-        userId,
-      }}
+      value={{ userLogin, setUserLogin, signIn, user, setUser, logout, userId }}
     >
       {children}
     </AuthContext.Provider>

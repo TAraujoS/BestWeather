@@ -7,31 +7,40 @@ import HeaderDashboard from "../../components/HeaderDashboard";
 import InfoUser from "../../components/InfosUser";
 import Modal from "../../components/Modal";
 import SectionSearch from "../../components/SectionSearch";
+
+import { MainDash } from "./styles";
+
 import { CityContext } from "../../Context/CityContext";
-import { BodyDash } from "./styles";
+import Banners from "../../components/Banners";
 
 const Dashboard = () => {
   const { loading, modal } = useContext(CityContext);
 
   return (
-    <BodyDash>
-      {loading ? (
-        <div className="divLoading">
-          <h2>Estamos preparando suas informações</h2>
-        </div>
-      ) : (
-        <>
-          {modal && <Modal />}
-          <HeaderDashboard />
-          <SectionSearch />
-          <InfoUser />
-          <CityInf />
-          <CityRegister />
-          <Forecast />
-          <FooterDashboard />
-        </>
-      )}
-    </BodyDash>
+    <>
+      <HeaderDashboard />
+      <MainDash>
+        {loading ? (
+          <div className="divLoading">
+            <h2>Estamos preparando suas informações</h2>
+          </div>
+        ) : (
+          <>
+            {modal && <Modal />}
+            <SectionSearch />
+            <InfoUser />
+            <section>
+              <Banners />
+              <CityInf />
+            </section>
+
+            <CityRegister />
+            <Forecast />
+            <FooterDashboard />
+          </>
+        )}
+      </MainDash>
+    </>
   );
 };
 

@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
 import ModalForm from "./styles";
-import { CityContext } from "../../Context/CityContext";
-import { useForm } from "react-hook-form";
-import { string } from "yup";
-import { fakeApi } from "../../services";
-import { Navigate } from "react-router-dom";
+
+import { CityContext, IUserConfig } from "../../Context/CityContext";
 import { AuthContext } from "../../Context/LoginContext";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { fakeApi } from "../../services";
+import { useForm } from "react-hook-form";
+import { configUserSchema } from "../../validators";
 
 interface ICity {
   nameCity: string;
@@ -43,21 +44,30 @@ export const ModalAdd = () => {
     </>
   );
 };
-// ---------------------- another function -------------------------------------------------
+
 export const ModalConfig = () => {
-  const { setModal } = useContext(CityContext);
+  const { user } = useContext(AuthContext);
+  const { setModal, onSubmitFunction } = useContext(CityContext);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IUserConfig>({
+    resolver: yupResolver(configUserSchema),
+  });
+
   return (
     <>
       <section>
         <h3>Suas configurações</h3>
         <button onClick={() => setModal(null)}> X </button>
       </section>
-      <ModalForm>
-        <label htmlFor="title">Cidade</label>
+      <ModalForm onSubmit={handleSubmit(onSubmitFunction)}>
         <div>
-          <input id="title" placeholder="Nome" />
-          <input id="city" placeholder="Cidade" />
-          <input id="url_avatar" placeholder="URL avatar" />
+          <input id="name" {...register("name")} placeholder={user.name} />
+          <input id="city" {...register("city")} placeholder={user.city} />
+          <input id="url" {...register("url")} placeholder="URL avatar" />
         </div>
 
         <button type="submit">Editar </button>
