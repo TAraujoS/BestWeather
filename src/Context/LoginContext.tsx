@@ -50,8 +50,6 @@ const AuthProvider = ({ children }: IAuthContext) => {
   );
   const [user, setUser] = useState<IUser>({} as IUser);
   const navigate = useNavigate();
-  const tokenUser = localStorage.getItem("@loginBWeather:token");
-  const userId = localStorage.getItem("@loginBWeather:user");
 
   const signIn = (data: ILoginProps) => {
     fakeApi
@@ -66,6 +64,9 @@ const AuthProvider = ({ children }: IAuthContext) => {
       })
       .catch((error) => console.error("Esse é o problema!", error));
   };
+
+  const tokenUser = localStorage.getItem("@loginBWeather:token");
+  const userId = localStorage.getItem("@loginBWeather:user");
 
   useEffect(() => {
     async function loadUser() {

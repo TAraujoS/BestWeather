@@ -6,10 +6,42 @@ interface IStatesProvider {
   ACRioBranco: () => Promise<void>;
   AMManaus: () => Promise<void>;
   RRBVista: () => Promise<void>;
+  ROPVelho: () => Promise<void>;
+  PABelem: () => Promise<void>;
+  APMacapa: () => Promise<void>;
+  MTCuiaba: () => Promise<void>;
+  TOPalmas: () => Promise<void>;
+  MASaoLuis: () => Promise<void>;
+  MSCampoGrande: () => Promise<void>;
+  GOGoiania: () => Promise<void>;
+  BASalvador: () => Promise<void>;
+  PITeresina: () => Promise<void>;
+  CEFortaleza: () => Promise<void>;
+  RNorteNatal: () => Promise<void>;
+  PBJoaoPessoa: () => Promise<void>;
+  PERecife: () => Promise<void>;
+  ALMaceio: () => Promise<void>;
+  SEAracaju: () => Promise<void>;
+  MGBeloHorizonte: () => Promise<void>;
+  ESVitoria: () => Promise<void>;
+  RJRioJaneiro: () => Promise<void>;
+  SPSaoPaulo: () => Promise<void>;
+  PRCuritiba: () => Promise<void>;
+  SCFlorianopolis: () => Promise<void>;
+  RSPortoAlegre: () => Promise<void>;
+  DFBrasilia: () => Promise<void>;
   capital: ICapitals;
 }
 interface ICapitals {
   capital: string;
+  location: {
+    name: string;
+    region: string;
+  };
+  current: {
+    condition: { icon: string };
+    temp_c: number;
+  };
   forecast: {
     forecastday: [
       {
@@ -88,7 +120,7 @@ const StatesProvider = ({ children }: IStateContext) => {
       console.error("Esse erro vem da ext", error);
     }
   };
-  const AMMacapa = async () => {
+  const APMacapa = async () => {
     try {
       const { data } = await weatherApi.get(
         `/forecast.json?key=${tokenExt}&q=Macapa Brazil&days=7`
@@ -251,7 +283,7 @@ const StatesProvider = ({ children }: IStateContext) => {
   const RJRioJaneiro = async () => {
     try {
       const { data } = await weatherApi.get(
-        `/forecast.json?key=${tokenExt}&q=Rio Branco Brazil&days=7`
+        `/forecast.json?key=${tokenExt}&q=Rio de Janeiro Brazil&days=7`
       );
       setCapital(data);
     } catch (error) {
@@ -271,7 +303,7 @@ const StatesProvider = ({ children }: IStateContext) => {
   const PRCuritiba = async () => {
     try {
       const { data } = await weatherApi.get(
-        `/forecast.json?key=${tokenExt}&q=Sao Paulo Brazil&days=7`
+        `/forecast.json?key=${tokenExt}&q=Curitiba Brazil&days=7`
       );
       setCapital(data);
     } catch (error) {
@@ -281,7 +313,7 @@ const StatesProvider = ({ children }: IStateContext) => {
   const SCFlorianopolis = async () => {
     try {
       const { data } = await weatherApi.get(
-        `/forecast.json?key=${tokenExt}&q=Sao Paulo Brazil&days=7`
+        `/forecast.json?key=${tokenExt}&q=Florianopolis Brazil&days=7`
       );
       setCapital(data);
     } catch (error) {
@@ -291,7 +323,7 @@ const StatesProvider = ({ children }: IStateContext) => {
   const RSPortoAlegre = async () => {
     try {
       const { data } = await weatherApi.get(
-        `/forecast.json?key=${tokenExt}&q=Sao Paulo Brazil&days=7`
+        `/forecast.json?key=${tokenExt}&q=Porto Alegre Brazil&days=7`
       );
       setCapital(data);
     } catch (error) {
@@ -301,7 +333,7 @@ const StatesProvider = ({ children }: IStateContext) => {
   const DFBrasilia = async () => {
     try {
       const { data } = await weatherApi.get(
-        `/forecast.json?key=${tokenExt}&q=Sao Paulo Brazil&days=7`
+        `/forecast.json?key=${tokenExt}&q=Brasilia Brazil&days=7`
       );
       setCapital(data);
     } catch (error) {
@@ -311,7 +343,36 @@ const StatesProvider = ({ children }: IStateContext) => {
 
   return (
     <StatesContext.Provider
-      value={{ ACRioBranco, AMManaus, RRBVista, capital }}
+      value={{
+        ACRioBranco,
+        AMManaus,
+        RRBVista,
+        ROPVelho,
+        PABelem,
+        APMacapa,
+        MTCuiaba,
+        TOPalmas,
+        MASaoLuis,
+        MSCampoGrande,
+        GOGoiania,
+        BASalvador,
+        PITeresina,
+        CEFortaleza,
+        RNorteNatal,
+        PBJoaoPessoa,
+        PERecife,
+        ALMaceio,
+        SEAracaju,
+        MGBeloHorizonte,
+        ESVitoria,
+        RJRioJaneiro,
+        SPSaoPaulo,
+        PRCuritiba,
+        SCFlorianopolis,
+        RSPortoAlegre,
+        DFBrasilia,
+        capital,
+      }}
     >
       {children}
     </StatesContext.Provider>

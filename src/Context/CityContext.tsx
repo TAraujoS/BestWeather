@@ -106,6 +106,11 @@ const CityProvider = ({ children }: ICityContext) => {
   };
 
   const onSubmitFunction = (data: IUserConfig) => {
+    !data.city && delete data.city;
+    !data.name && delete data.name;
+    !data.url && delete data.url;
+
+    console.log(data);
     fakeApi
       .patch(`/users/${userId}`, data, {
         headers: { Authorization: `Bearer ${tokenUser}` },
