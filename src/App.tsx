@@ -5,11 +5,15 @@ import RegisterProvider from "./Context/RegisterContext";
 import StatesProvider from "./Context/StatesContext";
 import GlobalStyle from "./styles/GlobalStyle";
 import MainRoutes from "./routes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css"
+
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
+      <ToastContainer/>
         <RegisterProvider>
           <CityProvider>
             <StatesProvider>

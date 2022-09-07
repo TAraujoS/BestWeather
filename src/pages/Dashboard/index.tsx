@@ -10,7 +10,6 @@ import Modal from "../../components/Modal";
 import SectionSearch from "../../components/SectionSearch";
 import { SiOpenstreetmap } from "react-icons/si";
 import { MainDash } from "./styles";
-
 import { CityContext } from "../../Context/CityContext";
 import Banners from "../../components/Banners";
 
@@ -24,36 +23,29 @@ const Dashboard = () => {
 
   return (
     <>
-      {tokenUser ? (
-        <>
-          <HeaderDashboard />
-          <MainDash>
-            {loading ? (
-              <div className="divLoading">
-                <h2>Estamos preparando suas informações</h2>
-              </div>
-            ) : (
-              <>
-                {modal && <Modal />}
-                <SectionSearch />
-                <InfoUser />
-                <section>
-                  <CityInf />
-                  <Banners />
-                </section>
-                <CityRegister />
-                <Forecast />
-                <button onClick={mapa}>
-                  <SiOpenstreetmap width={26} size={26} />
-                </button>
-                <FooterDashboard />
-              </>
-            )}
-          </MainDash>
-        </>
-      ) : (
-        navigate("/")
-      )}
+      {modal && <Modal />}
+      <HeaderDashboard />
+      <MainDash>
+        {loading ? (
+          <div className="divLoading">
+            <h2>Estamos preparando suas informações</h2>
+          </div>
+        ) : (
+          <>
+            <InfoUser />
+            <SectionSearch />
+
+            <section className="section-sub">
+              <CityInf />
+              <Banners />
+            </section>
+
+            <CityRegister />
+            <Forecast />
+            <FooterDashboard />
+          </>
+        )}
+      </MainDash>
     </>
   );
 };

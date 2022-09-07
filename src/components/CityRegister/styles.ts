@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 const Container = styled.section`
-  width: 375px;
+  width: 100%;
   margin: 20px 0;
   padding-left: 10px;
 
   h3 {
     color: #f5f5f5f5;
-    font-size: 16px;
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
   }
 
   div {
@@ -27,21 +28,29 @@ const Container = styled.section`
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 35px;
-      min-width: 30%;
+      height: 2.5rem;
       color: #ffffff;
       background-color: #0f4670;
       border: 1px solid #0f4670;
       border-radius: 5px;
       margin: 5px;
-      padding: 5px;
-
-      cursor: pointer;
+      padding: 0.5rem;
 
       :hover {
-        background-color: #09153e;
         border: 1px solid #ffffff;
       }
+    }
+  }
+
+  .lista-de-favoritos-and-button {
+    display: flex;
+    justify-content: space-around;
+
+    margin-bottom: 1rem;
+
+    button {
+      align-self: center;
+      align-items: center;
     }
   }
 
@@ -51,13 +60,8 @@ const Container = styled.section`
     background-color: #0f4670;
     border: 1px solid #0f4670;
     border-radius: 10px;
-    margin-top: 20px;
+    padding: 0 0.5rem;
     cursor: pointer;
-
-    :hover {
-      background-color: #09153e;
-      border: 1px solid #ffffff;
-    }
   }
 `;
 

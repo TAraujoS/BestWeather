@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+# App BestWeather
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+BestWeather é uma aplicação web desenvolvida por estudantes de Desenvolvimento Web FullStack da Instituição Kenzie Academy, para o projeto final de Front End.
 
-## Available Scripts
+Uma aplicação direcionada para profissionais ou esportistas que dependam diretamente da situação climática para que suas atividades sejam efetuadas de forma segura e sem imprevistos. Ou até mesmo para pessoas que não tenham o foco profissional e querem ter o conhecimento climático. 
 
-In the project directory, you can run:
+### `Cadastro`
+  A página de cadastro dispõem de campos como nome completo, e-mail, cadastro de senha, profissão e cidade. O e-mail e a senha serão utilizados para efetuar o login, já o nome completo cadastrado será utilizado para dar as saudações ao usuário. Com a profissão e a cidade, o aplicativo já iniciará com dicas para a profissão cadastrada referente ao clima atual.
 
-### `npm start`
+### `Login`
+  A página de login tem como função logar o usuário à dashboard através de seu e-mail e senha, previamente cadastrados.
+  
+### `Dashboard`
+  Na página dashboard é que as funcionalidades e experiências com o usuário estão reunidas, podemos listar suas funções como:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Campo de busca de cidades
+Basta digitar o nome de uma cidade que todas as informações de temperatura atual, velocidade e direção do vento, precipitação, nascer e pôr do sol, irão aparecer para o usuário.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Cadastro de cidades
+O usuário poderá cadastrar cidades em sua lista, para que em apenas um clique as informações metereológicas referente aquela cidade apareça, sem a necessidade de digitar.
 
-### `npm test`
+## Edição do perfil
+O usuário poderá editar informações como seu nome, sua cidade e seu avatar.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ ## `Informações metereológicas`
+BestWeather irá informar ao usuário informações como a previsão de temperaturas mínimas e máximas para os próxims 7 dias.
+Para o dia atual será disponibilizadas as informações de temperatura atual, temperaturas mínimas e máximas para o dia, direção e velocidade do vento, probabilidade de chuva e os horários do nascer e do pôr do sol.
 
-### `npm run build`
+## `Tecnologias`
+Desenvolvemos essa aplicação com TypeScript, React.js e suas bibliotecas: react-router-dom, react-icons, react-toastify, entre outras.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## `Inicialização`
+A aplicação BestWeather estará disponível pelo vercel, no link:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## `Colaboradores`
+Product Owner - Jana Machado
 
-### `npm run eject`
+Scrum Master - Leandro Junges
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Tech Lead - Thiago Araujo
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Quality Assurance: Larissa Yumi
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Quality Assurance: Daniel Carvalho

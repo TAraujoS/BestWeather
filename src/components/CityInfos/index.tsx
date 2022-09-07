@@ -22,23 +22,38 @@ const CityInf = () => {
               />
             </figure>
           </li>
-
+          <li className="centered-li">{`${cityApi.location.name}/ ${cityApi.location.region}`}</li>
           <li>
             <p>Temperatura</p>
-            <span>{`${cityApi.current.temp_c}°C`}</span>
+            <div className="city-info">
+              <span>{`${cityApi.current.temp_c}°C`}</span>
+              {/* <img className="gif-background" src="" alt="temperature_img" /> */}
+            </div>
           </li>
 
           <li>
-            <p>Chuva</p>
-            <span>{`${cityApi.current.precip_mm} mm`}</span>
+            <p>Chuva</p>{" "}
+            <div className="city-info">
+              <span>{`${cityApi.current.precip_mm} mm`}</span>
+              {/* <img className="gif-background" src="" alt="raining_img" /> */}
+            </div>
           </li>
 
           <li>
             <p>Vento</p>
-            <div className="wind-info">
+            <div className="city-info-div">
               <span>{`${cityApi.current.wind_kph} km/h`}</span>
               <span>{cityApi.current.wind_dir}</span>
             </div>
+          </li>
+
+          <li>
+            <p>Nascer do sol</p>
+            <span>{`${cityApi.forecast.forecastday[0].astro.sunrise}`}</span>
+          </li>
+          <li>
+            <p>Por do sol</p>
+            <span>{`${cityApi.forecast.forecastday[0].astro.sunset}`}</span>
           </li>
         </CityInfos>
       )}

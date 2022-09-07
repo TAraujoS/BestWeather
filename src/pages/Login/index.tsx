@@ -22,8 +22,7 @@ const Login = () => {
             <div className="cloud"></div>
             <HeaderLogo />
             <h1>
-              "Em qualquer lugar, em qualquer dia, buscando o seu melhor
-              clima!""
+              "Em qualquer lugar, em qualquer dia, buscando o seu melhor clima!"
             </h1>
           </div>
 
