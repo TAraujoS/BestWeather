@@ -4,7 +4,7 @@ export const SectionStyle = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0.5rem 0;  
+  margin: 0.5rem 0;
   width: 100%;
 
   h3 {
@@ -74,15 +74,14 @@ export const SectionStyle = styled.section`
     }
   }
 
-  @media screen and (min-width: 768px) {  
-    .search-bar {      
-        width: 40%;
-        max-width: 420px;
-      }
+  @media screen and (min-width: 768px) {
+    .search-bar {
+      width: 40%;
+      max-width: 420px;
     }
+  }
 
-    .user-intro {
-      font-size: 1.2rem;
-    }
+  .user-intro {
+    font-size: 1.2rem;
   }
 `;

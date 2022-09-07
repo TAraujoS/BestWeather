@@ -102,7 +102,6 @@ export const Container = styled.div`
 
   input {
     width: 100%;
-    margin: 0 0.3rem;
     box-shadow: rgba(43, 85, 190, 0.5);
     border: none;
     background-color: #f5f5f5;

@@ -88,33 +88,33 @@ const Banners = () => {
   };
 
   const getMessageTemp = (elem: IInfos) => {
-    const temp = cityApi.current.temp_c;
+    const temp = cityApi.current?.temp_c;
 
     return temp < 20
-      ? elem.text1
+      ? elem?.text1
       : temp < 30
-      ? elem.text2
+      ? elem?.text2
       : temp < 35
-      ? elem.text3
-      : elem.text4;
+      ? elem?.text3
+      : elem?.text4;
   };
 
   const getMessageTempOther = (elem: IOther) => {
-    const temp = cityApi.current.temp_c;
+    const temp = cityApi.current?.temp_c;
 
-    return temp < 20 ? elem.text1 : temp < 35 ? elem.text2 : elem.text3;
+    return temp < 20 ? elem?.text1 : temp < 35 ? elem?.text2 : elem?.text3;
   };
 
   const getMessagePrec = (elem: IInfos) => {
-    const prec = cityApi.current.precip_mm;
+    const prec = cityApi.current?.precip_mm;
 
     return prec === 0 ? elem?.text1 : elem?.text2;
   };
 
   const getMessageWind = (elem: IInfos) => {
-    const wind = cityApi.current.wind_kph;
+    const wind = cityApi.current?.wind_kph;
 
-    return wind < 9 ? elem.text1 : wind < 19 ? elem.text2 : elem.text3;
+    return wind < 9 ? elem?.text1 : wind < 19 ? elem?.text2 : elem?.text3;
   };
 
   const checkOccupation = () => {
@@ -142,8 +142,7 @@ const Banners = () => {
         <>
           <div className="divText" key={banner?.id}>
             <h3>{banner?.title}</h3>
-            <p>{user.name},</p>
-            {showTextOccupation}
+            <p>{`${user.name}, ${showTextOccupation}`}</p>
           </div>
           <img src={banner?.url} alt="Occupation" />
         </>
@@ -151,8 +150,7 @@ const Banners = () => {
         <>
           <div className="divText" key={other[0]?.id}>
             <h3>{other[0]?.title}</h3>
-            <p>{user.name},</p>
-            {showTextOther}
+            <p>{`${user.name}, ${showTextOther}`}</p>
           </div>
           <div className="image-div-banner">
             <img className="banner-img" src={other[0]?.url} alt="Occupation" />

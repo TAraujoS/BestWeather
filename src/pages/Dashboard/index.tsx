@@ -11,6 +11,7 @@ import { MainDash } from "./styles";
 import { CityContext } from "../../Context/CityContext";
 import Banners from "../../components/Banners";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/Loading";
 
 const Dashboard = () => {
   const { loading, modal, tokenUser } = useContext(CityContext);
@@ -24,9 +25,7 @@ const Dashboard = () => {
           <HeaderDashboard />
           <MainDash>
             {loading ? (
-              <div className="divLoading">
-                <h2>Estamos preparando suas informações</h2>
-              </div>
+              <Loading />
             ) : (
               <>
                 <InfoUser />
