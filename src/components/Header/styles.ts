@@ -15,8 +15,8 @@ export const HeaderPage = styled.div`
   }
 
   img {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     margin-right: 4px;
   }
   div > h1 {

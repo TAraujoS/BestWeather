@@ -92,7 +92,6 @@ export const Container = styled.div`
 
   .btnLogin {
     width: 100%;
-    opacity: 70%;
   }
 
   p {

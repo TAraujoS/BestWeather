@@ -57,8 +57,8 @@ const CityRegister = () => {
     <>
       <Container>
         <div className="lista-de-favoritos-and-button">
-          <h3> Lista de Favoritos: </h3>
-          <button onClick={() => setModal("add")}>Adicionar</button>
+          <h3> Lista de Favoritos </h3>
+          <button onClick={() => setModal("add")}>+</button>
         </div>
 
         <div>

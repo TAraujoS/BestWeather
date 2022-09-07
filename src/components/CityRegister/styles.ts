@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 const Container = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   margin: 20px 0;
   padding-left: 10px;
@@ -13,7 +16,6 @@ const Container = styled.section`
 
   div {
     display: flex;
-    align-items: flex-start;
   }
 
   ul {
@@ -35,7 +37,8 @@ const Container = styled.section`
       border-radius: 5px;
       margin: 5px;
       padding: 0.5rem;
-
+      margin: 0.3rem 0.3rem;
+      border: 2px solid #0f4670;
       :hover {
         transition: 1.2s;
       }
@@ -44,13 +47,19 @@ const Container = styled.section`
 
   .lista-de-favoritos-and-button {
     display: flex;
+    align-items: flex-end;
     justify-content: space-around;
-
     margin-bottom: 1rem;
+    gap: 2rem;
 
     button {
+      height: 2rem;
+      width: 2rem;
+      font-size: 1.3rem;
+      font-weight: 500;
       align-self: center;
       align-items: center;
+      border: 2px solid #0f4670;
     }
   }
 
@@ -64,10 +73,9 @@ const Container = styled.section`
     cursor: pointer;
 
     :hover {
-      transition: 1.2s;
+      transition: 0.8s;
       background-color: #0f3999;
-      transform: scale(1.1);
-      border: 1px solid white;
+      border: 2px solid yellow;
     }
   }
 `;
