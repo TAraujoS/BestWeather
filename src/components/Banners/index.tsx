@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { fakeApi } from "../../services";
 import { Banner } from "./styles";
-import { AuthContext } from "../../Context/LoginContext";
+import { AuthContext, IUser } from "../../Context/LoginContext";
 import { CityContext } from "../../Context/CityContext";
 
 interface IBannerResponse {
@@ -12,7 +12,6 @@ interface IBannerResponse {
   occupation: string;
   city: string;
   id: number;
-  infos: IInfos[];
 }
 
 interface IInfos {
@@ -23,7 +22,6 @@ interface IInfos {
   text4: string;
   text5: string;
   url: string;
-  userId: number;
   id: number;
 }
 
@@ -54,29 +52,33 @@ const Banners = () => {
   const { userId, user } = useContext(AuthContext);
   const { cityApi } = useContext(CityContext);
 
-  const [banner, setBanner] = useState<IInfos[]>([]);
+  const [banner, setBanner] = useState<IInfos>({} as IInfos);
   const [other, setOther] = useState<IOther[]>([]);
   const token = localStorage.getItem("@loginBWeather:token") || "";
 
   useEffect(() => {
-    if (banner) {
-      getBanner();
-    }
-    getOther();
+    const showBanner = async () => {
+      if (user && user.infoId <= 6) {
+        await getBanner(user);
+      } else {
+        await getOther();
+      }
+    };
+    showBanner();
   }, []);
 
-  const getBanner = () => {
-    fakeApi
-      .get<IBannerResponse>(`/users/${userId}?_embed=infos`, {
+  const getBanner = async (user: IUser) => {
+    await fakeApi
+      .get<IInfos>(`infos/${user.infoId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
 
-      .then((response) => setBanner(response.data.infos))
+      .then((response) => setBanner(response.data))
       .catch((err) => console.error("Esse é o problema", err));
   };
 
-  const getOther = () => {
-    fakeApi
+  const getOther = async () => {
+    await fakeApi
       .get<IOtherResponse>(`/users/${userId}?_embed=news`, {
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -88,78 +90,64 @@ const Banners = () => {
   const getMessageTemp = (elem: IInfos) => {
     const temp = cityApi.current.temp_c;
 
-    return temp < 20 ? (
-      <p>{elem.text1}</p>
-    ) : temp < 30 ? (
-      <p>{elem.text2}</p>
-    ) : temp < 35 ? (
-      <p>{elem.text3}</p>
-    ) : (
-      <p>{elem.text4}</p>
-    );
+    return temp < 20
+      ? elem.text1
+      : temp < 30
+      ? elem.text2
+      : temp < 35
+      ? elem.text3
+      : elem.text4;
   };
 
   const getMessageTempOther = (elem: IOther) => {
     const temp = cityApi.current.temp_c;
 
-    return temp < 20 ? (
-      <p>{elem.text1}</p>
-    ) : temp < 35 ? (
-      <p>{elem.text2}</p>
-    ) : (
-      <p>{elem.text3}</p>
-    );
+    return temp < 20 ? elem.text1 : temp < 35 ? elem.text2 : elem.text3;
   };
 
   const getMessagePrec = (elem: IInfos) => {
     const prec = cityApi.current.precip_mm;
 
-    return prec === 0 ? <p>{elem?.text1}</p> : <p>{elem?.text2}</p>;
+    return prec === 0 ? elem?.text1 : elem?.text2;
   };
 
   const getMessageWind = (elem: IInfos) => {
     const wind = cityApi.current.wind_kph;
 
-    return wind < 9 ? (
-      <p>{elem.text1}</p>
-    ) : wind < 19 ? (
-      <p>{elem.text2}</p>
-    ) : (
-      <p>{elem.text3}</p>
-    );
+    return wind < 9 ? elem.text1 : wind < 19 ? elem.text2 : elem.text3;
   };
 
   const checkOccupation = () => {
     if (user.occupation === "Paraquedismo" || user.occupation === "Asa Delta") {
-      return getMessagePrec(banner[0]);
+      return getMessagePrec(banner);
     } else if (user.occupation === "Surfe") {
-      return getMessageWind(banner[0]);
+      return getMessageWind(banner);
     } else if (
       user.occupation === "Agricultura" ||
       user.occupation === "Geologia" ||
       user.occupation === "Turismo"
     ) {
-      return getMessageTemp(banner[0]);
+      return getMessageTemp(banner);
     } else {
       return getMessageTempOther(other[0]);
     }
   };
 
-  const showTextOccupation = banner[0] && checkOccupation();
+  const showTextOccupation = banner && checkOccupation();
   const showTextOther = other[0] && checkOccupation();
 
   return (
     <Banner>
-      {banner.length > 0 ? (
+      {banner ? (
         <>
-          <div className="divText" key={banner[0]?.id}>
-            <h3>{banner[0]?.title}</h3>
+          <div className="divText" key={banner?.id}>
+            <h3>{banner?.title}</h3>
             <p>{user.name},</p>
             {showTextOccupation}
           </div>
-          <img src={banner[0]?.url} alt="Occupation" />
+          <img src={banner?.url} alt="Occupation" />
         </>
-      ) : (
+      ) : other[0] ? (
         <>
           <div className="divText" key={other[0]?.id}>
             <h3>{other[0]?.title}</h3>
@@ -170,6 +158,8 @@ const Banners = () => {
             <img className="banner-img" src={other[0]?.url} alt="Occupation" />
           </div>
         </>
+      ) : (
+        <span>Carregando...</span>
       )}
     </Banner>
   );

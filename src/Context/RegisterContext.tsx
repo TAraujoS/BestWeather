@@ -17,7 +17,8 @@ export interface ISubmitData {
   password: string;
   passwordConfirm: string;
   occupation: string;
-  city?: string;
+  city: string;
+  infoId?: number;
 }
 export const RegisterContext = createContext({} as IRegisterProviderProps);
 
@@ -25,9 +26,24 @@ const RegisterProvider = ({ children }: IRegisterProps) => {
   const navigate = useNavigate();
 
   const onSubmitFunction = async (data: ISubmitData) => {
-    data.city!.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const infoId =
+      data.occupation === "Asa Delta"
+        ? 1
+        : data.occupation === "Geologia"
+        ? 2
+        : data.occupation === "Agricultura"
+        ? 3
+        : data.occupation === "Paraquedismo"
+        ? 4
+        : data.occupation === "Surfe"
+        ? 5
+        : data.occupation === "Turismo"
+        ? 6
+        : 7;
+    const finalData = { ...data, infoId };
+    finalData.city.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     try {
-      await fakeApi.post("/signup", data);
+      await fakeApi.post("/signup", finalData);
       toast.success("Cadastro feito com sucesso, faça o login.", {
         autoClose: 2000,
       });
