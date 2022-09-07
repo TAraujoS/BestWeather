@@ -119,6 +119,9 @@ const CityProvider = ({ children }: ICityContext) => {
     fakeApi
       .post("/city", data)
       .then((response) => {
+        toast.success("Cidade adicionada aos seus favoritos", {
+          autoClose: 2000,
+        });
         setCity((oldCities) => [...oldCities, response.data]);
         setModal(null);
       })

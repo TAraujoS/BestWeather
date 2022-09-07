@@ -28,11 +28,11 @@ export const registerSchema = yup.object().shape({
   passwordConfirm: yup
     .string()
     .oneOf([yup.ref("password")], "A senha deve ser a mesma")
-    .required("Campo Obrigatório"),
+    .required("Campo obrigatório"),
 
-  occupation: yup.string().required("Campo Obrigatório"),
+  occupation: yup.string().required("Campo obrigatório"),
 
-  city: yup.string().required("Campo Obrigatório"),
+  city: yup.string().required("Campo obrigatório"),
 });
 
 export const configUserSchema = yup.object().shape(

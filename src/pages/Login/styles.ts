@@ -100,6 +100,11 @@ export const Container = styled.div`
     color: #08263d;
   }
 
+  span {
+    color: red;
+    font-size: 14px;
+  }
+
   input {
     width: 100%;
     box-shadow: rgba(43, 85, 190, 0.5);

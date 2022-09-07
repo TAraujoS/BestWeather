@@ -10,8 +10,9 @@ const GlobalStyle = createGlobalStyle`
         list-style: none;
     }
 
-    body {        
-        font-family: 'Ubunto', sans-serif;
+    body {
+        text-align: center;
+        font-family: 'Ubuntu', sans-serif;
     }
 
 `;

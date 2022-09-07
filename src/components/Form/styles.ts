@@ -31,10 +31,10 @@ const Form = styled.form`
     font-size: 30px;
     color: #08263d;
   }
-  p{
+  p {
     font-size: 14px;
 
-    a{
+    a {
       display: flex;
       flex-direction: column;
       text-decoration: none;
