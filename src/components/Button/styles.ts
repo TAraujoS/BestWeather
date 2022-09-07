@@ -11,4 +11,8 @@ export const Button = styled.button`
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+  :hover {
+    transition: 1.2s;
+    background-color: rgba(15, 70, 112);
+  }
 `;
