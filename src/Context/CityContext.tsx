@@ -79,10 +79,9 @@ export interface IUserConfig {
 
 const CityProvider = ({ children }: ICityContext) => {
   const [cityApi, setCityApi] = useState<ICityResponse>({} as ICityResponse);
-  const [loading, setLoading] = useState<boolean>(false);
   const [city, setCity] = useState<ICity[]>([]);
   const [modal, setModal] = useState<string | null>(null);
-  const { user, setUser } = useContext(AuthContext);
+  const { user, setUser, loading, setLoading } = useContext(AuthContext);
   const tokenExt = "27099ab8b4ea4bdf9c9110958220109";
   const tokenUser = localStorage.getItem("@loginBWeather:token");
   const userId = localStorage.getItem("@loginBWeather:user");
@@ -99,7 +98,7 @@ const CityProvider = ({ children }: ICityContext) => {
       } catch (error) {
         console.error("Esse erro vem da ext", error);
       } finally {
-        setLoading(false);
+        setTimeout(() => setLoading(false), 3000);
       }
     }
     apiWeather();
@@ -130,11 +129,7 @@ const CityProvider = ({ children }: ICityContext) => {
     !data.city && delete data.city;
     !data.name && delete data.name;
     !data.url && delete data.url;
-<<<<<<< HEAD
 
-    console.log(data);
-=======
->>>>>>> f904d8bd412aaf12316a1db48155c87a2b07d466
     fakeApi
       .patch(`/users/${userId}`, data, {
         headers: { Authorization: `Bearer ${tokenUser}` },

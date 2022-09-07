@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 
 export interface AuthContextData {
   user: IUser;
+  loading: boolean;
+  setLoading: (value: React.SetStateAction<boolean>) => void;
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
   setUserLogin: React.Dispatch<React.SetStateAction<IUserResponse>>;
   userLogin: IUserResponse;
@@ -28,6 +30,7 @@ export interface IUser {
   occupation: string;
   city: string;
   url: string;
+  infoId: number;
 }
 
 export interface IUserResponse {
@@ -50,6 +53,8 @@ const AuthProvider = ({ children }: IAuthContext) => {
     {} as IUserResponse
   );
   const [user, setUser] = useState<IUser>({} as IUser);
+  const [loading, setLoading] = useState<boolean>(false);
+
   const navigate = useNavigate();
 
   const signIn = (data: ILoginProps) => {
@@ -62,6 +67,7 @@ const AuthProvider = ({ children }: IAuthContext) => {
         localStorage.setItem("@loginBWeather:user", user.id);
         toast.success("Login feito com sucesso!", { autoClose: 2000 });
         setUserLogin(user);
+        setLoading(true);
         navigate("/dashboard", { replace: true });
       })
       .catch((error) => {
@@ -80,6 +86,7 @@ const AuthProvider = ({ children }: IAuthContext) => {
           fakeApi.defaults.headers.common.Authorization = `Bearer ${tokenUser}`;
           const { data } = await fakeApi.get(`/users/${userId}`);
           setUser(data);
+          setLoading(false);
         } catch (error) {
           console.error(error);
         }
@@ -96,7 +103,17 @@ const AuthProvider = ({ children }: IAuthContext) => {
 
   return (
     <AuthContext.Provider
-      value={{ userLogin, setUserLogin, signIn, user, setUser, logout, userId }}
+      value={{
+        userLogin,
+        setUserLogin,
+        signIn,
+        user,
+        setUser,
+        logout,
+        userId,
+        loading,
+        setLoading,
+      }}
     >
       {children}
     </AuthContext.Provider>
