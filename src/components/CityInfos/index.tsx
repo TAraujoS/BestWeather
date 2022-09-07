@@ -22,7 +22,7 @@ const CityInf = () => {
             <p>Temperatura</p>
             <div className="city-info">
               <span>{`${cityApi.current.temp_c}°C`}</span>
-              <img className="gif-background" src="" alt="temperature_img" />
+              {/* <img className="gif-background" src="" alt="temperature_img" /> */}
             </div>
           </li>
 
@@ -30,7 +30,7 @@ const CityInf = () => {
             <p>Chuva</p>{" "}
             <div className="city-info">
               <span>{`${cityApi.current.precip_mm} mm`}</span>
-              <img className="gif-background" src="" alt="raining_img" />
+              {/* <img className="gif-background" src="" alt="raining_img" /> */}
             </div>
           </li>
 
