@@ -19,6 +19,7 @@ export const ListInfosUser = styled.section`
     margin: 2%;
     img {
       width: 30px;
+      height: 30px;
       border-radius: 100%;
       border: 1px solid #ffffff;
       background-color: #ffffff;
@@ -29,6 +30,10 @@ export const ListInfosUser = styled.section`
     background-color: transparent;
     border: none;
     cursor: pointer;
+    :hover {
+      transition: 1.2s;
+      transform: scale(1.2);
+    }
   }
 
   svg {
@@ -55,7 +60,8 @@ export const ListInfosUser = styled.section`
     div {
       margin: 2%;
       img {
-        width: 45px;
+        width: 70px;
+        height: 70px;
         border-radius: 100%;
       }
     }

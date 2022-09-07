@@ -22,6 +22,7 @@ interface IInfos {
   text4: string;
   text5: string;
   url: string;
+  userId: number;
   id: number;
 }
 

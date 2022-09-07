@@ -4,7 +4,7 @@ export const SectionStyle = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0.5rem 0;  
+  margin: 0.5rem 0;
   width: 100%;
 
   h3 {
@@ -52,6 +52,11 @@ export const SectionStyle = styled.section`
     background-color: #3a6688;
     color: white;
     border: none;
+    :hover {
+      transition: 1.2s;
+      transform: scale(1.1);
+      background-color: darkblue;
+    }
     svg {
       width: 1rem;
       height: 1rem;
@@ -74,15 +79,14 @@ export const SectionStyle = styled.section`
     }
   }
 
-  @media screen and (min-width: 768px) {  
-    .search-bar {      
-        width: 40%;
-        max-width: 420px;
-      }
+  @media screen and (min-width: 768px) {
+    .search-bar {
+      width: 40%;
+      max-width: 420px;
     }
+  }
 
-    .user-intro {
-      font-size: 1.2rem;
-    }
+  .user-intro {
+    font-size: 1.2rem;
   }
 `;

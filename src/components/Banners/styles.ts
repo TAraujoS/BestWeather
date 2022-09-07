@@ -17,6 +17,9 @@ export const Banner = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    p {
+      max-width: 90%;
+    }
   }
 
   h3 {
@@ -46,9 +49,26 @@ export const Banner = styled.div`
     margin: 0;
     display: flex;
     flex-direction: row;
+    max-width: 100%;
+    min-height: 19em;
 
     img {
       max-width: 50%;
     }
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    max-width: 115%;
+    min-height: 18em;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    max-width: 57%;
   }
 `;
