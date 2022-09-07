@@ -41,6 +41,8 @@ const RegisterProvider = ({ children }: IRegisterProps) => {
         ? 6
         : 7;
     const finalData = { ...data, infoId };
+    console.log(finalData);
+
     finalData.city.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     try {
       await fakeApi.post("/signup", finalData);

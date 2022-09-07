@@ -98,7 +98,7 @@ const CityProvider = ({ children }: ICityContext) => {
       } catch (error) {
         console.error("Esse erro vem da ext", error);
       } finally {
-        setTimeout(() => setLoading(false), 3000);
+        setTimeout(() => setLoading(false), 4225);
       }
     }
     apiWeather();
