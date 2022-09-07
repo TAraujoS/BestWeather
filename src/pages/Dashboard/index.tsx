@@ -7,39 +7,46 @@ import HeaderDashboard from "../../components/HeaderDashboard";
 import InfoUser from "../../components/InfosUser";
 import Modal from "../../components/Modal";
 import SectionSearch from "../../components/SectionSearch";
-
 import { MainDash } from "./styles";
 import { CityContext } from "../../Context/CityContext";
 import Banners from "../../components/Banners";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const { loading, modal } = useContext(CityContext);
+  const { loading, modal, tokenUser } = useContext(CityContext);
+  const navigate = useNavigate();
 
   return (
     <>
-      {modal && <Modal />}
-      <HeaderDashboard />
-      <MainDash>
-        {loading ? (
-          <div className="divLoading">
-            <h2>Estamos preparando suas informações</h2>
-          </div>
-        ) : (
-          <>
-            <InfoUser />
-            <SectionSearch />
+      {tokenUser ? (
+        <>
+          {modal && <Modal />}
+          <HeaderDashboard />
+          <MainDash>
+            {loading ? (
+              <div className="divLoading">
+                <h2>Estamos preparando suas informações</h2>
+              </div>
+            ) : (
+              <>
+                <InfoUser />
+                <SectionSearch />
 
-            <section className="section-sub">
-              <CityInf />
-              <Banners />
-            </section>
+                <section className="section-sub">
+                  <CityInf />
+                  <Banners />
+                </section>
 
-            <CityRegister />
-            <Forecast />
-            <FooterDashboard />
-          </>
-        )}
-      </MainDash>
+                <CityRegister />
+                <Forecast />
+                <FooterDashboard />
+              </>
+            )}
+          </MainDash>{" "}
+        </>
+      ) : (
+        navigate("/")
+      )}
     </>
   );
 };

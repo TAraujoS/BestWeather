@@ -1,8 +1,7 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fakeApi } from "../services";
-import { toast } from 'react-toastify'
-
+import { toast } from "react-toastify";
 
 export interface AuthContextData {
   user: IUser;
@@ -63,13 +62,13 @@ const AuthProvider = ({ children }: IAuthContext) => {
         fakeApi.defaults.headers.common.Authorization = `Bearer ${tokenUser}`;
         localStorage.setItem("@loginBWeather:token", accessToken);
         localStorage.setItem("@loginBWeather:user", user.id);
-        toast.success('Login feito com sucesso!', { autoClose: 2000 })
+        toast.success("Login feito com sucesso!", { autoClose: 2000 });
         setUserLogin(user);
         navigate("/dashboard", { replace: true });
       })
       .catch((error) => {
-        toast.error('Login e/ou senha inválidos', {autoClose: 2000})
-        console.error('Esse é o erro', error)
+        toast.error("Login e/ou senha inválidos", { autoClose: 2000 });
+        console.error("Esse é o erro", error);
       });
   };
 
@@ -89,8 +88,8 @@ const AuthProvider = ({ children }: IAuthContext) => {
   }, [tokenUser, userId]);
 
   const logout = () => {
-    localStorage.clear()
-    toast.warning('Você está sendo deslogado', {autoClose: 2000})
+    localStorage.clear();
+    toast.warning("Você está sendo deslogado", { autoClose: 2000 });
     navigate("/");
   };
 

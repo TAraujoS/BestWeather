@@ -30,7 +30,7 @@ export const registerSchema = yup.object().shape({
     .oneOf([yup.ref("password")], "A senha deve ser a mesma")
     .required("Campo Obrigatório"),
 
-  occupation: yup.string().notRequired(),
+  occupation: yup.string().required("Campo Obrigatório"),
 
   city: yup.string().required("Campo Obrigatório"),
 });
