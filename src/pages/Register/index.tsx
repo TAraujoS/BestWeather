@@ -12,6 +12,9 @@ import {
   ISubmitData,
   RegisterContext,
 } from "../../Context/RegisterContext";
+import Input from "../../components/Input";
+import { Error } from "../../components/Input/styles";
+import { BiErrorCircle } from "react-icons/bi";
 
 const Register = () => {
   const {
@@ -38,77 +41,71 @@ const Register = () => {
         <Form onSubmit={handleSubmit(onSubmitFunction)}>
           <h3>Cadastro</h3>
 
-          <label htmlFor="name">
-            <input
-              type="text"
-              id="name"
-              className="input-text"
-              {...register("name")}
-              placeholder="Nome completo"
-            />
-            <span>{errors.name?.message}</span>
-          </label>
+          <Input
+            type="text"
+            id="name"
+            placeholder="Nome completo"
+            {...register("name")}
+            error={errors?.name}
+          />
 
-          <label htmlFor="email">
-            <input
-              type="text"
-              id="email"
-              className="input-text"
-              {...register("email")}
-              placeholder="E-mail"
-            />
-            <p>{errors.email?.message}</p>
-          </label>
+          <Input
+            type="text"
+            id="email"
+            {...register("email")}
+            placeholder="E-mail"
+            error={errors?.email}
+          />
 
-          <label htmlFor="password">
-            <input
-              type="password"
-              id="password"
-              className="input-text"
-              {...register("password")}
-              placeholder="Senha"
-            />
-            <p>{errors.password?.message}</p>
-          </label>
+          <Input
+            type="password"
+            id="password"
+            {...register("password")}
+            placeholder="Senha"
+            error={errors?.password}
+          />
 
-          <label htmlFor="confirmPassword">
-            <input
-              type="password"
-              id="confirmPassword"
-              className="input-text"
-              {...register("passwordConfirm")}
-              placeholder="Confirmação de senha"
-            />
-            <p>{errors.passwordConfirm?.message}</p>
-          </label>
+          <Input
+            type="password"
+            id="confirmPassword"
+            {...register("passwordConfirm")}
+            placeholder="Confirmação de senha"
+            error={errors?.passwordConfirm}
+          />
 
           <label htmlFor="occupation">
-            <select
-              id="occupation"
-              {...register("occupation")}
-              className="select-text"
-            >
-              <option value="Agricultura">Agricultura</option>
-              <option value="Asa Delta">Asa Delta</option>
-              <option value="Geologia">Geologia</option>
-              <option value="Paraquedismo">Paraquedismo</option>
-              <option value="Surfe">Surfe</option>
-              <option value="Turismo">Turismo</option>
-              <option value="Outros">Outros</option>
-            </select>
-            <p>{errors.occupation?.message}</p>
+            <div className="error-select">
+              <select
+                id="occupation"
+                {...register("occupation")}
+                className="select-text"
+              >
+                <option value="">Escolha uma profissão</option>
+                <option value="Agricultura">Agricultura</option>
+                <option value="Asa Delta">Asa Delta</option>
+                <option value="Geologia">Geologia</option>
+                <option value="Paraquedismo">Paraquedismo</option>
+                <option value="Surfe">Surfe</option>
+                <option value="Turismo">Turismo</option>
+                <option value="Outros">Outros</option>
+              </select>
+              {errors?.occupation && (
+                <Error>
+                  <BiErrorCircle />
+                  <span>{errors?.occupation.message}</span>
+                </Error>
+              )}
+            </div>
           </label>
 
-          <label htmlFor="city">
-            <input
-              type="text"
-              id="city"
-              className="input-text"
-              {...register("city")}
-              placeholder="Cidade"
-            />
-            <p>{errors.city?.message}</p>
-          </label>
+          <Input
+            type="text"
+            id="city"
+            //className="input-text"
+            {...register("city")}
+            placeholder="Cidade"
+            error={errors?.city}
+          />
 
           <Button type="submit">Cadastrar</Button>
         </Form>

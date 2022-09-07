@@ -7,12 +7,21 @@ import Form from "../../components/Form/styles";
 import { Container } from "./styles";
 import { Button } from "../../components/Button/styles";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 
 const Login = () => {
-  const { register, handleSubmit } = useForm<ILoginProps>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILoginProps>({
     resolver: yupResolver(loginSchema),
   });
   const { signIn } = useContext(AuthContext);
+
+  const onError = () => toast.error("Campo obrigatório!", { autoClose: 2000 });
+
+  const onSubmit = handleSubmit(signIn, onError);
 
   return (
     <Container>
@@ -29,7 +38,7 @@ const Login = () => {
           <div className="modalLogin">
             <h3>Login</h3>
 
-            <Form onSubmit={handleSubmit(signIn)}>
+            <Form onSubmit={onSubmit}>
               <label htmlFor="email">
                 <input
                   type="email"
@@ -38,6 +47,7 @@ const Login = () => {
                   {...register("email")}
                 />
               </label>
+              <span>{errors?.email?.message}</span>
 
               <label htmlFor="password">
                 <input
@@ -47,6 +57,7 @@ const Login = () => {
                   {...register("password")}
                 />
               </label>
+              <span>{errors?.password?.message}</span>
 
               <Button type="submit" className="btnLogin">
                 Entrar

@@ -96,6 +96,17 @@ export const Container = styled.div`
       color: #ffffff;
     }
   }
+
+  .error-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      color: red;
+    }
+  }
+
   @media screen and (min-width: 768px) {
     .headerRegister {
       width: 600px;

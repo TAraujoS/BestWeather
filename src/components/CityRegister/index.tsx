@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { CityContext } from "../../Context/CityContext";
 import { AuthContext } from "../../Context/LoginContext";
 import { fakeApi, weatherApi } from "../../services";
@@ -42,6 +43,7 @@ const CityRegister = () => {
     };
     filteredCity();
   }, [cityList]);
+
   const cityInfoFavorite = (name: string) => {
     weatherApi
       .get(
