@@ -18,7 +18,7 @@ export interface CityContextData {
   tokenExt: string;
   modal: string | null;
   city: ICity[];
-
+  tokenUser: string | null;
   searchFromInput: (data: IData) => Promise<void>;
   setCityApi: React.Dispatch<React.SetStateAction<ICityResponse>>;
   setModal: Dispatch<SetStateAction<string | null>>;
@@ -127,6 +127,9 @@ const CityProvider = ({ children }: ICityContext) => {
   };
 
   const onSubmitFunction = (data: IUserConfig) => {
+    !data.city && delete data.city;
+    !data.name && delete data.name;
+    !data.url && delete data.url;
     fakeApi
       .patch(`/users/${userId}`, data, {
         headers: { Authorization: `Bearer ${tokenUser}` },
@@ -152,7 +155,7 @@ const CityProvider = ({ children }: ICityContext) => {
         setCity,
         cityApi,
         loading,
-
+        tokenUser,
         modal,
         searchFromInput,
         setCityApi,

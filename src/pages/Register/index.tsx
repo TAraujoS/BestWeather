@@ -83,14 +83,18 @@ const Register = () => {
           </label>
 
           <label htmlFor="occupation">
-            <select name="" id="" className="select-text">
-              <option value="">Agricultura</option>
-              <option value="">Asa Delta</option>
-              <option value="">Geologia</option>
-              <option value="">Paraquedismo</option>
-              <option value="">Surfe</option>
-              <option value="">Turismo</option>
-              <option value="">Outros</option>
+            <select
+              id="occupation"
+              {...register("occupation")}
+              className="select-text"
+            >
+              <option value="Agricultura">Agricultura</option>
+              <option value="Asa Delta">Asa Delta</option>
+              <option value="Geologia">Geologia</option>
+              <option value="Paraquedismo">Paraquedismo</option>
+              <option value="Surfe">Surfe</option>
+              <option value="Turismo">Turismo</option>
+              <option value="Outros">Outros</option>
             </select>
             <p>{errors.occupation?.message}</p>
           </label>
