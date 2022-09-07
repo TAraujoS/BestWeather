@@ -24,20 +24,20 @@ const Container = styled.section`
     padding: 0px;
     width: 75%;
 
-    li {
+    button {
       display: flex;
       align-items: center;
       justify-content: center;
       height: 2.5rem;
       color: #ffffff;
       background-color: #0f4670;
-      border: 1px solid #0f4670;
+      border: none;
       border-radius: 5px;
       margin: 5px;
       padding: 0.5rem;
 
       :hover {
-        border: 1px solid #ffffff;
+        transition: 1.2s;
       }
     }
   }
@@ -58,10 +58,17 @@ const Container = styled.section`
     height: 35px;
     color: #ffffff;
     background-color: #0f4670;
-    border: 1px solid #0f4670;
-    border-radius: 10px;
+    border: none;
+    border-radius: 5px;
     padding: 0 0.5rem;
     cursor: pointer;
+
+    :hover {
+      transition: 1.2s;
+      background-color: #0f3999;
+      transform: scale(1.1);
+      border: 1px solid white;
+    }
   }
 `;
 

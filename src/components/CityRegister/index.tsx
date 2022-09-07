@@ -67,11 +67,12 @@ const CityRegister = () => {
               <p>Cadastre novas cidades</p>
             ) : (
               city?.map((element) => (
-                <li className="teste1" key={element.id}>
-                  <button onClick={() => cityInfoFavorite(element.nameCity)}>
-                    {element.nameCity}
-                  </button>
-                </li>
+                <button
+                  key={element.id}
+                  onClick={() => cityInfoFavorite(element.nameCity)}
+                >
+                  {element.nameCity}
+                </button>
               ))
             )}
           </ul>

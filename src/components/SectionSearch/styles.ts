@@ -52,6 +52,11 @@ export const SectionStyle = styled.section`
     background-color: #3a6688;
     color: white;
     border: none;
+    :hover {
+      transition: 1.2s;
+      transform: scale(1.1);
+      background-color: darkblue;
+    }
     svg {
       width: 1rem;
       height: 1rem;
