@@ -9,17 +9,22 @@ import {
 } from "react";
 import { AuthContext } from "./LoginContext";
 import { fakeApi, weatherApi } from "../services";
+import { ICity } from "../components/AddModal";
 import { toast } from "react-toastify";
 
 export interface CityContextData {
-  searchFromInput: (data: IData) => Promise<void>;
-  setCityApi: React.Dispatch<React.SetStateAction<ICityResponse>>;
   cityApi: ICityResponse;
   loading: boolean;
   tokenExt: string;
   modal: string | null;
+  city: ICity[];
+
+  searchFromInput: (data: IData) => Promise<void>;
+  setCityApi: React.Dispatch<React.SetStateAction<ICityResponse>>;
   setModal: Dispatch<SetStateAction<string | null>>;
+  setCity: Dispatch<SetStateAction<ICity[]>>;
   onSubmitFunction: (data: IUserConfig) => void;
+  onSubmitCity: (data: ICity) => void;
 }
 
 export interface IData {
@@ -75,6 +80,7 @@ export interface IUserConfig {
 const CityProvider = ({ children }: ICityContext) => {
   const [cityApi, setCityApi] = useState<ICityResponse>({} as ICityResponse);
   const [loading, setLoading] = useState<boolean>(false);
+  const [city, setCity] = useState<ICity[]>([]);
   const [modal, setModal] = useState<string | null>(null);
   const { user, setUser } = useContext(AuthContext);
   const tokenExt = "27099ab8b4ea4bdf9c9110958220109";
@@ -109,6 +115,16 @@ const CityProvider = ({ children }: ICityContext) => {
       .then((res) => setCityApi(res.data))
       .catch((err) => console.error("Esse é o problema", err));
   };
+  const onSubmitCity = (data: ICity) => {
+    data.userId = userId;
+    fakeApi
+      .post("/city", data)
+      .then((response) => {
+        setCity((oldCities) => [...oldCities, response.data]);
+        setModal(null);
+      })
+      .catch((error) => console.error("Esse é o problema!", error));
+  };
 
   const onSubmitFunction = (data: IUserConfig) => {
     fakeApi
@@ -131,14 +147,18 @@ const CityProvider = ({ children }: ICityContext) => {
   return (
     <CityContext.Provider
       value={{
-        cityApi,
-        setCityApi,
-        loading,
         tokenExt,
-        searchFromInput,
+        city,
+        setCity,
+        cityApi,
+        loading,
+
         modal,
+        searchFromInput,
+        setCityApi,
         setModal,
         onSubmitFunction,
+        onSubmitCity,
       }}
     >
       {children}

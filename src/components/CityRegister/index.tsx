@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { CityContext } from "../../Context/CityContext";
 import { AuthContext } from "../../Context/LoginContext";
-import { fakeApi } from "../../services";
+import { fakeApi, weatherApi } from "../../services";
 import Container from "./styles";
 
 interface ICityGetter {
@@ -12,28 +12,47 @@ interface ICityGetter {
 }
 
 const CityRegister = () => {
-  const { setModal } = useContext(CityContext);
+  const { setModal, city, setCity, setCityApi, tokenExt } =
+    useContext(CityContext);
   const { userId } = useContext(AuthContext);
   const [cityList, setCityList] = useState<ICityGetter[]>([]);
+  const tokenUser = localStorage.getItem("@loginBWeather:token");
 
   useEffect(() => {
     async function getCities() {
       fakeApi
-        .get("/city")
+        .get("/city", {
+          headers: { Authorization: `Bearer ${tokenUser}` },
+        })
         .then((res) => {
           setCityList(res.data);
-          console.log(res);
+          setModal(null);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.error(err));
     }
     getCities();
-  }, []);
+  }, [tokenUser]);
 
-  const filteredCity = cityList.filter(
-    (element) => Number(element.userId) === Number(userId)
-  );
-
-  console.log(filteredCity);
+  useEffect(() => {
+    const filteredCity = () => {
+      const itensfiltered = cityList.filter(
+        (el) => Number(el.userId) === Number(userId)
+      );
+      setCity(itensfiltered);
+      return itensfiltered;
+    };
+    filteredCity();
+  }, [cityList]);
+  const cityInfoFavorite = (name: string) => {
+    weatherApi
+      .get(
+        `/forecast.json?key=${tokenExt}&q=${name
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")} Brazil&days=8`
+      )
+      .then((res) => setCityApi(res.data))
+      .catch((err) => console.error("Esse é o problema", err));
+  };
 
   return (
     <>
@@ -45,9 +64,11 @@ const CityRegister = () => {
 
         <div>
           <ul>
-            {filteredCity.map((element) => (
+            {city.map((element) => (
               <li key={element.id}>
-                <p>{element.nameCity}</p>
+                <button onClick={() => cityInfoFavorite(element.nameCity)}>
+                  {element.nameCity}
+                </button>
               </li>
             ))}
           </ul>
