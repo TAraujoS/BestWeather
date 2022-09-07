@@ -41,7 +41,8 @@ const RegisterProvider = ({ children }: IRegisterProps) => {
         ? 6
         : 7;
     const finalData = { ...data, infoId };
-    finalData.city.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+    finalData.city.normalize("NFD").replace(/[\u0080-\u00FF]+/g, "");
     try {
       await fakeApi.post("/signup", finalData);
       toast.success("Cadastro feito com sucesso, faça o login.", {

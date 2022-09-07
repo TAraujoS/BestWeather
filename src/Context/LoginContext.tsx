@@ -66,8 +66,9 @@ const AuthProvider = ({ children }: IAuthContext) => {
         localStorage.setItem("@loginBWeather:token", accessToken);
         localStorage.setItem("@loginBWeather:user", user.id);
         toast.success("Login feito com sucesso!", { autoClose: 2000 });
-        setUserLogin(user);
         setLoading(true);
+        setUserLogin(user);
+
         navigate("/dashboard", { replace: true });
       })
       .catch((error) => {

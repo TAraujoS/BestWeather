@@ -91,6 +91,7 @@ const CityProvider = ({ children }: ICityContext) => {
 
     async function apiWeather() {
       try {
+        // user.city.normalize("NFD").replace(/[\u0080-\u00FF]/gi, "");
         const { data } = await weatherApi.get(
           `/forecast.json?key=${tokenExt}&q=${user.city} Brazil&days=8`
         );

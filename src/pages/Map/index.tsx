@@ -38,7 +38,6 @@ const MapBrazil = () => {
     SPSaoPaulo,
     TOPalmas,
   } = useContext(StatesContext);
-  console.log(capital);
   return (
     <>
       <HeaderDashboard />
