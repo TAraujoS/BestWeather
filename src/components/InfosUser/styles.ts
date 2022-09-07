@@ -30,6 +30,10 @@ export const ListInfosUser = styled.section`
     background-color: transparent;
     border: none;
     cursor: pointer;
+    :hover {
+      transition: 1.2s;
+      transform: scale(1.2);
+    }
   }
 
   svg {
