@@ -1,3 +1,10 @@
+import {
+  WiRain,
+  WiStrongWind,
+  WiSunrise,
+  WiSunset,
+  WiThermometer,
+} from "react-icons/wi";
 import { useContext } from "react";
 import { CityContext } from "../../Context/CityContext";
 import { CityInfos } from "./styles";
@@ -18,24 +25,34 @@ const CityInf = () => {
             </figure>
           </li>
           <li className="centered-li">{`${cityApi.location.name}/ ${cityApi.location.region}`}</li>
+
           <li>
-            <p>Temperatura</p>
-            <div className="city-info">
-              <span>{`${cityApi.current.temp_c}°C`}</span>
-              {/* <img className="gif-background" src="" alt="temperature_img" /> */}
+            <div className="city-info-div">
+              <span className="icon-weather">
+                <WiThermometer />
+              </span>
+              <p>Temperatura</p>
             </div>
+            <span>{`${cityApi.current.temp_c}°C`}</span>
           </li>
 
           <li>
-            <p>Chuva</p>{" "}
-            <div className="city-info">
-              <span>{`${cityApi.current.precip_mm} mm`}</span>
-              {/* <img className="gif-background" src="" alt="raining_img" /> */}
+            <div className="city-info-div">
+              <span className="icon-weather">
+                <WiRain />{" "}
+              </span>
+              <p>Chuva</p>{" "}
             </div>
+            <span>{`${cityApi.current.precip_mm} mm`}</span>
           </li>
 
           <li>
-            <p>Vento</p>
+            <div className="city-info-div">
+              <span className="icon-weather">
+                <WiStrongWind />
+              </span>
+              <p>Vento</p>
+            </div>
             <div className="city-info-div">
               <span>{`${cityApi.current.wind_kph} km/h`}</span>
               <span>{cityApi.current.wind_dir}</span>
@@ -43,11 +60,22 @@ const CityInf = () => {
           </li>
 
           <li>
-            <p>Nascer do sol</p>
+            <div className="city-info-div">
+              <span className="icon-weather">
+                <WiSunrise />
+              </span>
+              <p>Nascer do sol</p>
+            </div>
             <span>{`${cityApi.forecast.forecastday[0].astro.sunrise}`}</span>
           </li>
+
           <li>
-            <p>Por do sol</p>
+            <div className="city-info-div">
+              <span className="icon-weather">
+                <WiSunset />
+              </span>
+              <p>Pôr do sol</p>
+            </div>
             <span>{`${cityApi.forecast.forecastday[0].astro.sunset}`}</span>
           </li>
         </CityInfos>

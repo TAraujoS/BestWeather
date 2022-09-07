@@ -5,7 +5,7 @@ export const CityInfos = styled.ul`
   flex-direction: column;
   background-color: rgba(15, 70, 112, 0.2);
   border-radius: 8px;
-  padding: 1rem 2.3rem;
+  padding: 1rem 0.8rem;
   margin: 0;
   width: 95%;
 
@@ -39,7 +39,12 @@ export const CityInfos = styled.ul`
 
   .city-info-div {
     display: flex;
-    gap: 0.5rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3rem;
+    .icon-weather {
+      font-size: 1.8rem;
+    }
   }
 
   .container-icon {
@@ -60,5 +65,19 @@ export const CityInfos = styled.ul`
     min-width: 280px;
     max-width: 340px;
     width: 100%;
+    min-height: 380px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    min-width: 280px;
+    max-width: 340px;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1440px) {
+    min-width: 280px;
+    max-width: 340px;
+    width: 100%;
+    min-height: 400px;
   }
 `;
