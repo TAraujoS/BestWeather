@@ -25,12 +25,17 @@ const RegisterProvider = ({ children }: IRegisterProps) => {
   const navigate = useNavigate();
 
   const onSubmitFunction = async (data: ISubmitData) => {
+    data.city!.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     try {
       await fakeApi.post("/signup", data);
-      toast.success('Cadastro feito com sucesso, faça o login.', {autoClose: 2000})
+      toast.success("Cadastro feito com sucesso, faça o login.", {
+        autoClose: 2000,
+      });
       navigate("/");
     } catch (error) {
-      toast.error('Verifique se todos os campos estão preenchidos.', {autoClose: 2000})
+      toast.error("Verifique se todos os campos estão preenchidos.", {
+        autoClose: 2000,
+      });
       console.error("Deu esse problema", error);
     }
   };

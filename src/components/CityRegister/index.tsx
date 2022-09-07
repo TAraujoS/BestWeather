@@ -12,11 +12,10 @@ interface ICityGetter {
 }
 
 const CityRegister = () => {
-  const { setModal, city, setCity, setCityApi, tokenExt } =
+  const { setModal, city, setCity, setCityApi, tokenExt, tokenUser } =
     useContext(CityContext);
   const { userId } = useContext(AuthContext);
   const [cityList, setCityList] = useState<ICityGetter[]>([]);
-  const tokenUser = localStorage.getItem("@loginBWeather:token");
 
   useEffect(() => {
     async function getCities() {

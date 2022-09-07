@@ -20,5 +20,10 @@ select {
 }
 
 * {
+  
   box-sizing: border-box;
+}
+
+body {        
+  font-family: 'Ubunto', sans-serif;
 }
