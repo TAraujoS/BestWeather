@@ -36,10 +36,7 @@ const Container = styled.section`
       margin: 5px;
       padding: 0.5rem;
 
-      cursor: pointer;
-
       :hover {
-        background-color: #09153e;
         border: 1px solid #ffffff;
       }
     }
@@ -65,11 +62,6 @@ const Container = styled.section`
     border-radius: 10px;
     padding: 0 0.5rem;
     cursor: pointer;
-
-    :hover {
-      background-color: #09153e;
-      border: 1px solid #ffffff;
-    }
   }
 `;
 
