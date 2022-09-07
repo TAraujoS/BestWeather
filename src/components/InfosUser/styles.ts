@@ -20,6 +20,8 @@ export const ListInfosUser = styled.section`
     img {
       width: 30px;
       border-radius: 100%;
+      border: 1px solid #ffffff;
+      background-color: #ffffff;
     }
   }
 

@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-    *{          
+    *{  
         margin: 0;
         padding: 0;
         border: none;
@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {        
-        font-family: 'Inter', sans-serif;
+        font-family: 'Ubunto', sans-serif;
     }
 
 `;

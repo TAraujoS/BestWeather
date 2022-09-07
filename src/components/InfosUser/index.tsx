@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Context/LoginContext";
 import { ListInfosUser } from "./styles";
 import { CityContext } from "../../Context/CityContext";
+import newUser from "../../assets/img/user.png";
 
 const InfoUser = () => {
   const { user } = useContext(AuthContext);
@@ -10,11 +11,19 @@ const InfoUser = () => {
   return (
     <>
       <ListInfosUser>
-        <div>
-          <figure>
-            <img src={user.url} alt="homem" />
-          </figure>
-        </div>
+        {user.url ? (
+          <div>
+            <figure>
+              <img src={user.url} alt="avatar usuário" />
+            </figure>
+          </div>
+        ) : (
+          <div>
+            <figure>
+              <img src={newUser} alt="avatar usuário" />
+            </figure>
+          </div>
+        )}
         <div className="city-list">
           <p>{user.city} </p>
         </div>

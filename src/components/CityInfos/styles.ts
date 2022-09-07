@@ -60,6 +60,5 @@ export const CityInfos = styled.ul`
     min-width: 280px;
     max-width: 340px;
     width: 100%;
-    padding: 0;
   }
 `;
