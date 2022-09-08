@@ -4,11 +4,12 @@ import { CityContext } from "../../Context/CityContext";
 import { AuthContext } from "../../Context/LoginContext";
 import { fakeApi, weatherApi } from "../../services";
 import Container from "./styles";
+import { BsTrash } from "react-icons/bs";
 
 interface ICityGetter {
   cityList: string;
   userId: number | null;
-  id: number | null;
+  id: number;
   nameCity: string;
 }
 
@@ -54,7 +55,18 @@ const CityRegister = () => {
       .then((res) => setCityApi(res.data))
       .catch((err) => console.error("Esse é o problema", err));
   };
-
+  const deletedCities = async (id: number) => {
+    await fakeApi
+      .delete(`/city/${id}`, {
+        headers: { Authorization: `Bearer ${tokenUser}` },
+      })
+      .then(() => {
+        const deletedFiltered = cityList.filter((elem) => elem.id !== id);
+        setCityList(deletedFiltered);
+        toast.success("Cidade removida com sucesso!");
+      })
+      .catch((err) => console.error("Esse erro vem da Api fake", err));
+  };
   return (
     <>
       <Container>
@@ -69,12 +81,20 @@ const CityRegister = () => {
               <p>Cadastre novas cidades</p>
             ) : (
               city?.map((element) => (
-                <button
-                  key={element.id}
-                  onClick={() => cityInfoFavorite(element.nameCity)}
-                >
-                  {element.nameCity}
-                </button>
+                <li key={element.id}>
+                  <button
+                    className="btn-add"
+                    onClick={() => cityInfoFavorite(element.nameCity)}
+                  >
+                    {element.nameCity}
+                  </button>
+                  <button
+                    className="btn-trash"
+                    onClick={() => deletedCities(element.id)}
+                  >
+                    <BsTrash />
+                  </button>
+                </li>
               ))
             )}
           </ul>
