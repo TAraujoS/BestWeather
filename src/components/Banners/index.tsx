@@ -4,16 +4,6 @@ import { Banner } from "./styles";
 import { AuthContext, IUser } from "../../Context/LoginContext";
 import { CityContext } from "../../Context/CityContext";
 
-interface IBannerResponse {
-  email: string;
-  password: string;
-  name: string;
-  url: string;
-  occupation: string;
-  city: string;
-  id: number;
-}
-
 interface IInfos {
   title: string;
   text1: string;
@@ -25,43 +15,17 @@ interface IInfos {
   id: number;
 }
 
-interface IOtherResponse {
-  email: string;
-  password: string;
-  name: string;
-  url: string;
-  occupation: string;
-  city: string;
-  id: number;
-  news: IOther[];
-}
-
-interface IOther {
-  title: string;
-  text1: string;
-  text2: string;
-  text3: string;
-  text4: string;
-  text5: string;
-  url: string;
-  userId: number;
-  id: number;
-}
-
 const Banners = () => {
-  const { userId, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { cityApi } = useContext(CityContext);
 
   const [banner, setBanner] = useState<IInfos>({} as IInfos);
-  const [other, setOther] = useState<IOther[]>([]);
   const token = localStorage.getItem("@loginBWeather:token") || "";
 
   useEffect(() => {
     const showBanner = async () => {
-      if (user && user.infoId <= 6) {
+      if (user) {
         await getBanner(user);
-      } else {
-        await getOther();
       }
     };
     showBanner();
@@ -77,16 +41,6 @@ const Banners = () => {
       .catch((err) => console.error("Esse é o problema", err));
   };
 
-  const getOther = async () => {
-    await fakeApi
-      .get<IOtherResponse>(`/users/${userId}?_embed=news`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-
-      .then((response) => setOther(response.data.news))
-      .catch((err) => console.error("Esse é o problema", err));
-  };
-
   const getMessageTemp = (elem: IInfos) => {
     const temp = cityApi.current?.temp_c;
 
@@ -99,7 +53,7 @@ const Banners = () => {
       : elem?.text4;
   };
 
-  const getMessageTempOther = (elem: IOther) => {
+  const getMessageTempOther = (elem: IInfos) => {
     const temp = cityApi.current?.temp_c;
 
     return temp < 20 ? elem?.text1 : temp < 35 ? elem?.text2 : elem?.text3;
@@ -129,12 +83,11 @@ const Banners = () => {
     ) {
       return getMessageTemp(banner);
     } else {
-      return getMessageTempOther(other[0]);
+      return getMessageTempOther(banner);
     }
   };
 
-  const showTextOccupation = banner && checkOccupation();
-  const showTextOther = other[0] && checkOccupation();
+  const showTextOccupation = checkOccupation();
 
   return (
     <Banner>
@@ -145,16 +98,6 @@ const Banners = () => {
             <p>{`${user.name}, ${showTextOccupation}`}</p>
           </div>
           <img src={banner?.url} alt="Occupation" />
-        </>
-      ) : other[0] ? (
-        <>
-          <div className="divText" key={other[0]?.id}>
-            <h3>{other[0]?.title}</h3>
-            <p>{`${user.name}, ${showTextOther}`}</p>
-          </div>
-          <div className="image-div-banner">
-            <img className="banner-img" src={other[0]?.url} alt="Occupation" />
-          </div>
         </>
       ) : (
         <span>Carregando...</span>

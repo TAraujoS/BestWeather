@@ -16,6 +16,7 @@ const Container = styled.section`
 
   div {
     display: flex;
+    min-width: 155px;
   }
 
   ul {
