@@ -24,7 +24,7 @@ const Banners = () => {
 
   useEffect(() => {
     const showBanner = async () => {
-      if (user) {
+      if (user && user.infoId <= 7) {
         await getBanner(user);
       }
     };
