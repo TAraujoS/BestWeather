@@ -25,12 +25,11 @@ const Container = styled.section`
     justify-content: flex-start;
     list-style: none;
     padding: 0px;
-    width: 75%;
+    width: 100%;
 
     li {
       background-color: #0f4670;
       display: flex;
-      min-width: 155px;
       border-radius: 5px;
       margin: 5px;
 
@@ -43,13 +42,6 @@ const Container = styled.section`
         background-color: transparent;
         border: none;
         border-radius: 5px;
-        margin: 5px;
-        padding: 0.5rem;
-        margin: 0.3rem 0.3rem;
-        // border: 2px solid #0f4670;
-        // :hover {
-        //   transition: 1.2s;
-        // }
       }
       .btn-trash {
         display: flex;
@@ -61,10 +53,6 @@ const Container = styled.section`
         border: none;
         border-radius: 5px;
         background-color: transparent;
-        margin: 5px;
-        padding: 0.5rem;
-        margin: 0.3rem 0.3rem;
-        // border: 2px solid #0f4670;
       }
       &:hover {
         transition: 0.8s;

@@ -35,12 +35,12 @@ export const Error = styled.div`
     font-size: 14px;
     position: absolute;
     color: red;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 5px 15px;
     border-radius: 10px;
     left: 25px;
     top: -1px;
-    opacity: 0.8;
+    opacity: 0;
     transition: opacity 0.4s;
     width: 245px;
 
@@ -49,7 +49,7 @@ export const Error = styled.div`
       border-style: solid;
       border-width: 10px 7px 0 7px;
       transform: rotate(90deg);
-      border-color: #ffffff transparent;
+      border-color: rgba(255, 255, 255, 0.6) transparent;
       position: absolute;
       top: 4px;
       left: -7px;
