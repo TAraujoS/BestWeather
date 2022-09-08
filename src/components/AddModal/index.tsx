@@ -10,7 +10,7 @@ import { configUserSchema } from "../../validators";
 export interface ICity {
   cityList: string;
   userId: number | null | string;
-  id: number | null;
+  id: number;
   nameCity: string;
 }
 

@@ -9,6 +9,7 @@ const Forecast = () => {
     <>
       {cityApi?.location && (
         <ForecastList>
+          <h1>Previsão para os próximos 7 dias </h1>
           <ul>
             {cityApi?.forecast.forecastday.slice(1).map((day, index) => (
               <li key={index} className="cityName">
