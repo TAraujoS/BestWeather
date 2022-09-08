@@ -77,8 +77,8 @@ const CityRegister = () => {
 
         <div>
           <ul>
-            {city?.length < 0 ? (
-              <p>Cadastre novas cidades</p>
+            {city.length <= 0 ? (
+              <h5> Cadastre suas cidades favoritas aqui !</h5>
             ) : (
               city?.map((element) => (
                 <li key={element.id}>
