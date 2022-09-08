@@ -40,11 +40,7 @@ export const ModalConfig = () => {
   const { user } = useContext(AuthContext);
   const { setModal, onSubmitFunction } = useContext(CityContext);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IUserConfig>({
+  const { register, handleSubmit } = useForm<IUserConfig>({
     resolver: yupResolver(configUserSchema),
   });
 
