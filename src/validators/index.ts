@@ -10,8 +10,8 @@ export const registerSchema = yup.object().shape({
   name: yup
     .string()
     .matches(
-      /^([a-zA-Zà-úÀ-Ú0-9]|-|_|\s)+$/,
-      "Esse campo deve conter apenas letras"
+      /^[a-z ,.'-]+$/i,
+      "Esse campo deve conter apenas letras, sem acentuações"
     )
     .required("Campo obrigatório"),
 

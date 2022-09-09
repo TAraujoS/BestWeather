@@ -101,7 +101,6 @@ const Register = () => {
           <Input
             type="text"
             id="city"
-            //className="input-text"
             {...register("city")}
             placeholder="Cidade"
             error={errors?.city}
