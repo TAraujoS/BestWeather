@@ -9,7 +9,7 @@ import { BsTrash } from "react-icons/bs";
 interface ICityGetter {
   cityList: string;
   userId: number | null;
-  id: number;
+  id: string;
   nameCity: string;
 }
 
@@ -20,30 +20,31 @@ const CityRegister = () => {
   const [cityList, setCityList] = useState<ICityGetter[]>([]);
 
   useEffect(() => {
-    async function getCities() {
+    function getCities() {
       fakeApi
         .get("/city", {
           headers: { Authorization: `Bearer ${tokenUser}` },
         })
         .then((res) => {
+          console.log(res);
           setCityList(res.data);
           setModal(null);
         })
         .catch((err) => console.error(err));
     }
     getCities();
-  }, [tokenUser]);
+  }, []);
+  console.log(cityList);
 
   useEffect(() => {
     const filteredCity = () => {
-      const itensfiltered = cityList.filter(
-        (el) => Number(el.userId) === Number(userId)
-      );
+      const itensfiltered = cityList.filter((el) => el.userId === userId);
       setCity(itensfiltered);
       return itensfiltered;
     };
     filteredCity();
   }, [cityList]);
+  console.log(city);
 
   const cityInfoFavorite = (name: string) => {
     weatherApi
@@ -55,7 +56,8 @@ const CityRegister = () => {
       .then((res) => setCityApi(res.data))
       .catch((err) => console.error("Esse é o problema", err));
   };
-  const deletedCities = async (id: number) => {
+
+  const deletedCities = async (id: string) => {
     await fakeApi
       .delete(`/city/${id}`, {
         headers: { Authorization: `Bearer ${tokenUser}` },
