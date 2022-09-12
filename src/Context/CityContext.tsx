@@ -82,7 +82,7 @@ const CityProvider = ({ children }: ICityContext) => {
   const [city, setCity] = useState<ICity[]>([]);
   const [modal, setModal] = useState<string | null>(null);
   const { user, setUser, loading, setLoading } = useContext(AuthContext);
-  const tokenExt = "27099ab8b4ea4bdf9c9110958220109";
+  const tokenExt = "27a31f7ad4144e13a70153050221209";
   const tokenUser = localStorage.getItem("@loginBWeather:token");
   const userId = localStorage.getItem("@loginBWeather:user");
 

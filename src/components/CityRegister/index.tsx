@@ -38,7 +38,6 @@ const CityRegister = () => {
     const filteredCity = () => {
       const itensfiltered = cityList.filter((el) => el.userId === userId);
       setCity(itensfiltered);
-      //return itensfiltered;
     };
     filteredCity();
   }, [cityList]);
