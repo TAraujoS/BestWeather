@@ -25,6 +25,8 @@ export interface CityContextData {
   setCity: Dispatch<SetStateAction<ICity[]>>;
   onSubmitFunction: (data: IUserConfig) => void;
   onSubmitCity: (data: ICity) => void;
+  cityInfoFavorite: (name: string) => void;
+  deletedCities: (id: string) => void;
 }
 
 export interface IData {
@@ -115,6 +117,7 @@ const CityProvider = ({ children }: ICityContext) => {
       .then((res) => setCityApi(res.data))
       .catch((err) => console.error("Esse é o problema", err));
   };
+
   const onSubmitCity = (data: ICity) => {
     data.userId = userId;
     fakeApi
@@ -151,6 +154,52 @@ const CityProvider = ({ children }: ICityContext) => {
       });
   };
 
+  useEffect(() => {
+    if (tokenUser) {
+      fakeApi
+        .get("/city", {
+          headers: { Authorization: `Bearer ${tokenUser}` },
+        })
+        .then((res) => {
+          setCity(res.data);
+          setModal(null);
+        })
+        .catch((err) => console.error(err));
+    }
+  }, []);
+
+  useEffect(() => {
+    const filteredCity = () => {
+      const itensfiltered = city.filter((el) => el.userId === userId);
+      setCity(itensfiltered);
+    };
+    filteredCity();
+  }, []);
+
+  const cityInfoFavorite = (name: string) => {
+    weatherApi
+      .get(
+        `/forecast.json?key=${tokenExt}&q=${name
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")} Brazil&days=8`
+      )
+      .then((res) => setCityApi(res.data))
+      .catch((err) => console.error("Esse é o problema", err));
+  };
+
+  const deletedCities = (id: string) => {
+    fakeApi
+      .delete(`/city/${id}`, {
+        headers: { Authorization: `Bearer ${tokenUser}` },
+      })
+      .then(() => {
+        const deletedFiltered = city.filter((elem) => elem.id !== id);
+        setCity(deletedFiltered);
+        toast.success("Cidade removida com sucesso!");
+      })
+      .catch((err) => console.error("Esse erro vem da Api fake", err));
+  };
+
   return (
     <CityContext.Provider
       value={{
@@ -166,6 +215,8 @@ const CityProvider = ({ children }: ICityContext) => {
         setModal,
         onSubmitFunction,
         onSubmitCity,
+        cityInfoFavorite,
+        deletedCities,
       }}
     >
       {children}
