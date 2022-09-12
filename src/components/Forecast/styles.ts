@@ -3,10 +3,17 @@ import styled from "styled-components";
 export const ForecastList = styled.section`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   min-width: 100vw;
   padding: 0 5%;
   margin: 25px 0;
+
+  h1 {
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: 500;
+  }
 
   ul {
     display: flex;
