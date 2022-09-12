@@ -82,7 +82,8 @@ const CityProvider = ({ children }: ICityContext) => {
   const [city, setCity] = useState<ICity[]>([]);
   const [modal, setModal] = useState<string | null>(null);
   const { user, setUser, loading, setLoading } = useContext(AuthContext);
-  const tokenExt = "27099ab8b4ea4bdf9c9110958220109";
+  const tokenExt = "27a31f7ad4144e13a70153050221209";
+
   const tokenUser = localStorage.getItem("@loginBWeather:token");
   const userId = localStorage.getItem("@loginBWeather:user");
 
@@ -98,7 +99,7 @@ const CityProvider = ({ children }: ICityContext) => {
       } catch (error) {
         console.error("Esse erro vem da ext", error);
       } finally {
-        setTimeout(() => setLoading(false), 4225);
+        setTimeout(() => setLoading(false), 3000);
       }
     }
     apiWeather();
@@ -119,9 +120,6 @@ const CityProvider = ({ children }: ICityContext) => {
     fakeApi
       .post("/city", data)
       .then((response) => {
-        toast.success("Cidade adicionada aos seus favoritos", {
-          autoClose: 2000,
-        });
         setCity((oldCities) => [...oldCities, response.data]);
         setModal(null);
       })
@@ -132,6 +130,7 @@ const CityProvider = ({ children }: ICityContext) => {
     !data.city && delete data.city;
     !data.name && delete data.name;
     !data.url && delete data.url;
+
     fakeApi
       .patch(`/users/${userId}`, data, {
         headers: { Authorization: `Bearer ${tokenUser}` },
