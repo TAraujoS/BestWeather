@@ -26,7 +26,6 @@ const CityRegister = () => {
           headers: { Authorization: `Bearer ${tokenUser}` },
         })
         .then((res) => {
-          console.log(res);
           setCityList(res.data);
           setModal(null);
         })
@@ -34,17 +33,15 @@ const CityRegister = () => {
     }
     getCities();
   }, []);
-  console.log(cityList);
 
   useEffect(() => {
     const filteredCity = () => {
       const itensfiltered = cityList.filter((el) => el.userId === userId);
       setCity(itensfiltered);
-      return itensfiltered;
+      //return itensfiltered;
     };
     filteredCity();
   }, [cityList]);
-  console.log(city);
 
   const cityInfoFavorite = (name: string) => {
     weatherApi
