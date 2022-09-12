@@ -1,70 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { useContext } from "react";
 import { CityContext } from "../../Context/CityContext";
-import { AuthContext } from "../../Context/LoginContext";
-import { fakeApi, weatherApi } from "../../services";
 import Container from "./styles";
 import { BsTrash } from "react-icons/bs";
 
-interface ICityGetter {
-  cityList: string;
-  userId: number | null;
-  id: string;
-  nameCity: string;
-}
-
 const CityRegister = () => {
-  const { setModal, city, setCity, setCityApi, tokenExt, tokenUser } =
+  const { setModal, city, cityInfoFavorite, deletedCities } =
     useContext(CityContext);
-  const { userId } = useContext(AuthContext);
-  const [cityList, setCityList] = useState<ICityGetter[]>([]);
 
-  useEffect(() => {
-    function getCities() {
-      fakeApi
-        .get("/city", {
-          headers: { Authorization: `Bearer ${tokenUser}` },
-        })
-        .then((res) => {
-          setCityList(res.data);
-          setModal(null);
-        })
-        .catch((err) => console.error(err));
-    }
-    getCities();
-  }, []);
-
-  useEffect(() => {
-    const filteredCity = () => {
-      const itensfiltered = cityList.filter((el) => el.userId === userId);
-      setCity(itensfiltered);
-    };
-    filteredCity();
-  }, [cityList]);
-
-  const cityInfoFavorite = (name: string) => {
-    weatherApi
-      .get(
-        `/forecast.json?key=${tokenExt}&q=${name
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")} Brazil&days=8`
-      )
-      .then((res) => setCityApi(res.data))
-      .catch((err) => console.error("Esse é o problema", err));
-  };
-
-  const deletedCities = async (id: string) => {
-    await fakeApi
-      .delete(`/city/${id}`, {
-        headers: { Authorization: `Bearer ${tokenUser}` },
-      })
-      .then(() => {
-        const deletedFiltered = cityList.filter((elem) => elem.id !== id);
-        setCityList(deletedFiltered);
-        toast.success("Cidade removida com sucesso!");
-      })
-      .catch((err) => console.error("Esse erro vem da Api fake", err));
-  };
   return (
     <>
       <Container>
